@@ -1,10 +1,10 @@
 
 # Today I Learned (TIL)
->오늘 배운, 알게 된, 학습한 내용을 정리해두는 저장소  
->이해한 만큼만 직접 작성  
->찾기 쉽도록 해당 카테고리가 N개면 N개 모두에 추가
+>오늘 하루 배웠던 내용을 기록하는 저장소
+>아무리 바빠도 일일커밋을 지향하지만
+>의미 없는 커밋은 지양하기
 ----------------------------------------------------------------------------------------------------------------------
-### ETC
+### Python
 * :bread: [빵 부스러기 저장소](https://github.com/Integerous/TIL/blob/master/ETC/BreadCrumbs.md)
 * [Path Variable과 Query Parameter를 언제 사용해야 하는가? [번역]](https://github.com/Integerous/TIL/blob/master/ETC/PathVariable_QueryParameter.md)
 * [지뢰찾기 과제](https://github.com/Integerous/TIL/blob/master/ETC/mineSweeper.md)
@@ -17,11 +17,11 @@
 * [MyBatis Generator](https://github.com/Integerous/TIL/blob/master/ETC/MyBatisGenerator.md)
 * [RESTful API 란?](https://github.com/Integerous/TIL/blob/master/ETC/RESTful%20API.md)
  
-### Message Broker
+### R
 * [ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱](https://github.com/Integerous/TIL/blob/master/Message_Broker/activemq_virtual_destinations.md)
 * [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
  
-### Java
+### SQL
 * [CompletableFuture 사용 예시](https://github.com/Integerous/TIL/blob/master/Java/CompleatableFuture.md)
 * [자바 직렬화 (Java Serialization)](https://github.com/Integerous/TIL/blob/master/Java/Serialize.md)
 * [XML 데이터를 Java 객체로 변환하기 (feat. JAXB)](https://github.com/Integerous/TIL/blob/master/Java/XML_to_Java_Object.md)
@@ -34,11 +34,11 @@
 * [Lombok](https://github.com/Integerous/TIL/blob/master/Java/Lombok.md)
 
 
-### Servlet & JSP 
+### Tableau
 * [Servlet & JSP 기초](https://github.com/Integerous/TIL/blob/master/Servlet_JSP/Servlet&JSP.md)
  
  
-### Spring Framework 
+### 기초수학
 * [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
 * [Spring Boot Test 정리](https://github.com/Integerous/TIL/blob/master/Spring/SpringBootTest.md)
 * [Spring Framework 핵심 기술 - 강의내용 정리](https://github.com/Integerous/TIL/blob/master/Spring/SpringFrameworkCore.md)
@@ -56,21 +56,21 @@
 * [Tiles ViewPreparer](https://github.com/Integerous/TIL/blob/master/Spring/TilesPreparer.md)
 
 
-### JPA
+### 기초통계
 * [JPA 프로그래밍 기본다지기 - 강의내용 정리](https://github.com/Integerous/TIL/blob/master/JPA/JPA_basic.md)
 
 
-### Git
+### 자료구조와 알고리즘
 * [Commit한 파일 삭제하기](https://github.com/Integerous/TIL/blob/master/Git/rm_cached.md)
 * [Git을 활용한 협업 워크플로우](https://github.com/Integerous/TIL/blob/master/Git/Git_Flow.md)
 * [Git Tip 저장소](https://github.com/Integerous/TIL/blob/master/Git/GitTips.md)
 
 
-### Go 
+### 머신러닝
 * [Go 시작하기](https://github.com/Integerous/TIL/tree/master/Go)
 
 
-### AWS
+### 딥러닝
 * [DynamoDB 정리](https://github.com/Integerous/TIL/blob/master/Database/DynamoDB.md)
 * [ActiveMQ의 Virtual Destinations를 활용한 로드밸런싱](https://github.com/Integerous/TIL/blob/master/Message_Broker/activemq_virtual_destinations.md)
 * [AmazonMQ + Spring Boot](https://github.com/Integerous/TIL/blob/master/Spring/AmazonMQ%2BSpringBoot.md)
@@ -81,25 +81,6 @@
 * [AWS 자격증 준비 자료/방법](https://github.com/Integerous/TIL/blob/master/AWS/Certificate.md)
 
 
-### Database 
+### ETC
 * [DynamoDB 정리](https://github.com/Integerous/TIL/blob/master/Database/DynamoDB.md)
 
-
-### SQL
-* [전설의 SQL 학습서 내용 정리](https://github.com/Integerous/TIL/blob/master/SQL/OracleExpert.md)
-* [생소했던 SQL 기록소](https://github.com/Integerous/TIL/blob/master/SQL/README.md)
-
-
-### Linux 
-* [실무에서 만난 쉘 스크립트 정리](https://github.com/Integerous/TIL/blob/master/Linux/Shell_Script_Study.md)
-* [Linux SysAdmin Basics](https://github.com/Integerous/TIL/blob/master/Linux/SysAdminBasics.md)
-* [리눅스 ssh 로그아웃시 프로세스 유지하기](https://github.com/Integerous/TIL/blob/master/Linux/Maintaining_Process.md)
-
-
-### Operating System 
-* 공룡책 - [서문](https://github.com/Integerous/TIL/blob/master/OS/OperatingSystemConcepts/Preface.md)
-
-
-### Tools
-* Eclipse - [프로젝트 초기 설정](https://github.com/Integerous/TIL/blob/master/Tools/Eclipse.md)
-* [IntelliJ 사용기](https://github.com/Integerous/TIL/blob/master/Tools/IntelliJ.md)
