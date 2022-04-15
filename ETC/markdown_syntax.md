@@ -143,6 +143,8 @@ code what you want
 ### 1.2.10. Ignoring Markdown formatting
 `\`를 사용한다.
 
+### 1.2.11. How to begin a new line
+3칸 이상 띄어쓰기(`  `)하면 줄이 바뀐다.
 
 
 ## ○ 레퍼런스
