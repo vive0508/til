@@ -32,4 +32,4 @@
 
 
 ### ETC
-
+- [마크다운 문법](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)
