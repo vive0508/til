@@ -157,27 +157,31 @@ git config --global init.defaultBranch main
 
 
 ## 2.2 `push`
-로컬 깃 저장소에 원격 저장소 연결 추가
-```
-git remote add origin (원격 저장소 주소)
-```
-기본 브랜치 명을 main으로 설정
-```
-git branch -M main
-```
-로컬 저장소의 커밋 내역들을 원격으로 push
-```
-git push -u origin main 
-```
-원격 목록 보기
-```
-git remote
-```
-원격 지우기
-```
-git remote remove (origin 등 원격 이름)
-```
-
+- 처음부터 모든 내용을 `push` 해야하는 경우
+  로컬 깃 저장소에 원격 저장소 연결 추가
+  ```
+  git remote add origin (원격 저장소 주소)
+  ```
+  기본 브랜치 명을 main으로 설정
+  ```
+  git branch -M main
+  ```
+  로컬 저장소의 커밋 내역들을 원격으로 push
+  ```
+  git push -u origin main 
+  ```
+  원격 목록 보기
+  ```
+  git remote
+  ```
+  원격 지우기
+  ```
+  git remote remove (origin 등 원격 이름)
+  ```
+- 변경 내역을 `push` 해야하는 경우
+  ```
+  git push
+  ```
 
 ## 2.3 `pull`
 - 파일만 다운로드 `Download ZIP`
@@ -188,8 +192,20 @@ git remote remove (origin 등 원격 이름)
   git clone (원격 저장소 주소)
   ```
 
+- 변경된 내역을 `pull`해야하는 경우
+  ```
+  git pull
+  ```
 
-
+## 2.4 `push`할 것이 있을 때 `pull`하는 방법
+### 2.4.1 merge 방식
+  ```
+  git pull --no-rebase
+  ```
+### 2.4.2 rebase 방식
+  ```
+  git pull --rebase
+  ```
 
 ## ○ 레퍼런스
 * [[얄팍한 코딩사전] 제대로 파는 깃강좌(무료)](https://www.youtube.com/watch?v=1I3hMwQU6GU&t=726s)
