@@ -86,3 +86,8 @@ print(array)
 ```
 Python에서 반복을 수행하되 반복을 위한   
 변수의 값을 무시하고자 할 때, 언더바(_)를 사용한다
+
+
+## ○ 레퍼런스
+* [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
+* [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
