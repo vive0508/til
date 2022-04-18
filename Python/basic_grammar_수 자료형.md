@@ -54,3 +54,8 @@ ___
 - `float()` 함수 : float 자료형으로 변환한다.
 int를 float으로 변환하는 것은 가능하나, float을 int로 바꾸는 것은 불가능하다.
 int와 float를 연산하면 float로 결과가 나온다.
+
+
+## ○ 레퍼런스
+* [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
+* [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
