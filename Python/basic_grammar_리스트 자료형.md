@@ -59,9 +59,7 @@ for i, value in enumerate(array)
 
 
 ## 2. 리스트 내포(List comprehension)
-```
-리스트 이름 = [ 표현식 for 반복자 in 반복할 수 있는 것 if 조건문]
-```
+**리스트 이름 = [ 표현식 for 반복자 in 반복할 수 있는 것 if 조건문]**
 
 
 ```python
