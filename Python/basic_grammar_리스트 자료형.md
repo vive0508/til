@@ -26,6 +26,9 @@ list_b = [4, 5, 6]
 - 리스트명.remove(값)
 - 리스트명.clear()
 
+### 1.4 특정 값의 요소 갯수 세기
+- 리스트명.count(값)
+
 ### 1.4 리스트 정렬
 - 오름차순 정렬 : 리스트명.sort()
 - 내림차순 정렬 : 리스트명.sort(reverse=True)
@@ -59,6 +62,7 @@ for i, value in enumerate(array)
 
 
 ## 2. 리스트 내포(List comprehension)
+### 2.1 리스트 내포 예시
 **리스트 이름 = [ 표현식 for 반복자 in 반복할 수 있는 것 if 조건문]**
 
 
@@ -73,4 +77,12 @@ for i in range(0, 20, 2):
 array = [i*i for i in range(0, 20, 2)]
 ```
 
-
+### 2.2 2차원 리스트 초기화
+```python
+n = 4
+m = 3
+array = [[0]*m for_in range(n)]
+print(array)
+```
+Python에서 반복을 수행하되 반복을 위한   
+변수의 값을 무시하고자 할 때, 언더바(_)를 사용한다
