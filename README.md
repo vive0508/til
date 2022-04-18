@@ -4,7 +4,7 @@
 >일일커밋을 지향하지만, 의미 없는 커밋은 지양하기   
 ----------------------------------------------------------------------------------------------------------------------
 ### Python
-* [파이썬 기초문법](https://github.com/vive0508/TIL/blob/main/Python/basic_grammar.md)
+* [파이썬 기초문법](https://github.com/vive0508/TIL/blob/main/Python/grammar_basic.md)
 
  
 ### R
