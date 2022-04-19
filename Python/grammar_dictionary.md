@@ -10,6 +10,15 @@
 `dict.get[키, 디폴트값]` : 입력한 키에 해당하는 값이 나오고, 없을 경우 디폴트 값이 나온다   
 `keys()` : 딕셔너리의 키만 추출   
 `values()` : 딕셔너리의 값만 추출   
+`dict.items()` : 키와 값을 모두 활용
+
+```python
+dictionary_sample = {key1:value1, key2:value2, key3:value3}
+
+for x,y in array.items():
+  print(x)
+  print(y)
+```
 
 ### 1.2 딕셔너리 추가
 ```python
