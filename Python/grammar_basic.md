@@ -15,3 +15,6 @@
 * [예외처리](https://github.com/vive0508/TIL/blob/main/Python/grammar_exception_handling.md)
 * [모듈](https://github.com/vive0508/TIL/blob/main/Python/grammar_module.md)
 * [클래스](https://github.com/vive0508/TIL/blob/main/Python/grammar_class.md)
+
+### 기타
+* [파일관리](https://github.com/vive0508/TIL/blob/main/Python/ETC_file_handling.md)
