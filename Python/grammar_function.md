@@ -245,10 +245,6 @@ tuple_sample[2]
 20   
 30   
 
-- 요소 하나를 가지는 튜플
-```python
-(273,)
-```
 
 ### 3.2 튜플을 사용하는 경우
 #### 3.2.1 복합할당
@@ -312,18 +308,143 @@ for i, value in enumerate([1, 2, 3, 4, 5, 6]):
 4번째 요소는 5입니다   
 5번째 요소는 6입니다   
 
+### 3.3 튜플 관련 내용
+#### 3.3.1 요소 하나를 가지는 튜플
+```python
+(273, )
+```
+
+#### 3.3.2 딕셔너리에 키로 사용가능
+딕셔너리 키에는 리스트는 사용불가   
+그 이외 튜플을 포함한 다른 자료형은 사용가능
+
+```python
+dict = {
+  (0, 0) : 10,
+  (0, 1) : 20,
+  (1, 0) : 30,
+  (1, 1) : 40
+  
+print( dict[(0,0)] )
+print( dict[0,0] )
+}
+```
+10   
+10
+
 ___
 ## 4. 람다
+함수라는 기능을 매개변수로 전달하는 코드를 사용한다   
+파이썬은 이를 위해 람다(lamda)라는 기능을 제공한다
 
- 
 
-- x(input) 를 받아 x\*\*2(output) 를 return 해주는 람다 함수
+### 4.1 콜백함수
+내가 함수를 호출하는 것이 아니라,   
+함수가 함수를 호출하는 것을 콜백함수라고 한다
+
 ```python
-func = lambda x : x**2
-superset_func([1, 3, 5, 10, 20], lambda x : X ** 2)
-```
-함수에게 넣어주는 함수
+def call_5_times(func):
+  for i in range(5):
+    func(i)
 
+def print_hello(number):
+  print("안녕하세요", number)
+
+call_5_times(print_hello)
+```
+안녕하세요 0   
+안녕하세요 1   
+안녕하세요 2   
+안녕하세요 3   
+안녕하세요 4   
+
+
+### 4.2 람다 활용
+```python
+# 함수(lamda 매개변수 : 한줄 코드)
+
+def call_5_times(func):
+  for i in range(5):
+    func(i)
+    
+call_5_times(lamda number: print("안녕하세요", number))
+```
+안녕하세요 0   
+안녕하세요 1   
+안녕하세요 2   
+안녕하세요 3   
+안녕하세요 4   
+
+
+### 4.3 표준 함수 (= 내장함수)
+#### 4.3.1 `fileter(fun, *iterables)`
+리스트의 요소를 함수에 넣고, 리턴된 값이 True인 것으로 새로운 리스트를 구성해주는 함수
+
+- filter() 함수
+```python
+def 짝수만(number):
+  return number % 2 == 0
+
+a = list(range(10))
+b = filter(짝수만, a)
+
+print(list(b))
+for i in b:
+  print(i)
+```
+[0, 2, 4, 6, 8}   
+0   
+2   
+4   
+6   
+8   
+
+- filter() 함수 with 람다
+```python
+a = list(range(10))
+b = filter(lambda number: number % 2 == 0, a)
+
+print(list(b))
+for i in b:
+  print(i)
+```
+[0, 2, 4, 6, 8}   
+0   
+2   
+4   
+6   
+8   
+
+
+#### 4.3.2 `map(function or None, iterable)`
+리스트의 요소를 함수에 넣고, 리턴된 값으로 새로운 리스트를 구성해주는 함수
+
+- map() 함수
+```python
+def 제곱(number):
+  return number * number
+
+a = list(range(5))
+print(list(map(제곱, a)))
+```
+[0, 1, 4, 9, 16, 25]
+
+- map()함수 with 람다
+```python
+a = list(range(5))
+print(list(map(lambda number : number * number, a)))
+
+```
+
+### 4.4 리스트 내포와 비교하기
+```python
+a = list(range(5))
+print([i*i for i in a if i % 2 == 0])
+```
+`map()`,`filter()` 함수는 제너레이터 함수라서   
+내부의 데이터가 실제로 메모리에 용량을 차지하지 않는다   
+하지만 신경쓰지 않을 정도로 컴퓨터의 성능이 매우 발전   
+최근에는 리스트내포 구문이 많이 쓰이는 추세이다   
 
 
 ___
