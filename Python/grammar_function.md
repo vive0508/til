@@ -129,10 +129,101 @@ print(a, b, c, d)
 ```
 
 #### 1.5.2 조기리턴
+하단 2.3 조기리턴 참고
 
+
+
+___
 ### 2. 함수의 활용
 #### 2.1 재귀함수
+재귀함수는 자기자신을 호출하는 함수   
+함수 내부에서 함수를 호출하는 함수
+
+##### 2.1.1 팩토리얼
+- case 1
+```python
+# n! = 1*2*3*(n-2)*(n-1)*n
+
+def factorial_1(n):
+  변수 = 1
+  for i in range(1, n+1)
+    변수 *= i
+  return 변수
+```
+
+- case 2
+```python
+# 0! = 1
+# n! = n*(n-1)!
+
+def facorial_2(n):
+  if n == 0 :
+    return 1
+  else:
+    retrun n * factorial(n-1)
+```
+
+___
 #### 2.2 메모화
+##### 2.2.1 피보나치 수열
+- 재귀함수로 구현했을 경우
+```python
+# f(1) = 1
+# f(2) = 1
+# f(n) = f(n-1) + f(n-2)
+
+counter = 0
+
+def f(n)
+  global counter =+ 1
+  if n==1 or n==2:
+    return 1
+  else:
+    return f(n-1) + f(n-2)
+
+print(f(35))
+print(counter)
+```
+9227465   
+18454929   
+   
+![메모화](https://user-images.githubusercontent.com/101171109/164179205-23961c1c-c4c7-457f-864d-f808fd1e5429.png)   
+이미 구했던 값을 여러번 반복해서 구하는 문제가 생겨 연산의 시간이 길어진다  
+
+- 메모화를 사용했을 경우
+``` python
+메모 = {1:1, 2:1}
+
+def f(n):
+  if n in 메모 :
+    return 메모[n]
+  else:
+    output = f(n-1) + f(n-2)
+    메모[n] = output
+    return output
+    
+print(f(150))
+```
+9969216677189303386214405760200    
+이전과 달리 빠른 속도로 연산이 됨
+
+___
+
+#### 2.3 조기리턴
+``` python
+메모 = {1:1, 2:1}
+
+def f(n):
+  if n in 메모 :
+    return 메모[n]
+  output = f(n-1) + f(n-2)
+  메모[n] = output
+  return output
+    
+print(f(150))
+```
+들여쓰기 단계가 줄어 코드를 더 쉽게 읽을 수 있다   
+이렇게 흐름 중간에 return 키워드를 사용하는 것을 조기리턴이라고 한다   
 
 ___
 ## 3. 튜플
@@ -151,8 +242,7 @@ superset_func([1, 3, 5, 10, 20], lambda x : X ** 2)
 ```
 함수에게 넣어주는 함수
 
-___
-## 5. 파일처리
+
 
 ___
 ## ○ 레퍼런스
