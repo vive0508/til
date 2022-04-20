@@ -38,7 +38,7 @@ for i in range(10)
 
 print(a)
 ```
-→ 10
+10
 
 ___
 ### 1.4 매개변수(parameter)
