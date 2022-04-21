@@ -104,8 +104,9 @@ student 출력()
 김재현 960508
 
 
-### 2.6 특수한 이름의 함수("__")
+### 2.6 특수한 이름의 함수("\_\_")
 
+- student를 str()함수의 매개변수로 넣으면 student의 \_\_str\_\_함수가 호출된다
 ```python
 class Student:
   def __str__(self)
@@ -129,6 +130,101 @@ print(str(student))
 | ge | greater than or equal | 크거나 같다 |
 | lt | less than | 작다 |
 | le | less than or equal | 작거나 같다 |
+
+```python
+class Student:
+  def __init__(self, 이름, 생년월일)
+    self.이름 = 이름
+    self.생년월일 = 생년월일
+  def __eq__(self, other):
+    return self.생년월일 == other.생년월일
+  def __ne__(self, other):
+    return self.생년월일 != other.생년월일
+  def __gt__(self, other):
+    return self.생년월일 > other.생년월일
+  def __ge__(self, other):
+    return self.생년월일 >= other.생년월일
+  def __lt__(self, other):
+    return self.생년월일 < other.생년월일
+  def __le__(self, other):
+    return self.생년월일 <= other.생년월일
+    
+student = Student("김재현", 960508)
+student == student
+student != student
+student > student
+student >= student
+student < student
+student <= student
+```
+True
+False
+False
+True
+False
+True
+
+### 2.8 ETC
+- 프라이빗 변수 : `self.__변수이름` 형태로 선언하여 클래스 내부의 변수를 외부에서 사용하는 것을 막을 수 있다
+- 게터(getter) : 프라이빗 변수의 값을 추출한다
+- 세터(setter) : 프라이빗 변수의 값을 변경한다
+- 데코레이터 : `@property`와 `@<변수이름>.setter`로 더 간단한 형태로 값에 접근아 가능하다
+
+___
+## 3. 클래스 상속
+```
+class 클래스명( 기존 클래스 ):
+  수정할 내용
+```
+\- 이미 존재하는 클래스를 물려받아 쓸 때 클래스 상속을 한다.
+\- 클래스 상속 / 메서드 오버라이딩 / 메서드 오버로딩
+
+```
+# Zoo라는 붕어빵틀로
+class Zoo:
+    def print_something():
+        print('This is something!')
+
+
+# zoo_1이라는 붕어빵을 만든다
+zoo_1 = Zoo()
+
+
+# Zoo 안에 있는 함수를 사용하려고 하지만 오류가 나옴
+# == Cage.print_something(zoo_1)
+# 클래스 선언 후 객체가 메소드를 호출할 때 메소드를 호출한 객체 자신이 첫번째 인자로 함께 전달된다. 
+# zoo_1이 들어갈 자리를 만들어주어야 함
+zoo_1.print_something()
+```
+
+```
+class Zoo:
+    
+    def print_something(self):
+        print("This is something!")
+        
+zoo_1 = Zoo()
+ 
+zoo_1.print_something()
+```
+
+```
+# self로 연결점
+class Zoo:
+    
+    def __init__(self, animal):
+        self.default_zoo = ['Dog', 'Cat', 'Tiger']
+        self.default_zoo.append(animal)
+    
+    def print_something(self):
+        print(self.default_zoo)
+
+
+zoo_1 = Zoo('Dolphin')
+
+Zoo.print_something(zoo_1)
+```
+
 ___
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
