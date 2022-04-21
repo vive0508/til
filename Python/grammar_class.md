@@ -179,52 +179,6 @@ class 클래스명( 기존 클래스 ):
 \- 이미 존재하는 클래스를 물려받아 쓸 때 클래스 상속을 한다.
 \- 클래스 상속 / 메서드 오버라이딩 / 메서드 오버로딩
 
-```
-# Zoo라는 붕어빵틀로
-class Zoo:
-    def print_something():
-        print('This is something!')
-
-
-# zoo_1이라는 붕어빵을 만든다
-zoo_1 = Zoo()
-
-
-# Zoo 안에 있는 함수를 사용하려고 하지만 오류가 나옴
-# == Cage.print_something(zoo_1)
-# 클래스 선언 후 객체가 메소드를 호출할 때 메소드를 호출한 객체 자신이 첫번째 인자로 함께 전달된다. 
-# zoo_1이 들어갈 자리를 만들어주어야 함
-zoo_1.print_something()
-```
-
-```
-class Zoo:
-    
-    def print_something(self):
-        print("This is something!")
-        
-zoo_1 = Zoo()
- 
-zoo_1.print_something()
-```
-
-```
-# self로 연결점
-class Zoo:
-    
-    def __init__(self, animal):
-        self.default_zoo = ['Dog', 'Cat', 'Tiger']
-        self.default_zoo.append(animal)
-    
-    def print_something(self):
-        print(self.default_zoo)
-
-
-zoo_1 = Zoo('Dolphin')
-
-Zoo.print_something(zoo_1)
-```
-
 ___
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
