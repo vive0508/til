@@ -35,3 +35,4 @@
 - [마크다운 문법(Markdown syntax)](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)
 - [Git 기초](https://github.com/vive0508/TIL/blob/main/ETC/git_basic.md)
 - [Jupyter 단축키](https://github.com/vive0508/TIL/blob/main/ETC/jupyter_shortcut.md)
+- [hell 커맨드](https://github.com/vive0508/TIL/blob/main/ETC/shell_commands.md)
