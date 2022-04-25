@@ -21,12 +21,30 @@
 - Reference - [유클리드 호제법(Euclidean algorithm)](https://developerntraveler.tistory.com/m/126)
 
 ## 4. 최소공배수
+\- 공배수 : 두 개 이상의 정수에 공통인 배수
+\- 최소공배수 : 공배수 중 최소인 수
+```python
+두 양의 정수 a,b
+최대공배수 = (a*b) // 최대공약수
+```
 
 ## 5. 진법
+\- 진법 : 수를 셀 때, 자릿수가 올라가는 단위를 기준으로 하는 셈법의 총칭
+```python
+# 진수 변환 : 변환 결과는 문자열로 나온다
+bin() # 10진수 → 2진수(binary)
+oct() # 10진수→ 8진수(octal)
+hex() # 10진수→ 16진수(hexadecimal)
+```
+- Reference - [파이썬 진수 다루기](https://www.daleseo.com/python-int-bases/)
 
 ## 6. 수열
+\- 수열 : 규칙성을 가지고 나열된 수
+
 
 ### 6.1 등차수열
+\- 등차수열 : 연속된 두 항의 차이가 일정한 수열
+\- 등차중항 : 연속된 세 항에서의 가운데 항
 
 ### 6.2 등비수열
 
@@ -46,3 +64,7 @@
 
 ## 12. 확률
 
+
+
+## ○ 레퍼런스
+[제로베이스 데이터사이언스 스쿨](https://zero-base.co.kr/category_dev_camp/school_DS)
