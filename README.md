@@ -16,8 +16,8 @@
 ### Tableau
 
  
-### 기초수학
-
+### 기초 수학
+- [기초 수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
 
 ### 기초통계
 
