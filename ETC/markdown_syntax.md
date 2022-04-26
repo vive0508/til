@@ -70,7 +70,6 @@ ___
 ```
 [x] task 1
 [ ] task 2
-
 ```
 - [x] task 1
 - [ ] task 2
