@@ -35,5 +35,27 @@ int(False) -> 0
 float(False) -> 0.0
 ```
 
+## 3. 형변환
+```python
+# 문자형 자료형
+str1 = 'False'
+print(type(str1))
+print(str1)
+
+# 문자형 자료형 → 불 자료형
+str1 = bool(str1)
+print(type(str1))
+print(str1)
+
+# 불 자료형의 산술연산
+print(str1+str1)
+```
+<class 'str'>   
+False   
+<class 'bool'>   
+True   
+2
+
+
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
