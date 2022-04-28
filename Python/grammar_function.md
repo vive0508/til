@@ -419,7 +419,7 @@ for i in b:
 #### 4.3.2 `map(function or None, iterable)`
 리스트의 요소를 함수에 넣고, 리턴된 값으로 새로운 리스트를 구성해주는 함수
 
-- map() 함수
+- `map()`함수
 ```python
 def 제곱(number):
   return number * number
@@ -429,11 +429,16 @@ print(list(map(제곱, a)))
 ```
 [0, 1, 4, 9, 16, 25]
 
-- map()함수 with 람다
+- `map()`함수 with 람다
 ```python
 a = list(range(5))
 print(list(map(lambda number : number * number, a)))
+```
 
+- `map()`함수 활용
+```python
+a, b, c = map(int, input().split())
+a, b, c = map(float, input().split())
 ```
 
 ### 4.4 리스트 내포와 비교하기
