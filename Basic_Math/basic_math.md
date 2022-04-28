@@ -52,6 +52,12 @@ print('2진수 :{}'.format(format(dNum, '#b')))
 print('8진수 :{}'.format(format(dNum, '#o')))
 print('16진수 :{}'.format(format(dNum, '#x')))
 
+## case 3 (소문자, 대문자로 변경 가능)
+a = int(input('정수를 입력해주세요: '))
+print('%b' %a) # 10진수→ 2진수
+print('%o' %a) # 10진수→ 8진수
+print('%x' %a) # 10진수→ 16진수
+
 # n진수 → 10진수
 int('0b---', 2 ) # 2진수 → 10진수
 int('0o---', 8) # 8진수 → 10진수
