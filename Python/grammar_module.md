@@ -42,8 +42,9 @@ import random
 # 0.0~1.0 사이의 float을 리턴한다
 print(random.random())
 
-# 지정한 범위 사이의 float을 리턴한다
-print(random.uniform(min, max))
+# 지정한 범위 사이의 int/float을 리턴한다
+print(random.randit(min, max)) #int
+print(random.uniform(min, max)) #float
 
 # 지정한 범위의 int를 리턴한다
 print(random.randomrage(max))
