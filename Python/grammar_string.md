@@ -54,9 +54,13 @@ print("::".join(['10','20','30','40','50'])
 ```
 10::20::30::40::50
 
-## 6. 문자열
-### 6.1 format()
-### 6.2 f-string
+## 6. 문자열 포맷팅
+문자열 중간에 변수의 값을 넣어주기 위한 방법   
+포매팅 관련 설명은 블로그 링크로 대체
+
+- format()함수 [링크](https://blockdmask.tistory.com/424)
+- % 포매팅 [링크](https://blockdmask.tistory.com/428)
+- f-string [링크](https://blockdmask.tistory.com/429)
 
 
 ## ○ 레퍼런스
