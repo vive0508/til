@@ -131,6 +131,38 @@ source = request.urlopen()
 content = target.read()
 ```
 
+#### 1.1.9 operator 모듈
+- 산술연산자   
+
+| 연산자 | 함수 |
+| :--: | :-- |
+| + | operator.add(num1, num2) |
+| - | operator.sub(num1, num2) |
+| * | operator.mul(num1, num2) |
+| / | operator.truediv(num1, num2) |
+| % | operator.mod(num1, num2) |
+| // | operator.floordiv(num1, num2) |
+| ** | operator.pow(num1, num2) |
+
+- 비교연산자   
+
+| 연산자 | 함수 |
+| :--: | :-- |
+| == | operator.eq(num1, num2) |
+| != | operator.ne(num1, num2) |
+| > | operator.gt(num1, num2) |
+| >= | operator.ge(num1, num2) |
+| < | operator.lt(num1, num2) |
+| <= | operator.le(num1, num2) |
+
+- 논리연산자 (flag1=True, flag2=False) 
+  
+| 연산자 | 함수 |
+| :--: | :-- |
+| and | operator.and_(flag1, flag2) |
+| or | operator.or_(flag1, flag2) |
+| not | operator.not_(flag1) |
+
 ___
 ### 1.2 외부 모듈 (외장 모듈)
 - 파이썬에 내장되어 있지 않아서, 별도로 다운 받아서 사용하는 모듈
