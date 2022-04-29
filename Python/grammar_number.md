@@ -56,6 +56,19 @@ int를 float으로 변환하는 것은 가능하나, float을 int로 바꾸는 �
 int와 float를 연산하면 float로 결과가 나온다.
 
 
+___
+# 4. 기타
+- `divmode`함수
+```python
+result = divmod(10, 3)
+print('result: {}'.format(result))
+print('몫: {}'.format(result[0]))
+print('나머지: {}'.format(result[1])
+```
+result: (3, 1)   
+몫 : 3   
+나머지 : 1
+
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
 * [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
