@@ -69,6 +69,28 @@ result: (3, 1)
 몫 : 3   
 나머지 : 1
 
+
+- 거듭제곱, 제곱근 구하기
+```python
+# n의 m제곱근 공식 : n**(1/m)
+result = 2 ** (1/4)
+print('2의 4제곱근 %f' % result)
+print('2의 4제곱근 %.2f' % result)
+
+# math 모듈 활용 : pow()-거듭제곱, sqrt()-2제곱근
+import math
+
+print('2의 4제곱 %.2f' % math.pow(2,4))
+print('4의 2제곱근 %.2f' % math.sqrt(4))
+
+```
+2의 4제곱근 1.189207   
+2의 4제곱근 1.19   
+2의 4제곱 16.00   
+4의 2제곱근 2.00   
+
+
+___
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
 * [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
