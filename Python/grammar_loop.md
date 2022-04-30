@@ -54,7 +54,7 @@ while 조건:
 ```
 
 ### 2.2 무한루프 탈출
-- 코딩테스트에서는 무한루프를 구현할 일이 거의 없음
+- if문으로 빠져 나오기
 - Ctrl + C 로 강제 종료하기
 - break로 빠져 나오기
 
@@ -70,11 +70,13 @@ for number in numbers:
     #문장
     #문장
     #문장
-   
  ```
 
 - continue를 사용할 때
 ```python
+# 반복 실행중 continue를 만나면 실행을 생략하고, 다음 반복문 실행문으로 넘어간다.
+# continue 키워드를 사용하면 조건식으로 다시 돌아가고, 들여쓰기를 하나 줄일 수 있다.
+
 numbers = [5, 15, 6, 20, 7, 25]
 
 for number in numbers:
@@ -86,10 +88,19 @@ for number in numbers:
   #문장
   #문장
 ```
-**continue**를 사용하면 조건식으로 다시 돌아가고,   
-들여쓰기를 하나 줄일 수 있다
 
 
+### 2.4 `else` 키워드
+- else의 실행문은 반복문이 종료된 후 실행된다.
+```python
+cnt = 0
+for i in range(100):
+  if i % 7 != 0:
+    continue
+  print('{}는 7의 배수입니다.'.format(i))
+else:
+  print('99까지의 정수 중 7의 배수는 {}개입니다.'.format(cnt)
+```
 
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
