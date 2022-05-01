@@ -69,6 +69,13 @@ result: (3, 1)
 몫 : 3   
 나머지 : 1
 
+- 'abs'함수
+```python
+print(abs(-1))
+print(abs(1))
+```
+1   
+1   
 
 - 거듭제곱, 제곱근 구하기
 ```python
