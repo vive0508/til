@@ -24,8 +24,27 @@ ___
 def 함수이름 ():
   실행할 코드
 ```
+- 전역변수, 지역변수
+\- 함수 밖에서 선언된 변수로, 함수 밖에서나 안에서나 모두 사용 가능하다.   
+\- 지역변수 : 함수 안에서 선언된 변수로 함수 안에서만 사용 가능하다.
+```python
+# 함수 안의 num은, 함수 밖의 num과는 다른 새로운 지역변수
+num = 10
+def printNum():
+  num = 20
+  print(num)
+  
+printNum()
+print(num)
+```
+20   
+10   
 
-- `global`키워드로 변수를 지정하면, 함수 바깥에 선언된 변수를 바로 참조할 수 있다
+
+- `global`키워드
+함수 밖에 선언된 변수(전역변수)는 어디에서나 사용은 가능하지만 함수 안에서 수정은 할 수 없다.   
+만약 함수 안에서 전역변수의 수정을 원할 경우에는 global 키워드를 사용한다.
+
 ```python
 a = 0
 
@@ -337,7 +356,6 @@ ___
 함수라는 기능을 매개변수로 전달하는 코드를 사용한다   
 파이썬은 이를 위해 람다(lamda)라는 기능을 제공한다
 
-
 ### 4.1 콜백함수
 내가 함수를 호출하는 것이 아니라,   
 함수가 함수를 호출하는 것을 콜백함수라고 한다
@@ -374,6 +392,36 @@ call_5_times(lamda number: print("안녕하세요", number))
 안녕하세요 2   
 안녕하세요 3   
 안녕하세요 4   
+
+### 4.3 중첩함수(cf. 콜백함수)
+- 중첩함수 : 함수 안에 또 다른 함수가 있는 형태
+```python
+def out_function():
+  print('out_function 입니다')
+  
+  def in_function():
+    print('in_function 입니다')
+    
+  in_function()
+
+out_function()
+```
+out_function 입니다   
+in_function 입니다
+
+- 중첩함수의 내부 함수는 함수 밖에서 호출할 수 없다.
+```python
+def out_function():
+  print('out_function 입니다')
+  
+  def in_function():
+    print('in_function 입니다')
+    
+  in_function()
+
+in_function()
+```
+NameError: name 'in_function' is not defined
 
 
 ### 4.3 표준 함수 (= 내장함수)
