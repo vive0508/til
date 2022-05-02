@@ -16,7 +16,7 @@ from 모듈 이름 import 가져오고 싶은 변수 또는 함수
 import 모듈 as 사용하고 싶은 식별자
 ```
 
-#### 1.1.2 math 모듈
+#### 1.1.2 math 모듈 : 수학 관련 모듈
 ```python
 # math = __import__("math")
 import math
@@ -31,10 +31,15 @@ print(math.sin(10))
 | tan(x) | 탄젠트값을 구합니다 |
 | log(x[, base]) | 로그값을 구합니다 |
 | ceil(x) | 올림합니다 |
-| floor | 내림합니다 |
-|round(x) | 반올림합니다 |
+| floor(x) | 내림합니다 |
+| round(x) | 반올림합니다 |
+| trunc(x) | 뒤의 소수점을 버립니다 |
+| fabs(x) | 절댓값을 구합니다 |
+| gcd(a,b) | 최대공약수를 구합니다 |
+| factorial(x) | 팩토리얼을 구합니다 |
+| sqrt(x) | 제곱근을 구합니다 |
 
-#### 1.1.3 random 모듈
+#### 1.1.3 random 모듈 : 난수 관련 
 랜덤한 값을 생성할 때 사용하는 모듈
 ```python
 import random
@@ -42,13 +47,16 @@ import random
 # 0.0~1.0 사이의 float을 리턴한다
 print(random.random())
 
-# 지정한 범위 사이의 int/float을 리턴한다
-print(random.randit(min, max)) #int
-print(random.uniform(min, max)) #float
+# 지정한 범위 사이의 float를 리턴한다
+print(random.uniform(min, max))
 
 # 지정한 범위의 int를 리턴한다
-print(random.randomrage(max))
-print(random.randomrage(min, max))
+print(random.randint(min, max))
+print(random.randrange(max))
+print(random.randrange(min, max))
+
+# 지정한 범위의 난수 k개를 발생시킨나
+print(random.sample(range(min, max), k)
 
 # 리스트 내부에 있는 요소들을 랜덤하게 선택한다
 print(random.choice([1, 2 ,3 ,4]))
@@ -115,13 +123,26 @@ print(now.minute)
 print(now.second)
 ```
 
-#### 1.1.7 time 모듈
+#### 1.1.7 time 모듈 : 시간 관련 모듈
 시간과 관련된 모듈
 ```python
 import time
+
+# 로컬의 시간
+time.localtime()
+lt = time.localtime()
+
+lt.tm_year
+lt.tm_mon
+lt.tm_mday
+lt.tm_hour
+lt.tm_min
+lt.tm_sec
+lt.tm_wday
+
+# 일시정지
 time.sleep(5)
 ```
-
 
 #### 1.1.8 urllib 모듈
 URL을 다루는 라이브러리
@@ -234,6 +255,17 @@ my_module
 20   
 30   
 
+## 2. 패키지
+- 패키지로 모듈을 그룹으로 관리할 수 있다
+```python
+import sys
+
+for path in sys.path:
+  print(path)
+```
+C:\ooo\ooo\venv\lib\site-packages
+
+- 패키지를 site-packages로 옮기면 어디에서나 패키지를 사용할 수 있다   
 ___
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
