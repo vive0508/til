@@ -58,6 +58,8 @@ class 클래스이름:
 
 ```python
 # 클래스 내부의 함수들은 첫번째 매개변수로 self를 가진다   
+# 객체가 생성될 때 생성자를 호출하면 __init__()이 자동 호출된다
+
 class Student:
   # 생성자
   def __init__(self):
@@ -76,6 +78,7 @@ self는 키워드가 아니라 단순한 식별자이기 때문에, 변수 이�
 - 내부에 속성을 생성 혹은 접근할 때는 `self.속성`를 사용한다
 - 객체를 생성할 때 필요한 매개변수는 객체의 속성을 초기화한다. 그리고 이를 레퍼런스 변수에 할당한다
 ```python
+# __init__()에 매개변수를 넣어 속성을 초기화할 수 있다
 class Student:
   def __init__(self, 이름, 생년월일):
     print("객체가 생성되었습니다.")
@@ -257,6 +260,36 @@ class 클래스명( 기존 클래스 ):
   수정할 내용
 ```
 이미 존재하는 클래스를 물려받아 쓸 때 클래스 상속을 한다.
+
+### 3.1 `super()`
+- 클래스의 기능은 상속받으면 바로 사용이 가능하다
+- 하지만, 클래스의 속성은 `__init__()`을 호출해야 사용 가능하다
+- `super()`을 통해 상속받는 클래스의 속성을 초기화 할 수 있다
+
+```python
+class Parent:
+  def __inint__(self, pNum1, pNum2)
+    print('부모 클래스가 호출되었습니다')
+    self.pNum1 = pNum1
+    self.pNum2 = pNum2
+    
+class Child(Parent)
+  def __inint__(self, cNum1, cNum2)
+    print('자식 클래스가 호출되었습니다')
+    
+    ## 첫번째 방법
+    # Parent.__init__(self, cNum1, cNum2)
+    
+    ## 두번째 방법
+    super().__init__(cNum1, cNum2)
+    self.cNum1 = cNum1
+    self.cNum2 = cNum2
+    
+cls = Child(10,20)
+```
+자식 클래스가 호출되었습니다   
+부모 클래스가 호출되었습니다   
+
 
 ___
 ## ○ 레퍼런스
