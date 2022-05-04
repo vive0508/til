@@ -255,13 +255,14 @@ True
 ___
 ## 3. 클래스 상속
 - 클래스는 또 다른 클래스를 상속받아 자신의 것처럼 사용할 수 있다.
+- ()안에 여러 개의 클래스를 입력하여 다중상속을 받을 수 있다.
 ```
 class 클래스명( 기존 클래스 ):
   수정할 내용
 ```
 이미 존재하는 클래스를 물려받아 쓸 때 클래스 상속을 한다.
 
-### 3.1 `super()`
+### 3.1 `super()` : 상위 클래스의 속성 초기화
 - 클래스의 기능은 상속받으면 바로 사용이 가능하다
 - 하지만, 클래스의 속성은 `__init__()`을 호출해야 사용 가능하다
 - `super()`을 통해 상속받는 클래스의 속성을 초기화 할 수 있다
@@ -290,6 +291,74 @@ cls = Child(10,20)
 자식 클래스가 호출되었습니다   
 부모 클래스가 호출되었습니다   
 
+### 3.2 오버라이딩 : 상위 클래스의 메서드 재정의
+
+```python
+class OldCar:
+  def __init__(self, c, w, h):
+    self.color = c
+    self.wegiht = w
+    self.height = h
+    
+  def navigation:
+    print('네이베이션 실행')
+    
+  def printCarInfo(self):
+    print(f'색상 : {self.color}')
+    print(f'무게 : {self.weight}')
+    print(f'차고 : {self.height}')
+
+class NewCar(OldCar):
+  def __init__(self, c, w, h):
+    super().__init__(c, w, h)
+
+  def navagation(self):
+    print('네비게이션 실행')
+    print('자율주행으로 안내합니다')
+
+myCar = NewCar('red', 160, 300)
+myCar.printCarInfo
+myCar.navagation()
+```
+색상 : red   
+차고 : 160   
+무게 : 300   
+네비게이션 실행   
+자율주행으로 안내합니다
+
+### 3.3 추상 클래스
+- 상위 클래스에서 하위 클래스에 메서드 구현을 강요한다
+```python
+from abc import ABCMeta
+from abc import abstractmethod
+
+class CarOldVersion(metaclass=ABCMeta):
+
+  def forwrad(self):
+    print('전진')
+
+  def backward(self):
+    print('후진')
+  
+  @abstractmethod
+  def brake(self):
+    pass
+    
+class CarNewVersion(CarOldVersion):
+  def __init__(self, c)
+    self.color = c
+    
+  def brake(self):
+    print('브레이크')
+    
+car = CarNewVersion('red')
+car.foward()
+car.backward()
+car.brake()
+```
+전진   
+후진   
+브레이크   
 
 ___
 ## ○ 레퍼런스
