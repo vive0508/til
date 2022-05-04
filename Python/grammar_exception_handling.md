@@ -114,6 +114,29 @@ raise Exception("안녕하세요")
 아직 구현되지 않은 부분이어서 그냥 넘어갈 경우   
 나중에 큰 문제가 발생하기 때문에 강제 종료를 해야할 때 사용
 
+
+## 4. 사용자 예외 클래스
+- Exception 클래스를 상속해서 사용자 예외 클래스를 만들 수 잇따
+```python
+class NotUseZeroException(Exception):
+  def __init__(self, n):
+    super().__init__(f'{n}은(는) 사용할 수 없습니다')
+   
+def divClaculator(num1, num2):
+  if num2 == 0:
+    raise NotUseZeroException(num2)
+  else:
+    print(f'{num1} / {num2} = {num1/num2}')
+
+num1 = int(input('input number1: ')
+num2 = int(input('input number2: ')
+
+try :
+  divCalculator(num1, num2)
+except NotUseZeroException as e:
+  print(e)
+
+```
 ___
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
