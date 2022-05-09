@@ -1,4 +1,4 @@
-# 기초 알고리즘
+# 알고리즘
 
 [01. 선형 검색 (linear search)](https://github.com/vive0508/TIL/blob/main/Algorithm/linear_search.md)   
 [02. 이진 검색 (binary search)](https://github.com/vive0508/TIL/blob/main/Algorithm/binary_search.md)   
