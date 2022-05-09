@@ -3,7 +3,7 @@
 [01. 선형 검색 (linear search)](https://github.com/vive0508/TIL/blob/main/Algorithm/linear_search.md)   
 [02. 이진 검색 (binary search)](https://github.com/vive0508/TIL/blob/main/Algorithm/binary_search.md)   
 [03. 순위 (rank)](https://github.com/vive0508/TIL/blob/main/Algorithm/rank.md)   
-[04. 버블 정렬]()   
+[04. 버블 정렬 (bubble sort)](https://github.com/vive0508/TIL/blob/main/Algorithm/bubble_sort.md)   
 [05. 삽입 정렬]()   
 [06. 선택 정렬]()   
 [07. 최댓값]()   
