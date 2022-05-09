@@ -9,7 +9,7 @@
 - [기초 통계](https://github.com/vive0508/TIL/tree/main/Basic_Statistics) 
 
 ### 알고리즘
-- [기초 알고리즘](https://github.com/vive0508/TIL/blob/main/Algorithm/%EA%B8%B0%EC%B4%88%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/README.md)
+- [알고리즘](https://github.com/vive0508/TIL/blob/main/Algorithm/%EA%B8%B0%EC%B4%88%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/README.md)
 
 ### 머신러닝
 
