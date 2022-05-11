@@ -1,4 +1,4 @@
-# 근삿값 알고리즘 (Approximation Algorithm)
+# 근삿값 알고리즘 (Approximation)
 
 자료구조 중 입력한 값과 가장 가까운 값을 구하는 알고리즘
 ___
