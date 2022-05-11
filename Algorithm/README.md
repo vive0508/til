@@ -11,7 +11,7 @@
 [09. 최빈값 (mode)](https://github.com/vive0508/TIL/blob/main/Algorithm/mode.md)   
 [10. 근삿값 (approximation)](https://github.com/vive0508/TIL/blob/main/Algorithm/approximation.md)   
 [11. 평균 (average)](https://github.com/vive0508/TIL/blob/main/Algorithm/average.md)   
-[12. 재귀 (recursive)](https://github.com/vive0508/TIL/blob/main/Algorithm/recursive.md)   
+[12. 재귀 (recursion)](https://github.com/vive0508/TIL/blob/main/Algorithm/recursion.md)   
 [13. 하노이의 탑 (the tower of Hanoi)](https://github.com/vive0508/TIL/blob/main/Algorithm/theTowerOfHanoi.md)   
 [14. 병합 정렬 (merge sort)](https://github.com/vive0508/TIL/blob/main/Algorithm/merge_sort.md)   
 [15. 퀵 정렬 (quick sort)](https://github.com/vive0508/TIL/blob/main/Algorithm/quick_sort.md)
