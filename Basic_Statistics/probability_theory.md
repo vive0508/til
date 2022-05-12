@@ -65,5 +65,7 @@ P(B|A) = P(A∩B) ÷ P(A), P(A)≠0
 P(A∩B) = P(A) * P(B)
 ```
 
-- 베이즈 정리([링크](https://www.youtube.com/watch?v=Y4ecU7NkiEI))   
+- 베이즈 정리([링크](https://www.youtube.com/watch?v=Y4ecU7NkiEI)) 
+```  
 유튜브 링크로 설명을 대체합니다.
+```
