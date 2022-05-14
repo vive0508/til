@@ -2,7 +2,7 @@
 ===
 
 [문제 링크](https://programmers.co.kr/learn/courses/30/lessons/92334)
-- 
+
 ```python
 def solution(id_list, report, k):
     # 신고자/ 피신고자 딕셔너리 생성
@@ -73,5 +73,5 @@ print(c)
 ```python
 집합명.add()
 집합명.update()
-집합명.
+집합명.remove()
 ```
