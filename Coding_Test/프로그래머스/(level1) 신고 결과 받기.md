@@ -15,7 +15,7 @@ def solution(id_list, report, k):
         user, bad = i.split()
         
         # 신고자 딕셔너리에 해당 user가 없으면, 빈집합을 만든 후 bad 추가
-        if user not in repoter:
+        if user not in reporter:
             reporter[user] = set()
             reporter[user].add(bad)
         # 신고자 딕셔너리에 해당 user가 있으면, 기존 집합에 bad를 추가
