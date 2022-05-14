@@ -16,7 +16,54 @@ list_set = set(리스트명)
 list(집합명)
 ```
 
-## 3. 집합자료형의 연산
+## 3. 집합 관련 함수
+- set()
+```python
+sample = set([1, 1, 1, 2, 3, 3, 3, 3, 3])
+print(sample)
+```
+{1, 2, 3}
+
+- 세트명.add()
+```python
+setA = set()
+
+setA.add(1)
+setA.add(1)
+setA.add(1)
+setA.add(1)
+setA.add(2)
+setA.add(2)
+setA.add(2)
+setA.add(3)
+
+print(setA)
+```
+{1, 2, 3}
+
+- 세트명.update()
+```python
+# 여러개의 값을 한 번에 업데이트
+# 리스트, 튜플, 집합을 모두 한 번에 업데이트 할 수 있다
+setA = set()
+
+setA.update([1, 1, 2, 2, 3, 3])
+print(setA)
+```
+{1, 2, 3}
+
+- 세트명.remove()
+```
+setA = set()
+
+setA.update([1, 1, 2, 2, 3, 3])
+setA.remove(3)
+
+print(setA)
+```
+{1, 2}
+
+## 4. 집합자료형의 연산
 ### 3.1 합집합
 - set1.union(set2)
 - set1 | set2
