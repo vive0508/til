@@ -1,9 +1,9 @@
-분산분석 (ANOVA, analysis of variance)
+분산분석 (ANOVA)
 ===
 > 차이검정 ⊃ t-검정, 분산분석   
 > 관계검정 ⊃ 범주형 자료분석, 상관분석, 회귀분석
 
-## 1. 분산분석
+## 1. 분산분석(Analysis of variance)
 ### 1.1 용어 설명
 - 분산분석
 ```
