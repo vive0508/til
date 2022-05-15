@@ -1,5 +1,7 @@
 신규 아이디 추천 (level 1)
 ===
+[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/72410)
+
 ### 문제 풀이
 ```python
 def solution(new_id):
@@ -38,8 +40,8 @@ def solution(new_id):
     
   return answer
 ```
-
 [레퍼런스](https://coding-grandpa.tistory.com/93)
+
 ---
 ## 기억할 것
 - 알파벳 대소문자
