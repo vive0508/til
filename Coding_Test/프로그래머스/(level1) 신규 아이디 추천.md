@@ -31,15 +31,12 @@ def solution(new_id):
   answer = answer[:15]
   if answer[-1] == '.':
     answer = answer[:-1]
-  print(answer)
   
   # 7단계 : 길이가 2자 이하이면, 길이 3으로 맞춤
   while len(answer) < 3:
     answer += answer[-1]
     
   return answer
-  
-print(solution("...!@BaT#*..y.abcdefghijklm"))
 ```
 
 [레퍼런스](https://coding-grandpa.tistory.com/93)
@@ -66,3 +63,6 @@ print(solution("...!@BaT#*..y.abcdefghijklm"))
 ```
 문자.replace('찾는내용','바꿀내용')
 ```
+
+- string index out of range 오류
+[링크](https://velog.io/@vive0508/pythonError1)로 설명을 대체합니다.
