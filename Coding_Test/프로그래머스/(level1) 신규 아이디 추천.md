@@ -66,5 +66,7 @@ def solution(new_id):
 문자.replace('찾는내용','바꿀내용')
 ```
 
-- `string index out of range` 오류   
-[링크](https://velog.io/@vive0508/pythonError1)로 설명을 대체합니다.
+- `string index out of range` 오류 ([링크](https://velog.io/@vive0508/pythonError1))
+```
+블로그 링크로 설명을 대체합니다.
+```
