@@ -5,7 +5,7 @@
 [03. 확률분포](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/probability_distribution.md)   
 [04. 모집단과 표본 분포](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/population_sample.md)   
 [05. 추정](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/estimation.md)   
-[06. 가설검정]()   
+[06. 가설검정](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/statistical_hypothesis_test.md)   
 [07. 범주형자료분석]()   
 [08. 상관분석]()   
 [09. 회귀분석]()   
