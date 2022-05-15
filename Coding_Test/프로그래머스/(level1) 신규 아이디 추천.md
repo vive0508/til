@@ -34,7 +34,7 @@ def solution(new_id):
   if answer[-1] == '.':
     answer = answer[:-1]
   
-  # 7단계 : 길이가 2자 이하이면, 길이 3으로 맞춤
+  # 7단계 : 길이가 2자 이하이면, 마지막 글자로 길이 3을 맞춤
   while len(answer) < 3:
     answer += answer[-1]
     
