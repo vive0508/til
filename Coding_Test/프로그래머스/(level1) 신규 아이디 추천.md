@@ -1,7 +1,7 @@
 신규 아이디 추천 (level 1)
 ===
 
-```
+```python
 def solution(new_id):
   answer = ''
   # 1단계
