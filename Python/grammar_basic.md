@@ -19,4 +19,7 @@
 ### 기타
 * [텍스트 파일 처리](https://github.com/vive0508/TIL/blob/main/Python/ETC_file_handling.md)
 * [제너레이터](https://github.com/vive0508/TIL/blob/main/Python/ETC_generator.md)
- 
+* [진수변환](https://github.com/vive0508/TIL/blob/main/Python/format.md)
+* [유니코드](https://github.com/vive0508/TIL/blob/main/Python/unicode.md)
+* [비트 연산자](https://github.com/vive0508/TIL/blob/main/Python/bit.md)
+* [스왑](https://github.com/vive0508/TIL/blob/main/Python/swap.md)
