@@ -16,9 +16,6 @@
 
 ### 딥러닝
 
-
-### R
-
  
 ### SQL
 
@@ -28,7 +25,6 @@
  
 
 ### 코딩테스트
-- [백준 단계별 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%EB%B0%B1%EC%A4%80)
 - [프로그래머스 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)
 
 ### ETC
