@@ -1,7 +1,7 @@
 Python Grammar
 ===
 
-### 기초 파이썬 문법
+### 기초 문법
 * [변수](https://github.com/vive0508/TIL/blob/main/Python/variable.md)
 * [수 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_number.md)
 * [문자열 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_string.md)
