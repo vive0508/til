@@ -3,6 +3,7 @@
 >새롭게 알게된 내용은 꾸준히 업데이트   
 ----------------------------------------------------------------------------------------------------------------------
 ### 파이썬 기초 문법
+* [변수](https://github.com/vive0508/TIL/blob/main/Python/variable.md)
 * [수 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_number.md)
 * [문자열 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_string.md)
 * [불 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_boolean.md)
