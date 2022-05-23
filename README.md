@@ -6,7 +6,7 @@
 ### 기초 학습
 - [기초 파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/grammar_basic.md)
 - [기초 수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
-- [기초 통계](https://github.com/vive0508/TIL/tree/main/Basic_Statistics) 
+- [기초 통계](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/README.md)
 
 ### 알고리즘
 - [기초 알고리즘](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)
