@@ -7,6 +7,7 @@
 - [기초 파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)
 - [기초 수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
 - [기초 통계](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/README.md)
+- [기초 컴퓨터공학]()
 
 ### 알고리즘
 - [기초 알고리즘](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)
@@ -17,8 +18,6 @@
 ### 머신러닝 & 딥러닝
 
 ### Tableau
-
-### Computer Science
 
 ### Git
 - [기초 Git 활용](https://github.com/vive0508/TIL/blob/main/ETC/basic_git.md)
