@@ -52,11 +52,10 @@ Python에서 반복을 수행하되 반복을 위한
 while 조건:
   실행할 코드
 ```
-
 ### 2.2 무한루프 탈출
 - if문으로 빠져 나오기
 - Ctrl + C 로 강제 종료하기
-- break로 빠져 나오기
+- break로 빠져 나오기 (for문에서도 사용가능)
 
 ### 2.3 `continue` 키워드
 - continue를 사용하지 않았을 때
@@ -89,8 +88,7 @@ for number in numbers:
   #문장
 ```
 
-
-### 2.4 `else` 키워드
+### 2.4 `for/else`
 - else의 실행문은 반복문이 종료된 후 실행된다.
 ```python
 cnt = 0
@@ -104,4 +102,3 @@ else:
 
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
-* [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
