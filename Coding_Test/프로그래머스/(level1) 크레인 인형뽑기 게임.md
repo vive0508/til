@@ -4,7 +4,7 @@
 [문제 링크](https://programmers.co.kr/learn/courses/30/lessons/64061)
 
 
-```
+```python
 def solution(board, moves):
     
     # 인형을 담을 바구니 bucket 변수를 생성합니다
