@@ -7,10 +7,9 @@
 - [기초 파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)
 - [기초 수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
 - [기초 통계](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/README.md)
-- [기초 컴퓨터공학]()
 
 ### 알고리즘
-- [기초 알고리즘](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)
+- [알고리즘 기초](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)
 - [알고리즘 활용](https://github.com/vive0508/TIL/blob/main/Algorithm_practice/README.md)
 
 ### SQL
@@ -20,10 +19,12 @@
 ### Tableau
 
 ### Git
-- [기초 Git 활용](https://github.com/vive0508/TIL/blob/main/ETC/basic_git.md)
+- [Git 기초](https://github.com/vive0508/TIL/blob/main/ETC/basic_git.md)
 
 ### 코딩테스트
 - [프로그래머스 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)
+
+### CS
 
 ### ETC
 - [환경설정](https://github.com/vive0508/TIL/blob/main/ETC/setting.md)
