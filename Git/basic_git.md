@@ -91,7 +91,7 @@ git config --global init.defaultBranch main
   `:q`로 빠져나간다.   
      
   ```
-  git reset --hard (돌아갈 커밋의 해시)
+  git reset --hard (돌아갈 커밋의 해시) 
   ```
   위의 명령어를 입력하면 해당 커밋으로 돌아가며
   이후에 있는 내역이 모두 삭제되게 된다.
