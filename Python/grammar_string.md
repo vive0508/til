@@ -55,7 +55,6 @@ print(a,b,c)
 입력 >>> 1 2 3   
 출력 >>> 1 2 3
 
-
 ```
 sample_list = list(map(int, input().split()))
 print(sample_list)
@@ -70,6 +69,75 @@ print(sample_list)
 print("::".join(['10','20','30','40','50'])
 ```
 10::20::30::40::50
+
+### 5.3 `upper()`, `lower()`
+```python
+word = 'Python'
+print(word.upper()) # 대문자
+print(word.lower()) # 소문자
+print(word) # 비파괴적
+```
+PYTHON   
+python   
+Python   
+
+
+### 5.4 `find()`, `count()`
+```python
+sentence = 'Python is good'
+print(sentence.find('o')) # 인덱스 번호 (첫번째만)
+print(sentence.count('o')) # 찾는 문자의 갯수
+```
+4   
+3   
+
+### 5.5 `isupper()`, `islower()`, `isalpha()`
+```
+sentence = 'Today I Learned'
+
+# isupper
+for i in sentence:
+  if i.isupper():
+    print(i, end='')
+
+print()
+
+# islower
+for i in sentence:
+  if i.islower():
+    print(i, end='') 
+    
+print()
+
+# isalpha
+for i in sentence:
+  if i.isalpha():
+    print(i, end='') 
+```
+TIL   
+odayearned   
+TodayILearned
+
+### 5.6 아스키 코드 (ASCII Code)
+#### 5.6.1 문자 → 10진수 유니코드 변환
+```python
+# ord()는 문자->정수값  
+c = input()
+print(ord(c))
+```
+#### 5.6.2 정수 → 유니코드 문자 변환
+```python
+# chr()는 정수값->문자   
+c = int(input())
+print(chr(c))
+```
+
+#### 5.6.3 문자 1개를 입력받아 다음 문자 출력
+```python
+c = input()
+c = chr(ord(c)+1)
+print(c)
+```
 
 ___
 
@@ -114,4 +182,3 @@ print(f'{a}와 {b}를 더하면 {a+b}이(가) 됩니다')
 
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
-* [이것이 취업을 위한 코딩 테스트다 with 파이썬(나동빈)](https://www.hanbit.co.kr/store/books/look.php?p_code=B8945183661)
