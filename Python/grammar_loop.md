@@ -1,6 +1,6 @@
 반복문
 ===
-특정한 소스코드를 반복적으로 실해앟고자 할 때 사용하는 문법   
+특정한 소스코드를 반복적으로 실행하고자 할 때 사용하는 문법   
 코딩테스트에서는 for문이 더 간결한 경우가 많음   
 
 
@@ -10,6 +10,7 @@
 for 반복자 in 반복할 수 있는 것:
   실행할 코드
 ```
+
 ### 1.2 리스트에서의 활용
 ```python
 for element in list_sample:
@@ -37,7 +38,7 @@ for x,y in array.items():
 - range(a,b) : a부터 b-1까지의 정수를 범위로 만듭니다.   
 - range(a,b,c) : a부터 b-1까지의 정수로 범위를 만드는데, 앞뒤 숫자가 c만큼에 차이를 가집니다.   
 
-### 1.5 기타
+### 1.6 단순반복
 ```python
 for _ in range(5):
   print("Hello World")
@@ -45,19 +46,33 @@ for _ in range(5):
 Python에서 반복을 수행하되 반복을 위한
 변수의 값을 무시하고자 할 때, 언더바(_)를 사용한다
 
-
-## 2. while 반복문
-### 2.1 기본 문법
+### 1.7 중첩반복문 (2중 for문)
 ```python
-while 조건:
-  실행할 코드
+for i in range(5):
+  print('i:', i, sep='', end=' ')
+  for j in range(5):
+    print('j:', j, sep='', end=' ,')
+  print()
 ```
-### 2.2 무한루프 탈출
-- if문으로 빠져 나오기
-- Ctrl + C 로 강제 종료하기
-- break로 빠져 나오기 (for문에서도 사용가능)
+i:0 j:0 j:1 j:2 j:3 j:4    
+i:1 j:0 j:1 j:2 j:3 j:4     
+i:2 j:0 j:1 j:2 j:3 j:4    
+i:3 j:0 j:1 j:2 j:3 j:4    
+i:4 j:0 j:1 j:2 j:3 j:4    
 
-### 2.3 `continue` 키워드
+```python
+for i in range(5):
+  for j in range(i+1):
+    print('*', end='')
+  print()
+```
+*   
+**   
+***   
+****   
+*****   
+
+### 1.8 `continue` 키워드
 - continue를 사용하지 않았을 때
 ```python
 numbers = [5, 15, 6, 20, 7, 25]
@@ -88,7 +103,7 @@ for number in numbers:
   #문장
 ```
 
-### 2.4 `for/else`
+### 1.9 `for/else`
 - else의 실행문은 반복문이 종료된 후 실행된다.
 ```python
 cnt = 0
@@ -99,6 +114,21 @@ for i in range(100):
 else:
   print('99까지의 정수 중 7의 배수는 {}개입니다.'.format(cnt)
 ```
+___
+
+## 2. while 반복문
+### 2.1 기본 문법
+```python
+while 조건:
+  실행할 코드
+```
+
+### 2.2 무한루프 탈출
+- if문으로 빠져 나오기
+- Ctrl + C 로 강제 종료하기
+- break로 빠져 나오기 (for문에서도 사용가능)
+
+
 
 ## ○ 레퍼런스
 * [혼자 공부하는 파이썬(윤인성)](https://www.hanbit.co.kr/store/books/look.php?p_code=B2587075793)
