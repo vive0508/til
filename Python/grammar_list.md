@@ -88,15 +88,16 @@ print(sample)
 [7, 1, 2, 0, 6, 9, 3, 10, 5, 4, 8]   
 
 ### 2.3 리스트 요소 인덱스 번호 확인(`enumerate()`)
+- enumerate는 튜플로 값을 반환한다.
 ```
 array = ['a', 'b', 'c']
 
 for i, value in enumerate(array)
   print("{}번째 요소는 {}입니다.".format(i, value))
 ```
-0번째 요소는 a입니다.
-1번째 요소는 b입니다.
-2번째 요소는 c입니다.
+0번째 요소는 a입니다.   
+1번째 요소는 b입니다.   
+2번째 요소는 c입니다.   
 
 ### 2.4 리스트 요소 뒤집기(`reversed()`)
 ```python
@@ -115,8 +116,27 @@ print(list_reversed)
 
 ___
 
-## 3. 리스트 내포(List comprehension)
-### 3.1 리스트 내포 예시
+## 3. 기타
+### 3.1 리스트 with 반복문
+- 리스트 요소에 접근하는 두 가지 방법
+```python
+a = list(range(5))
+
+# 첫번째 방법
+for i in a:
+   print(i)
+
+# 두번째 방법
+for i in range(len(a)):
+   print(a[i])
+```
+0   
+1   
+2   
+3   
+4   
+
+### 3.2 리스트 내포(List comprehension)
 **리스트 이름 = [ 표현식 for 반복자 in 반복할 수 있는 것 if 조건문]**
 
 ```python
@@ -130,7 +150,7 @@ for i in range(0, 20, 2):
 array = [i*i for i in range(0, 20, 2)]
 ```
 
-### 3.2 2차원 리스트 초기화
+### 3.3 2차원 리스트 초기화
 ```python
 n = 4
 m = 3
