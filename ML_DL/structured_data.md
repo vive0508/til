@@ -103,7 +103,7 @@ df['열이름'].dropna()
 
 ---
 
-## 3. 데이터 전처리 : 원하는 기준으로 데이터 처리
+## 3. 데이터 전처리
 
 ### 3.1 pandas의 데이터 타입
 - pandas.DataFrame() : 시리즈의 묶음  
@@ -139,248 +139,224 @@ df['열이름'].dropna()
 
 ### 3.3 만들기
 
-**기존 열에 함수를 적용해서 새로운 열을 만들때 : apply**
+#### 3.3.1 기존 열에 함수를 적용해서 새로운 열을 만들때 : `apply`
+```
+df ['새로운 열의 이름'] = df['활용할 기존 열의 이름'].apply(적용할 함수)
+** 람다 개념정리 필요!
+```
 
-df \[ '새로운 열의 이름' \] = df \[ '활용할 기존 열의 이름' \].apply (적용할 함수)
+#### 3.3.2 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
+```python
+pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.sum)
 
-\*\* 람다 개념정리 필요!
+# Aggregation function == 집계 함수
+# np.mean, np.max, np.min, ...
+# 기준열과 일대일 매칭이 되지 않을때 사용
+```
 
-**열의 중복되는 데이터를 처리하며 기준열을 만들때 : pivot\_table**  
-  
+#### 3.3.3 열에 중복되는 데이터가 없어 기준열만 설정할 때
+```python
+df.set_index('기준 열의 이름', inplace=True)
 
-pivot\_df = pd.pivot\_table(df, index='기준 열 이름', aggfunc=np.sum)
-
-\# Aggregation function == 집계 함수
-
-\# np.mean, np.max, np.min, ...
-
-\- 기준열과 일대일 매칭이 되지 않을때 사용
-
-**열에 중복되는 데이터가 없어 기준열만 설정할 때**
-
-df.set\_index('기준 열의 이름', inplace=True)
-
-기존 데이터로 원상복구
-
+# 기존 데이터로 원상복구
 df.reset\_index(inlace=True)
+```
 
-**A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때**
+#### 3.3.4 A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때
+```python
+# case 1
+df['새로 만들 열이름'] = 데이터프레임A['열이름']/데이터프레임B['열이름']
 
-**1\. df \[ '새로 만들 열이름' \] = 데이터프레임 A \['열이름'\] / 데이터프레임 B \['열이름'\]**
+# case 2
+A.div(B['열 이름'], axix=0)
 
-**2\. A.div(B\['열 이름'\], axix=0)**
+- axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)
+- axis = 1 : 행방향으로 연산
+```
 
-\- axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)
+#### 3.3.5 열의 value의 이름을 바꾸고 싶을 때
+```python
+df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
+```
 
-\- axis = 1 : 행방향으로 연산
+#### 3.3.6 특정한 열에서 등장했던 value의 빈도
+```python
+df['열이름'].value_counts() -> serires 
+```
 
-**열의 value의 이름을 바꾸고 싶을 때**
+#### 3.3.7 시리즈로 데이터 시각화하기
+```python
+df['열이름'].value_counts().plot(kind = 'pie')
+```
 
-df\['열이름'\] = df\['열이름'\].replace(\[value\_a, value\_b\], \['1', '2'\])
-
-**특정한 열에서 등장했던 value의 빈도**
-
-df\['열이름'\].value\_counts() -> serires 
-
-**시리즈로 데이터 시각화하기**
-
-df\['열이름'\].value\_counts().plot(kind = 'pie')
-
-**데이터프레임 만들기 예시**
-
+#### 3.3.8 데이터프레임 만들기 예시**
+```python
 crosstab = pd.crosstab(df.propensity, df.skin, margins=True)  
   
 crosstab.columns=\["건성", "민감성", "중성", "지성", "여드름성", "합계"\]  
 crosstab.index=\["비교적 저렴한 제품", "중간정도의 제품", "비교적고가의 제품", "합계"\]  
 crosstab
-
+```
 ---
 
-**삭제하기**
+### 3.4 삭제하기
 
-**행 삭제하기**
-
-df.drop(\[ 'a', 'b', 'c', ...\])
-
+#### 3.4.1 행 삭제하기
+```python
+df.drop(['a','b','c', ...])
 안에 있는 이름 여러 개 지울 수 있다
+** axis parameter 값을 조정하면 열도 삭제 가능
+```
 
-\*\* axis parameter 값을 조정하면 열도 삭제 가능
-
-**열 삭제하기**
-
-del df\[열이름\]
-
+#### 3.4.2 열 삭제하기
+```python
+del df[열이름]
+```
 ---
 
-**key 값들의 리스트**
+### 3.5 바꾸기
 
-df.columns -> 열 이름들의 리스트
+#### 3.5.1 행열 이름 조회
+- df.columns : 열 이름들의 리스트   
+- df.index : 행 이름들의 리스트
 
-df.index -> 행 이름들의 리스트
+#### 3.5.2 열 이름 바꾸기
+- df.colums : 열 이름들의 리스트   
+- df.index : 행 이름들의 리스트 == 인덱스 열   
 
-**열 이름 바꾸기**
-
-df.colums : 열 이름들의 리스트
-
-df.index : 행 이름들의 리스트 == 인덱스 열
-
-\# inplace 옵션 == 덮어쓰기 여부
-
-df.rename(columns={'before\_1':'after\_1', 'before\_1':'after\_2'}, inplace=True) 
-
+```python
+# inplace 옵션 == 덮어쓰기 여부
+df.rename(columns={'before_1':'after_1', 'before_1':'after_2'}, inplace=True) 
+```
 ---
 
-**오름차순 정렬하기**
-
-# 내용(value)을 기준으로 정렬(sort), inplace=True : 덮어쓰기
+### 3.6 정렬
+#### 3.6.1 오름차순 정렬하기
+```python
+# 내용(value)을 기준으로 정렬(sort), inplace=True : 덮어쓰기
 
 df.sort\_values(by='열이름', inplace=True)
+```
 
-**내림차순 정렬하기**
-
-df.sort\_values(by='산란', ascending=False, inplace=True)
-
+#### 3.6.2 내림차순 정렬하기
+```python
+df.sort_values(by='산란', ascending=False, inplace=True)
+```
 ---
 
-**얕은 복사와 깊은 복사**
+### 3.7 복사
+#### 3.7.1 얕은 복사
+```python
+# shallow copy  
+df_2 = df
+```
+원본 DataFrame인 df_2와 연결되어 있어, df_2의 변경 내역이 df에도 영향을 미침
 
-\# shallow copy  
-df\_2 = df
-
-원본 DataFrame인 df와 연결되어 있음
-
-df\_2의 변경 내역이 df에도 영향을 미침
-
+#### 3.7.2 깊은 복사
+```python
 #deep copy  
-df\_3 = df.copy() # deep=True
+df_3 = df.copy()
+```
 
-원본 DataFrame인 df로부터 분리되어 별도로 존재함
-
-df\_3의 변경 내역이 df에 영향을 미치지 않음
+원본 DataFrame인 df로부터 분리되어 별도로 존재함   
+df_3의 변경 내역이 df에 영향을 미치지 않음
 
 ---
 
-**데이터 전처리 :: 데이터 이상치 처리**
+### 3.8 이상치 처리
 
-**백분율이 100%가 넘는 경우**
+#### 3.8.1 백분율이 100%가 넘는 경우
+```python
+# solution 1.
+- 이상치를 찾기 위해 : for문과 iterrow, serires를 활용한다
+- but. 너무 복잡함
 
-solution 1.
+# solution 2.
+Masking 기법(체 활용)
+- boolean 체크 후 값 대입 적용이 가능
+- df[df[['열a','열b','열c', ...]] > 100] = 100
+- 복잡하면 안에 있는 데이터 부터
 
-이상치를 찾기 위해 : for문과 iterrow, serires를 활용한다
-
-but. 너무 복잡함
-
-solution 2.
-
-**Masking 기법 (체 활용)**
-
-\- boolean 체크 후 값 대입 적용이 가능
-
-\- df \[ df \[ \[ '열a', '열b', '열c', ... \] \]  > 100 \] = 100
-
-\- 복잡하면 안에 있는 데이터 부터
-
-solution 3.
-
-**DataFrame에서의 필터링**
-
-\- 판단의 기준은 열로 두고, 필터링의 결과는 전체 행
+# solution 3.
+- DataFrame에서의 필터링
+- 판단의 기준은 열로 두고, 필터링의 결과는 전체 행
 
 (1) A가 100 이상일 때 
-
-df\[ df \[  '열 이름 A'  \] > 100 \] \]
+df[df['열 이름 A'] > 100]]
 
 (2) A가 100 이상이고, B가 100 이상일 때
-
-df\[ ( df \[ '열 이름 A' \] > 100) & ( df \[ '열 이름 B' \] > 100) \] \]
+df[(df['열 이름 A'] > 100) & (df['열 이름 B'] > 100)]]
 
 (2) A가 100 이상이거나, B가 100 이상일 때
-
-df\[ ( df \[ '열 이름 A' \] > 100) | ( df \[ '열 이름 B' \] > 100) \] \]
+df[(df['열 이름 A'] > 100) | (df['열 이름 B'] > 100)]]
 
 (4) A가 100 이상이 아닐 때
+df[~(df['열 이름 A'] > 100)]
+```
 
-df\[ ~ ( df \[  '열 이름 A' \] > 100 ) \]
+#### 3.8.2 결측치가 있을 경우
+```python
+df['열이름'].fillna(100)
+df['열이름'].dropna()
 
----
+# 결측치가 채워진 열을 기존 열에 덮어써줘야 하는 것에 유의
+# df['열 이름 A'] = df['열 이름 A'].fillna(100)
+```
 
-**결측치가 있을 경우**
+___
+### 3.9 조회
 
-**열의 결측치를 100으로 채워주기** 
+#### 3.9.1 선택한 열의 문자열에 특정 문자열이 포함되어있는지를 체크
+```python
+# true -> 1 / false ->0
 
-df\['열 이름 A'\] = df\['열 이름 A'\].fillna(100)
+df["여행지"].str.contains('계곡')
+sum(df["여행지"].str.contains('계곡'))
+```
 
-결측치가 채워진 열을 기존 열에 덮어써줘야 하는 것에 유의
 
-df\['열이름'\].fillna(100)
+#### 3.9.2 선택한 열의 문자열에 특정 문자열이 포함된 열들만 선택하고자 할 경우(필터링)
+```python
+df.loc[df['여행지'].str.contains('계곡'), :]
+```
 
-df\['열이름'\].dropna()
-
----
-
-**선택한 열의 문자열에 특정 문자열이 포함되어있는지를 체크**
-
-df\["여행지"\].str.contains('계곡')
-
-sum(df\["여행지"\].str.contains('계곡'))
-
-true -> 1 / farse ->0
-
-**선택한 열의 문자열에 특정 문자열이 포함된 열들만 선택하고자 할 경우(필터링)**
-
-df.loc\[df\['여행지'\].str.contains('계곡'), :\]
-
-\*\* 범위로 지정해 꺼내기 & 열까지 범위 지정하기
-
-df.loc\[\[3:6, 'a':'b'\]\]
-
-뒤까지 모두 포함하는 범위임을 유의
-
+### 3.9.3 범위로 지정해 꺼내기 & 열까지 범위 지정하기
+```python
+df.loc[[3:6, 'a':'b']]
+```
+뒤까지 모두 포함하는 범위임을 유의   
 인덱스가 아니라 이름
 
 ---
+### 3.10 데이터 merge
 
-**데이터 전처리 :: 데이터 merg하기**
+#### 3.10.1 데이터 불러오기 : df = pd.read_확장자('파일명')
 
-**1\. 데이터 불러오기 : df = pd.read\_확장자('파일명')**
+ⓛ df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8', index\_col='합칠 기준 열 이름')   
+② df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8').set\_index(합칠 기준 열 이름)   
 
-ⓛ df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8', index\_col='합칠 기준 열 이름')
+- csv 파일이 한글이 깨지면 인코딩 입력   
+- 위의 두 가지의 결과는 같음
 
-② df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8').set\_index(합칠 기준 열 이름)
-
-\- csv 파일이 한글이 깨지면 인코딩 입력
-
-\- 위의 두 가지의 결과는 같음
-
-**2\. 두 가지 서로 다른 데이터를 합치는 세가지 방법**
-
-① A. join(B)
-
-\- A, B의 기준열 순서가 맞지 않아도 매칭이 됨
-
-\- (조건) 단, A와 B 데이터프레임의 index 열이 동일해야 함  
+#### 3.10.2 두 가지 서로 다른 데이터를 합치는 세가지 방법
+① A. join(B)   
+- A, B의 기준열 순서가 맞지 않아도 매칭이 됨    
+- (조건) 단, A와 B 데이터프레임의 index 열이 동일해야 함    
   
 
-② pd.merge(A, B, left\_on="기준 열 이름 a", right\_on="기준 열 이름 b", how='inner')
+② pd.merge(A, B, left\_on="기준 열 이름 a", right\_on="기준 열 이름 b", how='inner')   
+- A, B의 기준열 순서가 맞지 않아도 매칭이 됨   
+- inner, left, rightm outer   
 
-\- A, B의 기준열 순서가 맞지 않아도 매칭이 됨 
+![image](https://user-images.githubusercontent.com/101171109/170246105-0b4d9924-ac26-4c07-aa79-2c95bbc60e01.png)
 
-\- inner, left, rightm outer
+③ pd.concat(\[A, B\], axix=?) # concatenate   
+- A, B의 기준열 순서가 맞지 않으면 매칭이 안 됨   
+- 그대로 이어붙이는 방법   
+- axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)   
+- aixs = 1 : 행방향으로 연산   
 
-[##_Image|kage@lbrHn/btrxu9RIqfl/hylEaAIKXZoTcboWdKmyK1/img.png|CDM|1.3|{"originWidth":955,"originHeight":537,"style":"alignLeft","width":500}_##]
+### 3.10.3 열의 순서를 바꾸는 방법
+- df = df[['d','c','a','b']]
 
-③ pd.concat(\[A, B\], axix=?) # concatenate
 
-\- A, B의 기준열 순서가 맞지 않으면 매칭이 안 됨
-
-\- 그대로 이어붙이는 방법
-
-\- axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)
-
-\- aixs = 1 : 행방향으로 연산
-
-**열의 순서를 바꾸는 방법**
-
-\- 데이터 프레임을 먼저 만든다.
-
-\- df = df\[\['d','c','a','b'\]\] <- 순서를 변경한다
