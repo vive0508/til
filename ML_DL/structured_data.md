@@ -64,6 +64,13 @@ with open('ooo.xlsx', mode="r", encoding="utf-8") as file:
     df = pd.read_excel(file)
 ```
 
+### 1.3 원본 데이터 선택적 불러오기
+```python
+# 자료를 읽기 시작할 행(header) 지정
+# 읽어올 엑셀의 컬럼(usecoles) 지정
+
+df = pd.read_excel('ooo.xlsx', header=2, usecols="oo, xx") 
+```
 
 ---
 
