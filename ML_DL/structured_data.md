@@ -57,9 +57,7 @@ import pandas as pd
 # df = pd.read_확장자('파일명')
 
 df = pd.read_excel('ooo.xlsx')   
-df = pd.read_csv('ooo.csv', encoding='utf-8'   
-
-** csv 파일 같은 경우에는 인코딩 내용이 기입되어야 함   
+df = pd.read_csv('ooo.csv', encoding='utf-8')  
 
 # 한글이 깨지거나 오류가 생기면 하기의 방법으로 해결 시도
 with open('ooo.xlsx', mode="r", encoding="utf-8") as file:  
