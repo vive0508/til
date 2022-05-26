@@ -381,7 +381,7 @@ A.div(B['열 이름'], axix=0)
 
 ```python
 # inplace 옵션 == 덮어쓰기 여부
-df.rename(columns={'before_1':'after_1', 'before_1':'after_2'}, inplace=True) 
+df.rename(columns={'before_1':'after_1'}, index={'before_2':'after_2'}, inplace=True) 
 ```
 
 #### 3.3.6 열의 value의 이름을 바꾸고 싶을 때
