@@ -257,42 +257,86 @@ df.sort_values(by='열이름', ascending=False, inplace=True)
 ---
 
 ### 3.3 Condition
-
-#### 3.3.1 선택한 열의 문자열에 특정 문자열이 포함되어있는지를 체크
+- 조건
 ```python
-# true -> 1 / false ->0
-
-df["여행지"].str.contains('계곡')
-sum(df["여행지"].str.contains('계곡'))
+df['A'] > 0           # 칼럼 A의 values 중 양수인 것들 (boolean)
+df[['A','B']] > 0     # 칼럼 A,B values 중 양수인 것들 (boolean)
+```
+- 마스킹 (with 조건)
+```python
+# 마스킹을 해서 조건에 해당하면 값이 나오고, 아니면 NaN(Not a Number)로 나온다
+df[ df[['A','B']] > 0 ]  # df 중 대괄호 안의 조건을 만족하는 values
+df[ df>0 ]
 ```
 
-
-#### 3.3.2 선택한 열의 문자열에 특정 문자열이 포함된 열들만 선택하고자 할 경우(필터링)
+- isin() : 특정 요소가 있는지 확인 (boolean)
 ```python
-df.loc[df['여행지'].str.contains('계곡'), :]
+# E열에 'two'와 'seven'이 있는지 boolan으로 반환
+df['E'].isin(['two','seven'])
+
+# 해당 조건으로 마스킹을 적용할 수 있음
+df[df['E'].isin(["two", "seven"])]
 ```
 
-### 3.3.3 범위로 지정해 꺼내기 & 열까지 범위 지정하기
+- str.contains() : 선택한 열의 문자열에 특정 문자열이 포함되어있는지를 체크
 ```python
-df.loc[[3:6, 'a':'b']]
+# 요소 한 가지만 확인 가능 (boolean)
+df['E'].str.contains('one')
+
+# one을 요소로 하는 것의 행의 갯수 (true=1, false=0)
+sum(df['E'].str.contains('one'))
+
+# 필터링 :  one을 요소로 하는 것의 행으로, 열은 전체
+df.loc[df['E'].str.contains('one'), :]
 ```
-뒤까지 모두 포함하는 범위임을 유의   
-인덱스가 아니라 이름
 
 ---
 
+### 3.3 칼럼 만들기
+#### 3.3.1 새로운 열 추가
+```python
+# 기존 칼럼이 없으면 추가
+# 기존 칼럼이 있으면 수정
 
-
-
-### 3.2 만들기
-
-#### 3.2.1 기존 열에 함수를 적용해서 새로운 열을 만들때 : `apply`
+df['E'] = ['one', 'one', 'two', 'three', 'four', 'seven']
+df
 ```
-df ['새로운 열의 이름'] = df['활용할 기존 열의 이름'].apply(적용할 함수)
-** 람다 개념정리 필요!
+
+#### 3.3.2 `apply`
+- `apply` : 기존의 열에 기존 열에 함수를 적용해서 새로운 열을 만들때 사용   
+- df['새로운 열의 이름'] = df['활용할 기존 열의 이름'].apply(적용할 함수)
+```
+- df['A'].apply('sum')
+- df['A'].apply('mean')
+- df['A'].apply('std')
+- df['A'].apply('min')
+- df['A'].apply('max')
+- df['A'].apply(np.sum)
+- df['A'].apply(np.mean)
+- df['A'].apply(np.std)
+- df['A'].apply(np.min)
+- df['A'].apply(np.max)
+```
+- 함수 만들어서 적용시킬 수 있음
+```python
+def plusminus(num):
+    return "plus" if num>0  else "minus"
+
+df['A'].apply(plusminus)
 ```
 
-#### 3.2.2 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
+- 람다를 사용하면 위의 코드를 한줄로 표현할 수 있음
+```
+df["A"].apply(lambda num: "plus" if num > 0 else "minus")
+```
+
+- 여러 열을 동시에 함수 적용시킬 수 있음
+```python
+df[['A','D']].apply('sum')
+```
+
+
+#### 3.3.3 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
 ```python
 pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.sum)
 
@@ -301,15 +345,15 @@ pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.sum)
 # 기준열과 일대일 매칭이 되지 않을때 사용
 ```
 
-#### 3.2.3 열에 중복되는 데이터가 없어 기준열만 설정할 때
+#### 3.3.4 열에 중복되는 데이터가 없어 기준열만 설정할 때
 ```python
 df.set_index('기준 열의 이름', inplace=True)
 
 # 기존 데이터로 원상복구
-df.reset\_index(inlace=True)
+df.reset_index(inlace=True)
 ```
 
-#### 3.2.4 A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때
+#### 3.3.5 A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때
 ```python
 # case 1
 df['새로 만들 열이름'] = 데이터프레임A['열이름']/데이터프레임B['열이름']
@@ -321,44 +365,8 @@ A.div(B['열 이름'], axix=0)
 - axis = 1 : 행방향으로 연산
 ```
 
-#### 3.2.5 열의 value의 이름을 바꾸고 싶을 때
-```python
-df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
-```
 
-#### 3.2.6 특정한 열에서 등장했던 value의 빈도
-```python
-df['열이름'].value_counts() -> serires 
-```
 
-#### 3.2.7 시리즈로 데이터 시각화하기
-```python
-df['열이름'].value_counts().plot(kind = 'pie')
-```
-
-#### 3.2.8 데이터프레임 만들기 예시**
-```python
-crosstab = pd.crosstab(df.propensity, df.skin, margins=True)  
-  
-crosstab.columns=\["건성", "민감성", "중성", "지성", "여드름성", "합계"\]  
-crosstab.index=\["비교적 저렴한 제품", "중간정도의 제품", "비교적고가의 제품", "합계"\]  
-crosstab
-```
----
-
-### 3.3 삭제하기
-
-#### 3.3.1 행 삭제하기
-```python
-df.drop(['a','b','c', ...])
-안에 있는 이름 여러 개 지울 수 있다
-** axis parameter 값을 조정하면 열도 삭제 가능
-```
-
-#### 3.3.2 열 삭제하기
-```python
-del df[열이름]
-```
 ---
 
 ### 3.4 바꾸기
@@ -376,6 +384,30 @@ del df[열이름]
 df.rename(columns={'before_1':'after_1', 'before_1':'after_2'}, inplace=True) 
 ```
 
+#### 3.3.6 열의 value의 이름을 바꾸고 싶을 때
+```python
+df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
+```
+
+---
+
+### 3.3 삭제하기
+
+#### 3.3.2 `del` : 열 삭제
+```python
+del df[열이름]
+```
+
+#### 3.3.1 `drop` : 행, 열 모두 삭제 가능
+- axis parameter (0=가로, 1=세로)
+```python
+# D열 삭제
+df.drop(['D', axis=1])
+
+# 20220101 행 삭제
+** axis parameter 값을 조정하면 열도 삭제 가능
+df.drop(['20220101'])
+```
 
 ---
 
@@ -397,6 +429,7 @@ df_3 = df.copy()
 df_3의 변경 내역이 df에 영향을 미치지 않음
 
 ---
+
 
 ### 3.6 이상치 처리
 
@@ -437,6 +470,7 @@ df['열이름'].dropna()
 # 결측치가 채워진 열을 기존 열에 덮어써줘야 하는 것에 유의
 # df['열 이름 A'] = df['열 이름 A'].fillna(100)
 ```
+
 
 
 
