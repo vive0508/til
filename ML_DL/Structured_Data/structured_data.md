@@ -401,12 +401,12 @@ del df[열이름]
 #### 3.3.1 `drop` : 행, 열 모두 삭제 가능
 - axis parameter (0=가로, 1=세로)
 ```python
-# D열 삭제
+# 열 삭제
 df.drop(['D', axis=1])
 
-# 20220101 행 삭제
+# 행 삭제
 ** axis parameter 값을 조정하면 열도 삭제 가능
-df.drop(['20220101'])
+df.drop([0])
 ```
 
 ---
