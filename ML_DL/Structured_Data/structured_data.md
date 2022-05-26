@@ -240,7 +240,7 @@ df.rename(columns={'before_1':'after_1', 'before_1':'after_2'}, inplace=True) 
 ```python
 # 내용(value)을 기준으로 정렬(sort), inplace=True : 덮어쓰기
 
-df.sort\_values(by='열이름', inplace=True)
+df.sort_values(by='열이름', inplace=True)
 ```
 
 #### 3.6.2 내림차순 정렬하기
