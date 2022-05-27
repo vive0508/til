@@ -198,6 +198,8 @@ df['열이름'].dropna()
 - df.열이름 : 컬럼 이름이 모두 숫자가 아닌 경우 .(점)으로 선택할 수 있음
 - df[[열이름]] : 데이터프레임으로 출력
 - df[[열이름1, 열이름2, 열이름3,...]] : 데이터프레임에서는 여러 개의 열을 꺼낼 수 있다
+- df[열이름].unique() : 해당 컬럼의 중복을 제외한 이름들
+- len(df[열이름].unique()) : 해당 컬럼의 중복을 제외한 이름들의 갯수
 
 #### 3.1.2 행 선택하기
 - df.loc[행이름] : 시리즈로 출력
@@ -478,15 +480,7 @@ df['열이름'].dropna()
 ---
 ### 3.8 데이터 merge
 
-#### 3.8.1 데이터 불러오기 : df = pd.read_확장자('파일명')
-
-ⓛ df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8', index\_col='합칠 기준 열 이름')   
-② df\_2 = pd.read\_csv('merge\_file.csv', encoding='utf-8').set\_index(합칠 기준 열 이름)   
-
-- csv 파일이 한글이 깨지면 인코딩 입력   
-- 위의 두 가지의 결과는 같음
-
-#### 3.8.2 두 가지 서로 다른 데이터를 합치는 세가지 방법
+#### 3.8.1 두 가지 서로 다른 데이터를 합치는 세가지 방법
 ① pd.merge(left, right, how='inner' , on='기준 열 이름')   
 - inner : 교집합
 - left : 왼쪽 데이터 기준
@@ -504,5 +498,30 @@ df['열이름'].dropna()
 - axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)   
 - aixs = 1 : 행방향으로 연산   
 
-### 3.8.3 열의 순서를 바꾸는 방법
+#### 3.8.2 열의 순서를 바꾸는 방법
 - df = df[['d','c','a','b']]
+
+---
+
+### 3.9 데이터 기준열 정렬
+
+- 파일 기준열로 불러오는 방법
+```python
+# df = pd.read_확장자('파일명')
+ⓛ df_2 = pd.read_csv('merge_file.csv', encoding='utf-8', index_col='합칠 기준 열 이름')   
+② df_2 = pd.read_csv('merge_file.csv', encoding='utf-8').set_index('합칠 기준 열 이름')   
+```
+
+-  인덱스 변경 `set_index()`
+```python
+# 선택한 컬럼을 데이터프레임의 인덱스로 지정
+# inplace : 덮어쓰기 여부
+df.set_index('A', inplace=True)
+```
+
+---
+
+## 4. 통계
+### 4.1 상관계수
+- corr()
+- correlation의 약자
