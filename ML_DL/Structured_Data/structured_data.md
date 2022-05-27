@@ -400,6 +400,7 @@ del df[열이름]
 
 #### 3.3.1 `drop` : 행, 열 모두 삭제 가능
 - axis parameter (0=가로, 1=세로)
+- inplace : 덮어쓰기 
 ```python
 # 열 삭제
 df.drop(['D', axis=1])
@@ -486,24 +487,22 @@ df['열이름'].dropna()
 - 위의 두 가지의 결과는 같음
 
 #### 3.8.2 두 가지 서로 다른 데이터를 합치는 세가지 방법
-① A. join(B)   
-- A, B의 기준열 순서가 맞지 않아도 매칭이 됨    
-- (조건) 단, A와 B 데이터프레임의 index 열이 동일해야 함    
-  
-
-② pd.merge(A, B, left\_on="기준 열 이름 a", right\_on="기준 열 이름 b", how='inner')   
-- A, B의 기준열 순서가 맞지 않아도 매칭이 됨   
-- inner, left, rightm outer   
-
+① pd.merge(left, right, how='inner' , on='기준 열 이름')   
+- inner : 교집합
+- left : 왼쪽 데이터 기준
+- right : 오른족 데이터 기준
+- outer : 합집합
 ![image](https://user-images.githubusercontent.com/101171109/170246105-0b4d9924-ac26-4c07-aa79-2c95bbc60e01.png)
 
-③ pd.concat(\[A, B\], axix=?) # concatenate   
-- A, B의 기준열 순서가 맞지 않으면 매칭이 안 됨   
+  
+② A.join(B)   
+- merge와 달리, A와 B 기준열의 순서가 맞지 않아도 매칭이 됨    
+- 단, A와 B 데이터프레임의 index열의 길이가 동일해야 함  
+
+③ pd.concat([A, B], axix=?) # concatenate   
 - 그대로 이어붙이는 방법   
 - axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)   
 - aixs = 1 : 행방향으로 연산   
 
 ### 3.8.3 열의 순서를 바꾸는 방법
 - df = df[['d','c','a','b']]
-
-
