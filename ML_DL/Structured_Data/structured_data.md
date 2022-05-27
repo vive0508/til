@@ -150,6 +150,14 @@ dates = pd.date_range("20220526", periods=6)
 df = pd.DataFrame(data, index=dates, columns=['A','B','C','D'])
 ```
 
+#### 2.1.4 연산
+- 시리즈와 마찬가지로 value의 dtype이 숫자여야 함
+```
+# df의 열A를 열B로 나누는 두가지 방법
+1. df['A/B_1'] = df['A']/df['B']
+2. df['A/B_2'] = df['A'].div(df['B'], axis=0)
+```
+
 ---
 
 ## 3. 데이터 전처리 방향 설정
