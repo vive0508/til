@@ -534,5 +534,5 @@ df.set_index('A', inplace=True)
 
 ## 4. 통계
 ### 4.1 상관계수
-- corr()
+- df.corr()
 - correlation의 약자
