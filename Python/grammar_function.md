@@ -120,10 +120,30 @@ function(0,1,2,3,4,5,6,7,8,9,10, 기본매개변수B=12)
 ___
 ### 1.5 반환값(return)
 #### 1.5.1 리턴
-- 함수에서 반환값을 가지고 원래 실행장소로 돌아간다
-- 파이썬에서 함수는 여러 개의 반환 값을 가질 수 있다
-- 리턴에 아무것도 입력하지 않으면 None을 출력한다
+- 함수안의 print()함수의 결과값은 휘발된다.
+```
+def add(a,b):
+    result = a+b
+    print(result)
+    
+x = add(3,2)
+print(x)
+```
+none
 
+- 반면, return으로 반환된 결과값은 함수실행 이후에도 활용 가능하다.
+```
+def add(a,b):
+    result = a+b
+    return result
+    
+x = add(3,2)
+
+print(x)
+```
+5
+
+- 일반적으로 덧셈에서는 초깃값을 0으로, 곱셈에서는 초깃값을 1으로 설정  
 ```python
 def 함수(매개변수):
   변수 = 초깃값
@@ -132,9 +152,7 @@ def 함수(매개변수):
   # 여러 가지 처리
   return 변수
 ```
-보통 덧셈에서는 초깃값을 0으로   
-곱셈에서는 초깃값을 1으로 설정   
-
+- 파이썬에서 함수는 여러 개의 반환 값을 가질 수 있다
 ```python
 def operator(a,b):
   add_var = a+b
@@ -143,12 +161,36 @@ def operator(a,b):
   divide_var = a/b
   return add_var, subtract_var, multiply_var, divide_var
 
+# 반환값이 여러 개인 경우 튜플의 형태로 반환된다.
+print(operator(7,3))
+
+# 튜플의 기능을 활용하여 변수에 값을 할당할 수 있다.
 a, b, c, d = operator(7,3)
 print(a, b, c, d)
 ```
+(10, 4, 21, 2.3333333333333335)   
+10 4 21 2.3333333333333335
+
 
 #### 1.5.2 조기리턴
-하단 2.3 조기리턴 참고
+- return이 되면 함수가 종료된다.
+```
+# 소수를 찾는 프로그램을 만든다.
+
+def isPrime(x):
+  for i in range(2,x):
+    if x%i==0:
+      return False
+  return True
+  
+a = [12, 13, 7, 9, 19]
+for i in a:
+  if isPrime(i):
+    print(i, sep=',' end=' ')
+```
+13 7 19
+
+- 자세한 내용은 하단 2.3 조기리턴 참고
 
 
 
@@ -400,11 +442,14 @@ ___
 함수라는 기능을 매개변수로 전달하는 코드를 사용한다   
 파이썬은 이를 위해 람다(lamda)라는 기능을 제공한다
 
-### 4.1 콜백함수
-내가 함수를 호출하는 것이 아니라,   
-함수가 함수를 호출하는 것을 콜백함수라고 한다
+### 4.1 예제
+#### 4.1.1 예제 1
+- 콜백함수를 사용했을때
 
 ```python
+# 내가 함수를 호출하는 것이 아니라,   
+# 함수가 함수를 호출하는 것을 콜백함수라고 한다
+
 def call_5_times(func):
   for i in range(5):
     func(i)
@@ -421,7 +466,7 @@ call_5_times(print_hello)
 안녕하세요 4   
 
 
-### 4.2 람다 활용
+- 람다를 사용했을때
 ```python
 # 함수(lamda 매개변수 : 한줄 코드)
 
@@ -429,7 +474,7 @@ def call_5_times(func):
   for i in range(5):
     func(i)
     
-call_5_times(lamda number: print("안녕하세요", number))
+call_5_times(lambda number: print("안녕하세요", number))
 ```
 안녕하세요 0   
 안녕하세요 1   
@@ -437,7 +482,41 @@ call_5_times(lamda number: print("안녕하세요", number))
 안녕하세요 3   
 안녕하세요 4   
 
-### 4.3 중첩함수(cf. 콜백함수)
+#### 4.1.2 예제 2
+- 함수를 사용했을때
+```python
+def plus_one(x):
+        return x+1
+print(plus_one(1))
+```
+2
+- 람다를 사용했을 때
+```python
+plus_one=lambda x:x+1
+print(plus_one(1))
+```
+2
+
+#### 4.1.3 예제 3
+- 함수를 사용했을때
+```python
+def plus_one(x):
+        return x+1
+
+a=[1,2,3]
+print(list(map(plus_one,a)))
+```
+[2, 3, 4]
+- 람다를 사용했을 때
+```python
+a=[1,2,3]
+print(list(map(lambda x:x+1,b)))
+```
+[2, 3, 4]
+
+___
+
+### 4.2 중첩함수(cf. 콜백함수)
 - 중첩함수 : 함수 안에 또 다른 함수가 있는 형태
 ```python
 def out_function():
@@ -469,6 +548,9 @@ NameError: name 'in_function' is not defined
 
 
 ### 4.3 표준 함수 (= 내장함수)
+- 함수를 매개변수로 전달하는 대표적인 표준함수로 `map()`과, `filter()`가 있다.
+
+
 #### 4.3.1 `fileter(fun, *iterables)`
 리스트의 요소를 함수에 넣고, 리턴된 값이 True인 것으로 새로운 리스트를 구성해주는 함수
 
