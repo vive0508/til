@@ -141,7 +141,18 @@ def drawGraph():
 drawGraph()
 ```
 
-#### 1.2.2.3 산점도(scatter plot)
+#### 1.2.2.3 Pandas에서 plot 그리기
+- matplotlib으로 데이터프레임에서 바로 그래프를 그릴 수 있다. 
+- 일반적으로 데이터가 많은 경우 정렬 후 그리는 것이 효과이다.   
+```python
+# 막대그래프
+df["A"].plot(kind="bar", figsize=(5, 5))
+
+# 막대그래프(가로방향)
+df["A"].plot(kind="barh", figsize=(5, 5))
+```
+
+#### 1.2.2.4 산점도(scatter plot)
 - 산점도 기본 형태
 ```python
 x = np.array(range(0, 10))
@@ -180,15 +191,125 @@ def drawGraph():
 drawGraph()
 ```
 
-#### 1.2.2.4 Pandas에서 plot 그리기
-- matplotlib으로 데이터프레임에서 바로 그래프를 그릴 수 있다. 
-- 일반적으로 데이터가 많은 경우 정렬 후 그리는 것이 효과이다.   
+#### 1.2.2.5 데이터의 경향 확인
+- Numpy를 이용한 1차 직선 만들기(선형회귀)
 ```python
-# 막대그래프
-df["A"].plot(kind="bar", figsize=(5, 5))
+- np.polyfit(): 직선을 구성하기 위한 계수를 계산
+- np.poly1d(): polyfit 으로 찾은 계수로 파이썬에서 사용할 수 있는 함수로 만들어주는 기능 
+```
+- np.polyfit(x축, y축, 1)
+```python
+import numpy as np 
 
-# 막대그래프(가로방향)
-df["A"].plot(kind="barh", figsize=(5, 5))
+fp1 = np.polyfit(df['A'], df['B'], 1)
+f1 = np.poly1d(fp1)
+```
+- 경향선을 그리기 위한 X 데이터 생성 `np.linspace`
+```python
+# np.linspace(a, b, n): a부터 b까지 n개의 등간격 데이터 생성
+fx = np.linspace(100000, 700000, 100)
+```
+- 경향선과 함께 그래프 그리기
+```python
+def drawGraph():
+    # 도화지를 그린다
+    plt.figure(figsize=(10, 6))
+    
+    # 원래 하던대로 그래프를 그린다
+    plt.scatter(df["A"], df["B"], s=50)
+    
+    # 경향선을 그린다
+    # ls=선스타일, lw=선굵기, color=색상
+    plt.plot(fx, f1(fx), ls="dashed", lw=3, color="g")
+    
+    # 디테일 설정
+    plt.xlabel("A")
+    plt.ylabel("B")
+    plt.grid(True)
+    
+    # 시각화 확인
+    plt.show() 
+
+drawGraph()
+```
+
+#### 1.2.2.6 강조하고 싶은 데이터 시각화
+- 경향(trend)와의 오차를 만든다.
+```python
+
+# 경향(trend)
+fp1 = np.polyfit(df["A"], df["B"], 1) 
+f1 = np.poly1d(fp1) 
+fx = np.linspace(100000, 700000, 100) 
+
+# 오차 (실제 y값, 경향에 따르는 x 기댓값)
+df["오차"] = df["B"] - f1(df["A"])
+```
+- 경향과 비교해서 데이터의 오차가 너무 나는 데이터를 계산 
+```python
+df_sort_f = df.sort_values(by="오차", ascending=False) # 내림차순 
+df_sort_t = df.sort_values(by="오차", ascending=True) # 오름차순 
+```
+- 색상 커스터마이징
+```python
+from matplotlib.colors import ListedColormap
+
+# colormap 을 사용자 정의(user define)로 세팅 
+color_step = ["#e74c3c", "#2ecc71", "#95a9a6", "#2ecc71", "#3498db", "#3489db"]
+my_cmap = ListedColormap(color_step)
+```
+
+- 커스텀한 색상으로 강조하고 싶은 데이터를 시각화 한다
+```python
+def drawGraph():
+    # 도화지를 펼친다
+    plt.figure(figsize=(14, 10))
+    
+    # 그림을 그린다
+    # 오차를 커스텀화한 색상으로 표현한다.
+    plt.scatter(df["A"], df["B"], s=50, c=df["오차"], cmap=my_cmap)
+    # 경향선을 그린다
+    plt.plot(fx, f1(fx), ls="dashed", lw=3, color="g")
+
+    # 디테일 설정
+    plt.xlabel("인구수")
+    plt.ylabel("CCTV")
+    plt.colorbar()
+    plt.grid(True)
+    # 반복문을 활용하여 상위, 하위 5개를 좌표 위에 표기한다.
+    for n in range(5):
+        # plt.text(x좌표,y좌표,표기명)
+        # 상위 5개를 좌표위에 표기해라
+        # 곱하기된 숫자는 글자가 가려지지 않기 위해 조정한 값임
+        plt.text(
+            df_sort_f["인구수"][n] *1.02, # x 좌표
+            df_sort_f["소계"][n] *0.98,  # y 좌표
+            df_sort_f.index[n], # title 
+            fontsize=15
+        )
+    
+        # 하위 5개 좌표위에 표기해라
+        plt.text(
+            df_sort_t["인구수"][n] * 1.02, 
+            df_sort_t["소계"][n] * 0.98,
+            df_sort_t.index[n],
+            fontsize=15
+        )
+        
+    # 시각화를 확인한다.
+    plt.show() 
+drawGraph()
+```
+
+### 1.3 데이터 저장
+- `df.to_csv()`
+```python
+# 저장
+df_.to_csv("../data/ooo.csv", sep=",", encoding="utf-8")
+
+# 확인
+save = pd.read_csv("../data/ooo.csv", encoding="utf-8")
+save.head()
 ```
 
 ___
