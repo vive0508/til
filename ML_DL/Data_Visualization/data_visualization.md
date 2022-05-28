@@ -14,8 +14,187 @@
 
 ___
 
-## 1. 열지도로 데이터 시각화 하기
+## 1. matplotlib 기초
+- [공식문서](https://matplotlib.org/stable/gallery/index)
+
 ### 1.1 라이브러리 불러오기
+```python
+# import matplotlib as mpl
+# matplotlib에서 pyplot 기능을 plt라는 이름으로 가져와서 사용
+import matplotlib.pplot as plt
+
+# 한글설정
+from matplotlib import rc
+rc("font", family="Malgun Gothic")
+
+# 마이너스 부호 때문에 한글이 깨질 수가 있어 주는 설정
+#plt.rcParams["axes.unicode_minus"]로 대체 가능
+rc('axes', unicode_minus=False)
+
+# 주피터 노트북에서 그래프를 그릴 수 있도록 하는 설정
+# %matplotlib inline로 대체 가능 
+get_ipython().run_line_magic("matplotlib", "inline")
+```
+
+### 1.2 그래프 그리기
+#### 1.2.1 그래프 그리기 기본 형태
+- plt.figure(figsize=(10, 6)) : 도화지 사이즈    
+- plt.plot(x, y) : x축과 y축 데이터 할당   
+- plt.show : 그리기   
+
+#### 1.2.2 그래프 그리기 기초 예제
+##### 1.2.2.1 삼각함수
+- np.arange(a, b, s): a부터 b까지 s의 간격   
+- np.sin(value)   
+- np.cos(value)
+```python
+# 삼각함수 계산을 위해 numpy 임포트
+import numpy as np 
+
+# x축, y축 할당
+x = np.arange(0, 10, 0.01)
+y = np.sin(x)
+
+# 도화지를 펼치고
+plt.figure(figsize=(10, 6))
+
+# 그림을 그리고
+plt.plot(x, np.sin(x))
+plt.plot(x, np.cos(x))
+
+# 시각화 확인
+plt.show()
+```
+- 디테일 설정
+```python
+def drawGraph():
+    # 도화지를 펼치고
+    plt.figure(figsize=(10, 6))
+    
+    # 그림을 그리고
+    plt.plot(x, np.sin(x), label="sin")
+    plt.plot(x, np.cos(x), label="cos")
+    
+    # 디테일을 설정하고
+    plt.grid(True) # 격자무늬 
+    plt.legend(loc='upper right') # 범례(위치)
+    plt.title("Sample") # 제목
+    plt.xlabel("time") # x축 제목
+    plt.ylabel("Amplitude") # y축 제목 
+    
+    # 시각화 확인
+    plt.show()
+    
+drawGraph()
+```
+#### 1.2.2.2 그래프 커스텀
+- 마커 색상, 모양
+```python
+x = np.arange(0, 5, 0.5)
+
+# 도화지를 펼치고
+plt.figure(figsize=(10, 6))
+
+# 그림을 그리고
+plt.plot(x, x, "r--") # red ---- 
+plt.plot(x, x ** 2, "bs") # blue square
+plt.plot(x, x ** 3, "g>") # green >
+
+# 디테일 설정하고
+plt.grid(True)
+
+# 시각화 확인
+plt.show()
+```
+
+- 라인/마커 색상, 모양
+```python
+x = list(range(0, 7))
+y = [1, 4, 5, 8, 9, 5, 3]
+
+def drawGraph():
+    # 도화지 펼치기
+    plt.figure(figsize=(10, 6))
+    
+    # 그림 그리기
+    plt.plot(
+        x,
+        y,
+        # 라인
+        color="red", 
+        linestyle="--", #'dashed','-'
+        
+        # 마커
+        marker="o", 
+        markerfacecolor="blue",
+        markersize=10, 
+    )
+
+    # 디테일 설정
+    plt.grid(True)
+    
+    # x축과, y축의 범위 지정
+    plt.xlim([-0.5, 6.5]) 
+    plt.ylim([0.5, 9.5])
+    plt.show() 
+    
+drawGraph()
+```
+
+#### 1.2.2.3 산점도(scatter plot)
+- 산점도 기본 형태
+```python
+x = np.array(range(0, 10))
+y = np.array([9, 8, 7, 9, 8, 3, 2, 4, 3, 4])
+
+def drawGraph():
+    # 도화지 펼치기
+    plt.figure(figsize=(10, 6))
+    # 그림 그리기
+    plt.scatter(x, y)
+    # 디테일 설정
+    plt.grid(True)
+    # 시각화 확인
+    plt.show()
+    
+drawGraph()
+```
+- 산점도 커스텀
+```python
+x = np.array(range(0, 10))
+y = np.array([9, 8, 7, 9, 8, 3, 2, 4, 3, 4])
+
+colormap = x 
+
+def drawGraph():
+    # 도화지 펼치기
+    plt.figure(figsize=(10, 6))
+    
+    # 그림 그리기
+    # s=마커의 크기, c=색상을 칠할 데이터, marker= 마커 모양
+    plt.scatter(x, y, s=150, c=colormap, marker="<")
+    # 색상바 생성
+    plt.colorbar()
+    plt.show()
+    
+drawGraph()
+```
+
+#### 1.2.2.4 Pandas에서 plot 그리기
+- matplotlib으로 데이터프레임에서 바로 그래프를 그릴 수 있다. 
+- 일반적으로 데이터가 많은 경우 정렬 후 그리는 것이 효과이다.   
+```python
+# 막대그래프
+df["A"].plot(kind="bar", figsize=(5, 5))
+
+# 막대그래프(가로방향)
+df["A"].plot(kind="barh", figsize=(5, 5))
+```
+
+___
+
+## 2. 열지도로 데이터 시각화 하기
+### 2.1 라이브러리 불러오기
 ```python
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -29,12 +208,12 @@ font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").g
 rc('font', family=font_name)
 ```
 
-### 1.2 matplotlib으로 도화지 깔기
+### 2.2 matplotlib으로 도화지 깔기
 ```python
 plt.figure(figsize = (10, 10), dpi = 100)
 ```
 
-### 1.3 seaborn으로 그래프 올려놓기**
+### 2.3 seaborn으로 그래프 올려놓기**
 ```python
 sns.heatmap(df (by='정렬기준', ascending=False), annot=True, fmt='f', linewidths=.5, cmap='Reds' )
 ```
@@ -47,17 +226,17 @@ sns.heatmap(df (by='정렬기준', ascending=False), annot=True, fmt='f', linewi
 - 모든 내용을 외울 필요는 없음 (필요할 때마다 찾아서)
 - cmap : [https://goo.gl/YWpBES](https://goo.gl/YWpBES)
 
-### 1.4 도화지 이름
+### 2.4 도화지 이름
 ```
 plt.title('도화지 이름')
 ```
 
-### 1.5 도화지 출력
+### 2.5 도화지 출력
 ```
 plt.show()
 ```
 
-### 1.6 이슈 해결
+### 2.6 이슈 해결
 - 데이터의 색의 차이가 분별이 안 됨 
 ```python
 # 정규화(Feature scaling/ Feature Nomalization)
@@ -74,8 +253,8 @@ result = df[['a', 'b', 'c', 'd']] / max_col
 
 ---
 
-## 2. 지도 시각화 : Folium library 활용 / 지도 데이터 : GeoJSON 활용
-### 2.1 json 파일 불러오기
+## 3. 지도 시각화 : Folium library 활용 / 지도 데이터 : GeoJSON 활용
+### 3.1 json 파일 불러오기
 ```python
 import json
 
@@ -84,32 +263,32 @@ geo_str = json.load(open(geo_path, 'r' , encoding='utf-8'))
 ```
 - load <-> dump : 불러오는 것은 load, 저장하는 것은 dump
 
-### 2.2 json
+### 3.2 json
 - Javascript Object Notation   
 - 데이터 교환을 위한 표준 포맷   
 - XML, YAML는 json 이전의 표준 포맷   
 
-### 2.3 pyptny
+### 3.3 pyptny
 - JSON 구조를 쉽게 파악할수 있게 해주는 도구   
 
-#### 2.3.1 pyptny 설치
+#### 3.3.1 pyptny 설치
 - !pip install pyprnt==2.3.3
 
-#### 2.3.2 pyptny 임포트
+#### 3.3.2 pyptny 임포트
 - from pyprnt import prnt
 
-#### 2.3.3 ptptny 활용법
+#### 3.3.3 ptptny 활용법
 - print(json 자료, truncate=True, width=80)
 - truncate : 안에 있는 내용이 너무 길면 잘라줌
 - width : 내용이 찌그러질 때 조절
 
 ---
 
-## 3. 포리움으로 지도에 그래프 그리기
-#### 3.1 포리움 설치
+## 4. 포리움으로 지도에 그래프 그리기
+#### 4.1 포리움 설치
 - !pip install folium==0.5.0
 
-#### 3.2 포리움에 맵클래스의 생성자
+#### 4.2 포리움에 맵클래스의 생성자
 ```python
 import folium  
 map = folium.Map(location=\[37.5502, 126.982\], zoom\_start=11, tiles='Stamen Toner') 
@@ -120,7 +299,7 @@ map = folium.Map(location=\[37.5502, 126.982\], zoom\_start=11, tiles='Stamen To
 - tiles : 지도 타입 (default type or "Stamen Terrain" or "Stamen Toner"   
 
 ---
-## 4. Choropleth map : 행정구역별로 색칠해놓은 지도
+## 5. Choropleth map : 행정구역별로 색칠해놓은 지도
 ```python
 import json
 
@@ -135,9 +314,9 @@ map.choropleth(geo_data = geo_str, # 가져온 JSON 파일
 ```
 ---
 
-## 5. CircleMarker
+## 6. CircleMarker
 
-#### 5.1 구글 클라우드 플랫폼 API
+#### 6.1 구글 클라우드 플랫폼 API
 ```
 !pip install googlemaps==4.6.0
 
@@ -148,12 +327,12 @@ tmpMap = gmaps.geocode('보라매공원', language="ko")
 tmpMap
 ```
 
-#### 5.2 포리움에 맵클래스의 생성자
+#### 6.2 포리움에 맵클래스의 생성자
 ```
 map = folium.Map(location=[37.5502, 126.982], zoom_start=11)
 ```
 
-#### 5.3 CircleMarker
+#### 6.3 CircleMarker
 ```python
 for n in df.index:
     folium.CircleMarker(위도, 경도, radius=? , color='#3186cc', fill=True, fill\_color='#3186cc').add\_to(map)
@@ -165,15 +344,15 @@ for n in df.index:
 ```
 ---
 
-## 6. 결과값 다른 확장자 파일로 저장
-### 6.1 DF to csv file  
+## 7. 결과값 다른 확장자 파일로 저장
+### 7.1 DF to csv file  
 - df.to\_csv('processed\_data.csv', encoding='utf-8')
 
-### 6.2 saving a folium map as an HTML file
+### 7.2 saving a folium map as an HTML file
 - map.save('folium\_map.html')
 
 ---
-## 7. 기타
+## 8. 기타
 - `startswith()`, `endswith()`
 ```python
 'python'.startswith('py') -> True
@@ -181,7 +360,7 @@ for n in df.index:
 ```
 ---
 
-## 8. 단어 등장 빈도 시각화
+## 9. 단어 등장 빈도 시각화
 ```python
 import nltk
 import matplotlib
@@ -196,7 +375,7 @@ plt.figure(figsize=(15, 7)) # plot 영역(그래프 영역)의 크기를 지정�
 word_counted.plot(50) # "plot" the graph, 상위 50개 단어를 보여줍니다.
 ```
 
-## 9. 단어 등장 빈도 시각화 (막대그래프)
+## 10. 단어 등장 빈도 시각화 (막대그래프)
 
 ```
 # 막대그래프로의 시각화는 NLTK 의 함수만으로 진행하기 어려우므로,
@@ -227,7 +406,7 @@ plt.show()
 
 ---
 
-## 10. 워드 클라우드
+## 11. 워드 클라우드
 ```python
 # 라이브러리 임포트
 from wordcloud import WordCloud
@@ -257,7 +436,7 @@ plt.tight_layout(pad=0)
 plt.show()
 ```
 
-## 11. 특정 그림 테두리 내에 워드 클라우드 그리기
+## 12. 특정 그림 테두리 내에 워드 클라우드 그리기
 ```python
 from PIL import Image
 from wordcloud import ImageColorGenerator # Image 로부터 Color 를 생성(Generate)해내는 객체입니다.
@@ -286,7 +465,7 @@ plt.show()
 word_cloud.to_file("word_cloud_completed.png") # Save "to file"
 ```
 
-## 12. 요약
+## 13. 요약
 - 워드 클라우드의 해상도는 원본이미지를 넘어설 수 없음
 ```python
 # 아래 옵션들을 원하시는대로 지정하셔서 가장 마음에 드는 워드클라우드를 활용하시면 됩니다.
