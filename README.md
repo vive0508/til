@@ -15,10 +15,10 @@
 ### SQL
 
 ### 머신러닝 & 딥러닝
-- [정형데이터 분석](https://github.com/vive0508/TIL/blob/main/ML_DL/Structured_Data/README.md)
-- [데이터 시각화]()
-- [웹 스크래핑]()
-- [자연어 데이터 분석]()
+- [정형데이터 분석](https://github.com/vive0508/TIL/blob/main/ML_DL/README.md)
+- [데이터 시각화](https://github.com/vive0508/TIL/blob/main/ML_DL/README.md)
+- [웹 스크래핑](https://github.com/vive0508/TIL/blob/main/ML_DL/README.md)
+- [자연어 데이터 분석](https://github.com/vive0508/TIL/blob/main/ML_DL/README.md)
 
 
 ### Tableau
