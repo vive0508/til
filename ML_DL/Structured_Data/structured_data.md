@@ -565,6 +565,11 @@ df.pivot_table(
 
 - 다중 컬럼(Multi column) 조회 방법
 ```python
+# 컬럼을 단계별로 조회하는 방법
+# level 0 컬럼에 첫번째 항목
+pivot_df.colums.get_level_values(0)[1]
+
+# 컬럼을 하위 단계로 들어가서 조회하는 방법
 pivot_df['level0 컬럼','level1 컬럼','level2 컬럼', ...]
 ```
 
