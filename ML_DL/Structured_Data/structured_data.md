@@ -41,7 +41,7 @@
   - 함수 이름에 \*는 와일드 카드
   - \* : wild-card == whole (all)
 
-__
+___
 
 # pandas : 정형 데이터 전처리 및 분석
 
@@ -63,8 +63,10 @@ df = pd.read_excel('ooo.xlsx')
 df = pd.read_csv('ooo.csv', encoding='utf-8')  
 
 # 한글이 깨지거나 오류가 생기면 하기의 방법으로 해결 시도
+# utf-8로 해결이 안되면, cp949 / euc-kr로 시도
 with open('ooo.xlsx', mode="r", encoding="utf-8") as file:  
     df = pd.read_excel(file)
+
 ```
 
 ### 1.3 원본 데이터 선택적 불러오기
@@ -264,9 +266,28 @@ df.sort_values(by='열이름', inplace=True)
 ```python
 df.sort_values(by='열이름', ascending=False, inplace=True)
 ```
+
+#### 3.2.3 데이터 기준열 정렬 `set_index()`
+- 파일을 불러올 때, 기준열로 정렬하는 방법
+```python
+# df = pd.read_확장자('파일명')
+ⓛ df_2 = pd.read_csv('ooo', encoding='utf-8', index_col='합칠 기준 열 이름')   
+② df_2 = pd.read_csv('ooo.csv', encoding='utf-8').set_index('합칠 기준 열 이름')   
+```
+
+- 데이터 프레임을 기준열로 정렬하는 방법
+```python
+# 선택한 컬럼을 데이터프레임의 인덱스로 지정
+# inplace : 덮어쓰기 여부
+df.set_index('기준 열의 이름', inplace=True)
+
+# 기존 데이터로 원상복구
+df.reset_index(inlace=True)
+```
+
 ---
 
-### 3.3 Condition
+### 3.3 Condition : 마스킹, 필터링
 - 조건
 ```python
 df['A'] > 0           # 칼럼 A의 values 중 양수인 것들 (boolean)
@@ -299,11 +320,10 @@ sum(df['E'].str.contains('one'))
 # 필터링 :  one을 요소로 하는 것의 행으로, 열은 전체
 df.loc[df['E'].str.contains('one'), :]
 ```
-
 ---
 
-### 3.3 칼럼 만들기
-#### 3.3.1 새로운 열 추가
+### 3.4 칼럼 만들기
+#### 3.4.1 새로운 열 추가
 ```python
 # 기존 칼럼이 없으면 추가
 # 기존 칼럼이 있으면 수정
@@ -312,7 +332,7 @@ df['E'] = ['one', 'one', 'two', 'three', 'four', 'seven']
 df
 ```
 
-#### 3.3.2 `apply`
+#### 3.4.2 `apply`
 - `apply` : 기존의 열에 기존 열에 함수를 적용해서 새로운 열을 만들때 사용   
 - df['새로운 열의 이름'] = df['활용할 기존 열의 이름'].apply(적용할 함수)
 ```
@@ -345,25 +365,7 @@ df["A"].apply(lambda num: "plus" if num > 0 else "minus")
 df[['A','D']].apply('sum')
 ```
 
-
-#### 3.3.3 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
-```python
-pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.sum)
-
-# Aggregation function == 집계 함수
-# np.mean, np.max, np.min, ...
-# 기준열과 일대일 매칭이 되지 않을때 사용
-```
-
-#### 3.3.4 열에 중복되는 데이터가 없어 기준열만 설정할 때
-```python
-df.set_index('기준 열의 이름', inplace=True)
-
-# 기존 데이터로 원상복구
-df.reset_index(inlace=True)
-```
-
-#### 3.3.5 A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때
+#### 3.4.3 A의 데이터프레임을, B의 열 데이터프레임으로 나눌 때
 ```python
 # case 1
 df['새로 만들 열이름'] = 데이터프레임A['열이름']/데이터프레임B['열이름']
@@ -379,13 +381,13 @@ A.div(B['열 이름'], axix=0)
 
 ---
 
-### 3.4 바꾸기
+### 3.5 변경
 
-#### 3.4.1 행열 이름 조회
+#### 3.5.1 행열 이름 조회
 - df.columns : 열 이름들의 리스트   
 - df.index : 행 이름들의 리스트
 
-#### 3.4.2 열 이름 바꾸기
+#### 3.5.2 열 이름 변경
 - df.colums : 열 이름들의 리스트   
 - df.index : 행 이름들의 리스트 == 인덱스 열   
 
@@ -397,21 +399,23 @@ df.rename(columns={'before_1':'after_1'}, index={'before_2':'after_2'}, inplace=
 df= df.rename({df.index[0]:'2020', df.index[1]:'2021', df.index[2]:'2022'},axis='index')
 ```
 
-#### 3.3.6 열의 value의 이름을 바꾸고 싶을 때
+#### 3.5.6 열의 value의 이름을 변경하고 싶을 때
 ```python
 df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
 ```
 
+#### 3.5.7 열의 순서를 는 방법
+- df = df[['d','c','a','b']]
 ---
 
-### 3.3 삭제하기
+### 3.6 삭제하기
 
-#### 3.3.2 `del` : 열 삭제
+#### 3.6.2 `del` : 열 삭제
 ```python
 del df[열이름]
 ```
 
-#### 3.3.1 `drop` : 행, 열 모두 삭제 가능
+#### 3.6.1 `drop` : 행, 열 모두 삭제 가능
 - axis parameter (0=가로, 1=세로)
 - inplace : 덮어쓰기 
 ```python
@@ -425,15 +429,15 @@ df.drop([0])
 
 ---
 
-### 3.6 복사
-#### 3.6.1 얕은 복사
+### 3.7 복사
+#### 3.7.1 얕은 복사
 ```python
 # shallow copy  
 df_2 = df
 ```
 원본 DataFrame인 df_2와 연결되어 있어, df_2의 변경 내역이 df에도 영향을 미침
 
-#### 3.6.2 깊은 복사
+#### 3.7.2 깊은 복사
 ```python
 #deep copy  
 df_3 = df.copy()
@@ -445,9 +449,28 @@ df_3의 변경 내역이 df에 영향을 미치지 않음
 ---
 
 
-### 3.6 이상치 처리
+### 3.8 이상치 처리
 
-#### 3.6.1 백분율이 100%가 넘는 경우
+#### 3.8.1 빈 행이 너무 많을 경우 `isnull()`, `notnull()`
+```python
+# 데이터 개요를 확인했을 때
+# Range index에 비해 데이터가 현저히 적을 경우
+df.info()
+
+# 해당 열의 데이터를 확인하고
+df[열이름].unique
+
+# isnull 메소드로 null 값을 확인하고(boolean)
+[df[열이름].isnull()
+
+# 마스킹을 씌워 해당 null만 가져올 수 있다.
+df[df[열이름].isnull()].head()
+
+# 반대로 null이 아닌 값만 가져와서 사용할 수 있다.
+df = df[df[열이름].notnull()]
+```
+
+#### 3.8.2 백분율이 100%가 넘는 경우
 ```python
 # solution 1.
 - 이상치를 찾기 위해 : for문과 iterrow, serires를 활용한다
@@ -476,7 +499,7 @@ df[(df['열 이름 A'] > 100) | (df['열 이름 B'] > 100)]]
 df[~(df['열 이름 A'] > 100)]
 ```
 
-#### 3.6.2 결측치가 있을 경우
+#### 3.8.3 결측치가 있을 경우
 ```python
 df['열이름'].fillna(100)
 df['열이름'].dropna()
@@ -486,12 +509,10 @@ df['열이름'].dropna()
 ```
 
 
-
-
 ---
-### 3.8 데이터 merge
+### 3.9 데이터 merge
 
-#### 3.8.1 두 가지 서로 다른 데이터를 합치는 세가지 방법
+#### 3.9.1 두 가지 서로 다른 데이터를 합치는 세가지 방법
 ① pd.merge(left, right, how='inner' , on='기준 열 이름')   
 - inner : 교집합
 - left : 왼쪽 데이터 기준
@@ -509,25 +530,32 @@ df['열이름'].dropna()
 - axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)   
 - aixs = 1 : 행방향으로 연산   
 
-#### 3.8.2 열의 순서를 바꾸는 방법
-- df = df[['d','c','a','b']]
+
 
 ---
 
-### 3.9 데이터 기준열 정렬
 
-- 파일 기준열로 불러오는 방법
+
+
+### 3.10 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
+- 피벗테이블 기본 형태 : index, columns, values, aggfunc
 ```python
-# df = pd.read_확장자('파일명')
-ⓛ df_2 = pd.read_csv('merge_file.csv', encoding='utf-8', index_col='합칠 기준 열 이름')   
-② df_2 = pd.read_csv('merge_file.csv', encoding='utf-8').set_index('합칠 기준 열 이름')   
+# 기준열로 정렬되며, 숫자데이터가 aggfunc으로 처리된다.
+pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.mean)
+
+# Aggregation function == 집계 함수
+# np.mean, np.max, np.min, len ... (평균이 기본 설정값)
 ```
 
--  인덱스 변경 `set_index()`
-```python
-# 선택한 컬럼을 데이터프레임의 인덱스로 지정
-# inplace : 덮어쓰기 여부
-df.set_index('A', inplace=True)
+- index, columns, value, aggfunc를 여러개 넣어 사용 가능하다
+```
+df.pivot_table(
+    index=["A", "B", "C"],
+    columns=["a", "b"],
+    values=["1", "2"], 
+    aggfunc=[np.sum, np.mean],
+    fill_value=0, # NaN 0으로 처리
+    margins=True) # 총계(All) 추가
 ```
 
 ---
