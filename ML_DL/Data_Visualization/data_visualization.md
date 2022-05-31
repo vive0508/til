@@ -437,10 +437,12 @@ map.choropleth(geo_data = geo_str, # 가져온 JSON 파일
 
 ## 6. CircleMarker
 
-#### 6.1 구글 클라우드 플랫폼 API
+#### 6.1 Google Maps
+- 터미널에서 콘다 명령어로 googlemaps library 설치([링크](https://anaconda.org/conda-forge/googlemaps))
+- conda install -c conda-forge googlemaps
+- !pip install googlemaps==4.6.0
+- 구글 클라우드 플랫폼에서 API 연결
 ```
-!pip install googlemaps==4.6.0
-
 import googlemaps  
 gmaps = googlemaps.Client(key="personal\_key")
 
