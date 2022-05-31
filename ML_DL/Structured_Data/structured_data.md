@@ -558,6 +558,17 @@ df.pivot_table(
     margins=True) # 총계(All) 추가
 ```
 
+- 다중 컬럼(Multi column) 조회 방법
+```python
+pivot_df['level0 컬럼','level1 컬럼','level2 컬럼', ...]
+```
+
+- 다중 컬럼(Multi column) 제거 방법
+```python
+# 특정 레벨의 컬럼을 제거할 수 있다
+pivot_df.columns = pivot_df.columns.droplevel([0,1])
+```
+
 ---
 
 ## 4. 통계
