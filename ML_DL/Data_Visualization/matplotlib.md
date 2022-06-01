@@ -312,65 +312,7 @@ save = pd.read_csv("../data/ooo.csv", encoding="utf-8")
 save.head()
 ```
 
-___
 
-## 2. 열지도로 데이터 시각화 하기
-### 2.1 라이브러리 불러오기
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-
-# 한글 깨짐 방지
-from matplotlib import font_manager
-%matplotlib inline   
-
-font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()  
-rc('font', family=font_name)
-```
-
-### 2.2 matplotlib으로 도화지 깔기
-```python
-plt.figure(figsize = (10, 10), dpi = 100)
-```
-
-### 2.3 seaborn으로 그래프 올려놓기**
-```python
-sns.heatmap(df (by='정렬기준', ascending=False), annot=True, fmt='f', linewidths=.5, cmap='Reds' )
-```
-- df : 그래프로 만들 데이터 프레임
-- by : 정렬기준열 이름
-- ascending : 정렬 방향
-- annot : 셀 내에 수치 입력 여부  
-- fmt : 셀 내 입력될 수치의 format (f == float)  
-- linewidths : 셀 간 이격거리 (하얀 부분, 내부 테두리)
-- 모든 내용을 외울 필요는 없음 (필요할 때마다 찾아서)
-- cmap : [https://goo.gl/YWpBES](https://goo.gl/YWpBES)
-
-### 2.4 도화지 이름
-```
-plt.title('도화지 이름')
-```
-
-### 2.5 도화지 출력
-```
-plt.show()
-```
-
-### 2.6 이슈 해결
-- 데이터의 색의 차이가 분별이 안 됨 
-```python
-# 정규화(Feature scaling/ Feature Nomalization)
-
-① Min-Max algorithm : 최댓값을 1, 최솟값을 0으로 맞춰줌
-② Standardization (표준화) : 열마다의 평균값이 0, 표준편차가 1로 맞춰줌
-③ ...
-
-# 활용
-ex. 4개 열의 수치 중 최대값으로 나눠줌   
-max_col = df[['a', 'b', 'c', 'd']].max()_
-result = df[['a', 'b', 'c', 'd']] / max_col
-```
 
 ---
 
