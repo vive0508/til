@@ -575,11 +575,16 @@ df['열이름'].dropna()
 
 ---
 
+### 3.10 `pivot`  
+- 피벗 필요 요소 : index, columns, values
+- pivot_table과는 달리 연산 가능 x
+```python
+pivot_df = df.pivot(index='A' , columns='B' , values='C')
+```
 
-
-
-### 3.10 열의 중복되는 데이터를 처리하며 기준열을 만들때 : `pivot_table`  
+### 3.11 `pivot_table`  
 - 피벗테이블 기본 형태 : index, columns, values, aggfunc
+- pivot과는 달리 연산 가능(aggfunc)
 ```python
 # 기준열로 정렬되며, 숫자데이터가 aggfunc으로 처리된다.
 pivot_df = pd.pivot_table(df, index='기준 열 이름', aggfunc=np.mean)
@@ -615,8 +620,9 @@ pivot_df['level0 컬럼','level1 컬럼','level2 컬럼', ...]
 pivot_df.columns = pivot_df.columns.droplevel([0,1])
 ```
 
+
 ---
-### 3.11 Pandas 반복문용 명령 `iterrows()`
+### 3.12 Pandas 반복문용 명령 `iterrows()`
 - Pandas 데이터 프레임은 대부분 2차원이다    
 - Pandas 데이터 프레임으로 반복문을 만들때 itterows() 옵션을 사용하면 편하다    
 - 사용시 인덱스와 내용으로 나누어 받을 수 있다
