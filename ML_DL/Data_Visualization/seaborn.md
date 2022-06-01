@@ -245,7 +245,7 @@ plt.show()
 
 - 원하는 컬럼만 pairplot
 ```python
-# case 1.
+# case 1. x축, y축을 지정하는 방법
 sns.pairplot(iris, 
              x_vars=["sepal_width", "sepal_length"], 
              y_vars=["petal_width", "petal_length"])
