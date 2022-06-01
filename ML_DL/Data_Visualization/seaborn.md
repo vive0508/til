@@ -245,10 +245,19 @@ plt.show()
 
 - 원하는 컬럼만 pairplot
 ```python
+# case 1.
 sns.pairplot(iris, 
              x_vars=["sepal_width", "sepal_length"], 
              y_vars=["petal_width", "petal_length"])
 plt.show()
+
+# case 2.
+# kind : scatter', 'kde', 'hist', 'reg'
+# reg(regression) : 회귀분석
+sns.pairplot(iris, 
+             vars=["sepal_width", "sepal_length"],
+             kind="reg",
+             height=3)
 ```
 
 
