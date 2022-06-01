@@ -72,9 +72,10 @@ with open('ooo.xlsx', mode="r", encoding="utf-8") as file:
 ### 1.3 원본 데이터 선택적 불러오기
 ```python
 # 자료를 읽기 시작할 행(header) 지정
+# 인덱스(index_col)로 설정할 컬럼 설정
 # 읽어올 엑셀의 컬럼(usecoles) 지정
 
-df = pd.read_excel('ooo.xlsx', header=2, usecols="oo, xx") 
+df = pd.read_excel('ooo.xlsx', header=2, index_col=0, usecols="oo, xx") 
 ```
 
 ---
@@ -152,12 +153,37 @@ dates = pd.date_range("20220526", periods=6)
 df = pd.DataFrame(data, index=dates, columns=['A','B','C','D'])
 ```
 
-#### 2.1.4 연산
+#### 2.2.1 연산
 - 시리즈와 마찬가지로 value의 dtype이 숫자여야 함
 ```
 # df의 열A를 열B로 나누는 두가지 방법
-1. df['A/B_1'] = df['A']/df['B']
-2. df['A/B_2'] = df['A'].div(df['B'], axis=0)
+# axis=0 (세로), axis=1 (가로)
+
+1. df['div_1'] = df['A']/df['B']
+2. df['div_2'] = df['A'].div(df['B'], axis=0)
+
+# df의 다수의 컬럼을 다른 컬럼으로 나누는 방법
+df['div_3'] = df[['A','B']].div(df['C'], axis=0)
+
+# df의 다수의 컬럼을 다수의 컬럼으로 각각 나누기
+sample_1 = ['A','B','C','D']
+sample_2 = ['a','b','c','d']
+
+df['div_4'] = df[sample_1].div(df[sample_2].values)
+
+# df의 다수의 컬럼을 각 컬럼의 최댓값으로 나누기(정규화)
+col = ['A','B','C','D']
+df[col]/df[col].max
+```
+
+#### 2.2.2 df 복사 & 붙여넣기
+```python
+# df_1에 열 A,B,C,D가 있고, 이를 그대로 df_2에 복사하는 방법
+copy_columns = ['A','B','C','D']
+df_2[copy_columns] = df_1[copy_columns]
+
+# df_1에 열 A,B가 있고, 이를 컬럼명만 바꾸어 df_2에 복사하는 방법
+df_2[['C','D']] = df[['A','B']]
 ```
 
 ---
@@ -174,9 +200,10 @@ df = pd.DataFrame(data, index=dates, columns=['A','B','C','D'])
 - 정보 확인하기 : df.info
 
 
-### 2.2 인덱스, 컬럼 이름 확인
+### 2.2 인덱스, 컬럼, 값 확인
 - 인덱스 이름 : df.index   
 - 컬럼 이름 : df.columns
+- 값 : df.values
 
 
 ### 2.3 결측치(missing data)를 다루는 대표적인 방법  
@@ -188,6 +215,7 @@ df = pd.DataFrame(data, index=dates, columns=['A','B','C','D'])
 - 특정 기준 비율 이상으로 빠져있을 시 해당 열 삭제   
 
 ```python
+# 마스킹을 사용하여 값을 할당하거나 하기의 방법을 사용한다
 df['열이름'].fillna(100)
 df['열이름'].dropna()
 ```
@@ -198,6 +226,14 @@ df['열이름'].dropna()
 - 최빈값(mode)  
 - 분산(variance)
 - 표준편차 (standard deviation)
+
+```python
+# 열 A,B,C,D의 평균을 대푯값으로 구하려고 하였을 경우 하기의 방법을 사용한다.
+# axis=0(열방향), axis=1(행방향)
+
+col = ['A','B','C','D']
+df['대푯값'] = np.mean(df[col], axis=1)
+```
 
 ---
 ## 3. 데이터 전처리
@@ -287,7 +323,7 @@ df.reset_index(inlace=True)
 
 ---
 
-### 3.3 Condition : 마스킹, 필터링
+### 3.3 Condition : 마스킹
 - 조건
 ```python
 df['A'] > 0           # 칼럼 A의 values 중 양수인 것들 (boolean)
@@ -297,7 +333,7 @@ df[['A','B']] > 0     # 칼럼 A,B values 중 양수인 것들 (boolean)
 ```python
 # 마스킹을 해서 조건에 해당하면 값이 나오고, 아니면 NaN(Not a Number)로 나온다
 df[ df[['A','B']] > 0 ]  # df 중 대괄호 안의 조건을 만족하는 values
-df[ df>0 ]
+df[ df>0 ] = 100 # 마스키을 활용해 values에 값을 할당할 수도 있다
 ```
 
 - isin() : 특정 요소가 있는지 확인 (boolean)
@@ -421,7 +457,7 @@ del df[열이름]
 ```
 
 #### 3.6.1 `drop` : 행, 열 모두 삭제 가능
-- axis parameter (0=가로, 1=세로)
+- axis parameter (0=세로, 1=가로)
 - inplace : 덮어쓰기 
 ```python
 # 열 삭제
