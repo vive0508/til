@@ -8,10 +8,9 @@
 - 구글 클라우드 플랫폼에서 API 연결
 ```
 import googlemaps  
-gmaps = googlemaps.Client(key="personal\_key")
 
-tmpMap = gmaps.geocode('보라매공원', language="ko")  
-tmpMap
+gmaps = googlemaps.Client(key="personal_key")
+gmaps.geocode('보라매공원', language="ko")  
 ```
 
 ___
