@@ -312,112 +312,8 @@ save = pd.read_csv("../data/ooo.csv", encoding="utf-8")
 save.head()
 ```
 
-
-
 ---
-
-## 3. 지도 시각화 : Folium library 활용 / 지도 데이터 : GeoJSON 활용
-### 3.1 json 파일 불러오기
-```python
-import json
-
-geo_path = '파일명.json'
-geo_str = json.load(open(geo_path, 'r' , encoding='utf-8'))
-```
-- load <-> dump : 불러오는 것은 load, 저장하는 것은 dump
-
-### 3.2 json
-- Javascript Object Notation   
-- 데이터 교환을 위한 표준 포맷   
-- XML, YAML는 json 이전의 표준 포맷   
-
-### 3.3 pyptny
-- JSON 구조를 쉽게 파악할수 있게 해주는 도구   
-
-#### 3.3.1 pyptny 설치
-- !pip install pyprnt==2.3.3
-
-#### 3.3.2 pyptny 임포트
-- from pyprnt import prnt
-
-#### 3.3.3 ptptny 활용법
-- print(json 자료, truncate=True, width=80)
-- truncate : 안에 있는 내용이 너무 길면 잘라줌
-- width : 내용이 찌그러질 때 조절
-
----
-
-## 4. 포리움으로 지도에 그래프 그리기
-#### 4.1 포리움 설치
-- !pip install folium==0.5.0
-
-#### 4.2 포리움에 맵클래스의 생성자
-```python
-import folium  
-map = folium.Map(location=\[37.5502, 126.982\], zoom\_start=11, tiles='Stamen Toner') 
-```
-- folium에서 Map이라는 클래스를 사용   
-- location : 초기 지도 center 위치 (위도, 경도)    
-- zoom start : 줌 크기   
-- tiles : 지도 타입 (default type or "Stamen Terrain" or "Stamen Toner"   
-
----
-## 5. Choropleth map : 행정구역별로 색칠해놓은 지도
-```python
-import json
-
-geo_path = '파일명.json'
-geo_str = json.load(open(geo_path, 'r' , encoding='utf-8'))
-
-map.choropleth(geo_data = geo_str, # 가져온 JSON 파일
-                     data = df['열이름'], # 시각화의 대상이 될 데이터
-                     columns = [df['열이름1'], df['열이름2']] # 가져올 열이 인덱스 열일 때 -> df.index 
-                     fill_color = 'PuRd' #color brewer([http://colorbrewer2.org/](http://colorbrewer2.org/))
-                     key_on = 'feature.id'  # GeoJSON 규약을 따름
-```
----
-
-## 6. CircleMarker
-
-#### 6.1 Google Maps
-- 터미널에서 콘다 명령어로 googlemaps library 설치([링크](https://anaconda.org/conda-forge/googlemaps))
-- conda install -c conda-forge googlemaps
-- !pip install googlemaps==4.6.0
-- 구글 클라우드 플랫폼에서 API 연결
-```
-import googlemaps  
-gmaps = googlemaps.Client(key="personal\_key")
-
-tmpMap = gmaps.geocode('보라매공원', language="ko")  
-tmpMap
-```
-
-#### 6.2 포리움에 맵클래스의 생성자
-```
-map = folium.Map(location=[37.5502, 126.982], zoom_start=11)
-```
-
-#### 6.3 CircleMarker
-```python
-for n in df.index:
-    folium.CircleMarker(위도, 경도, radius=? , color='#3186cc', fill=True, fill\_color='#3186cc').add\_to(map)
-
-- radius가 자동으로 meter 단위가 된다.
-- radius=value\*0.5, # circle 의 크기를 결정
-- color='#3186cc', fill=True, fill\_color='#3186cc' : #16진수 컬러
-- ↑ 테두리색, 내부색여부, 내부색
-```
----
-
-## 7. 결과값 다른 확장자 파일로 저장
-### 7.1 DF to csv file  
-- df.to\_csv('processed\_data.csv', encoding='utf-8')
-
-### 7.2 saving a folium map as an HTML file
-- map.save('folium\_map.html')
-
----
-## 8. 기타
+## 1.4 기타
 - `startswith()`, `endswith()`
 ```python
 'python'.startswith('py') -> True
@@ -425,7 +321,7 @@ for n in df.index:
 ```
 ---
 
-## 9. 단어 등장 빈도 시각화
+## 2. 단어 등장 빈도 시각화
 ```python
 import nltk
 import matplotlib
@@ -440,7 +336,7 @@ plt.figure(figsize=(15, 7)) # plot 영역(그래프 영역)의 크기를 지정�
 word_counted.plot(50) # "plot" the graph, 상위 50개 단어를 보여줍니다.
 ```
 
-## 10. 단어 등장 빈도 시각화 (막대그래프)
+## 3. 단어 등장 빈도 시각화 (막대그래프)
 
 ```
 # 막대그래프로의 시각화는 NLTK 의 함수만으로 진행하기 어려우므로,
@@ -471,7 +367,7 @@ plt.show()
 
 ---
 
-## 11. 워드 클라우드
+## 4. 워드 클라우드
 ```python
 # 라이브러리 임포트
 from wordcloud import WordCloud
@@ -501,7 +397,7 @@ plt.tight_layout(pad=0)
 plt.show()
 ```
 
-## 12. 특정 그림 테두리 내에 워드 클라우드 그리기
+## 5. 특정 그림 테두리 내에 워드 클라우드 그리기
 ```python
 from PIL import Image
 from wordcloud import ImageColorGenerator # Image 로부터 Color 를 생성(Generate)해내는 객체입니다.
@@ -530,7 +426,7 @@ plt.show()
 word_cloud.to_file("word_cloud_completed.png") # Save "to file"
 ```
 
-## 13. 요약
+## 6. 요약
 - 워드 클라우드의 해상도는 원본이미지를 넘어설 수 없음
 ```python
 # 아래 옵션들을 원하시는대로 지정하셔서 가장 마음에 드는 워드클라우드를 활용하시면 됩니다.
