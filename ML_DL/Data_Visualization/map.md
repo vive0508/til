@@ -199,14 +199,14 @@ geo_path = '파일명.json'
 geo_str = json.load(open(geo_path, 'r' , encoding='utf-8'))
 
 map.choropleth(geo_data = geo_str, # 가져온 JSON 파일(지도 좌표)
-                     data = df, # 시각화의 대상이 될 Series or DataFrame
-                     # columns = ['열이름1', '열이름2']
-                     columns = [df['열이름1'], df['열이름2']] # DataFrame columns (가져올 열이 인덱스 열일 때는 df.index)
-                     key_on = 'feature.id'  # GeoJSON 규약을 따름
-                     fill_color = 'PuRd' 
-                     fill_opacity=0.5, # 0~1 
-                     line_opacity=0.2, # 0~1 
-                     legend_name="범례명"    
+               data = df, # 시각화의 대상이 될 Series or DataFrame
+             # columns = ['열이름1', '열이름2']
+               columns = [df['열이름1'], df['열이름2']] # DataFrame columns (가져올 열이 인덱스 열일 때는 df.index)
+               key_on = 'feature.id'  # GeoJSON 규약을 따름
+               fill_color = 'PuRd' 
+               fill_opacity=0.5, # 0~1 
+               line_opacity=0.2, # 0~1 
+               legend_name="범례명"    
 ).add_to(m)
 ```
 
