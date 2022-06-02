@@ -633,11 +633,15 @@ pivot_df.columns = pivot_df.columns.droplevel([0,1])
 - Pandas 데이터 프레임은 대부분 2차원이다    
 - Pandas 데이터 프레임으로 반복문을 만들때 itterows() 옵션을 사용하면 편하다    
 - 사용시 인덱스와 내용으로 나누어 받을 수 있다
+- 내용에 있는 값에 접근하는 방법 : rows["열이름"] or rows.열이름
 ```python
 for idx, rows in df.iterrows():
   print(idx) # 인덱스
   print(rows) # 내용
 ```
+
+
+
 ---
 
 ## 4. 통계
