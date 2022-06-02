@@ -316,9 +316,16 @@ df.sort_values(by='열이름', ascending=False, inplace=True)
 # 선택한 컬럼을 데이터프레임의 인덱스로 지정
 # inplace : 덮어쓰기 여부
 df.set_index('기준 열의 이름', inplace=True)
+```
 
-# 기존 데이터로 원상복구
-df.reset_index(inlace=True)
+#### 3.2.4 `reset_index()`
+- 전처리를 거치면서 인덱스가 뒤죽박죽인 경우가 있다.   
+- 이럴때 인덱스를 다시 처음부터 재배열 해주는 함수이다.   
+
+```python
+# 인덱스 초기화
+# drop 인덱스 생성 여부
+df.reset_index(drop=False, inlace=True)
 ```
 
 ---
