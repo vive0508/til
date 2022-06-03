@@ -24,6 +24,10 @@
 5. Tag로부터 텍스트 혹은 Attribute values 꺼내기 : Tag.get_text() or Tag.attrs
 
 ```python
+# BeautifulSoup 설치(아래 둘 중 하나 방법으로)
+conda install -c anaconda beautifulsoup4
+!pip install beautifulsoup4
+
 # beautifulsup4 : 웹 스크래핑할 때 사용
 from bs4 import BeautifulSoup 
 
@@ -32,6 +36,7 @@ from urllib.request import urlopen
 
 # urllib.request를 사용할 때 URL에 한글이 포함되어있으면 문제가 발생할 수 있음.
 # 이럴 때는 requests 라이브러리를 활용하여 requests.get(URL).content 사용
+!pip install requests
 import requests
 ```
 
@@ -46,6 +51,7 @@ import requests
 url = '사이트 주소' + query
 
 # url의 정보를 서버에서 받음 (from urllib.request import urlopen 사용시)
+# 변수명을 response, res, page와 같은 변수명으로 많이 사용
 web = urlopen(url)
 
 # url의 정보를 서버에서 받음 (urllib.request 사용시)
@@ -55,31 +61,65 @@ web = requests.get(url).content
 ```
 # 웹페이지의 HTML 구조를 파싱
 web_page = BeautifulSoup(web, 'html.parser')
+
+# 좀 더 깔끔한 형태로 볼 수 있는 방법
+print(web_page.prettify())
 ```
 
 ### 1.4 HTML Tag 꺼내기
-- HTML 태그에 접근한다.
+- head, body 접근(참고)
+```
+web_page.head
+web_page.body
+```
 
+- HTML 태그에 접근한다.
 | 구분 | 내용 |   
 | :--: | :-- |   
 | Tag 이름 | html, head, body, h1, p, span, li, ol, ul, div |   
 | Tag Attribute | class, id, style, href, src |   
 
-- .find or find_all ('Tag 이름', {'Attr 이름':'Attr 값'})
+- .find or find_all ('Tag 이름', {'Attr 이름':'Attr 값'})   
+- .find or find_all ('Tag 이름', {'Attr 이름':'Attr 값','Attr 이름':'Attr 값'}) (다중조건)   
 ```python
 # find로 꺼내면 첫번째 값만 얻을 수 있다.
-a = web_page.find('Tag 이름', {'Attr 이름':'Attr 값'})
+# 1 : web_page.find.Tag이름
+# 2 : web_page.find('Tag이름','Attr값')
+# 3 : web_page.find('Tag이름', Attr이름_='Attr값')
+# 4 : web_page.find('Tag이름',{'Attr 이름':'Attr 값'})
+a = web_page.find('Tag이름', {'Attr 이름':'Attr 값'})
 type(a) -> Tag
 
-# find_all 모든 값을 불러올 수 있다.
-b = web_page.find_all('Tag 이름',{'Attr 이름':'Attr 값'})
+# find_all 모든 값을 불러올 수 있다
+# iterable하기 때문에 반복문과 같이 사용된다
+# 1 : web_page.find_all('Tag이름','Attr값')
+# 2 : web_page.find_all('Tag이름', Attr이름_='Attr값')
+# 3 : web_page.find_all('Tag이름',{'Attr이름':'Attr 값'})
+b = web_page.find_all('Tag이름',{'Attr이름':'Attr 값'})
 type(b) -> ResultSet (리스트와 유사)
+```
+
+- - select_one, select
+```python
+# find, select_one : 단일 선택
+# find_all, select : 다중 선택 
+
+response = requests.get(url)
+soup = BeautifulSoup(response, "html.parser") 
+
+soup.select("#id이름")
+soup.select("#id이름 > 하위 태그이름")
+soup.select(".class이름")
+soup.select(".class이름.class이름")
 ```
 
 ### 1.5 Tag로부터 텍스트 혹은 Attribute values 꺼내기
 - Tag.get_text(), Tag.attrs
 ```
-# Tag.get_text() : 텍스트 꺼내기   
+# Tag.get_text() : 텍스트 꺼내기
+# 1.Tag.text
+# 2.Tag.string
+# 3.Tag.get_text() 
 web_page.find('Tag 이름',{'Attr 이름':'Attr 값'}).get_text()
 web_page.find_all('Tag 이름',{'Attr 이름':'Attr 값'})[0].get_text()
 
@@ -88,12 +128,16 @@ web_page.find('span', {'class' : 'txt_emph1''}).attrs
 web_page.find_all('span', {'class' : 'txt_emph1''})[0].attrs
 ```
 find_all을 사용한 경우에는 인덱스 번호를 활용한 이후에 values를 꺼낸다.   
+공백은 `str.strip()`으로 처리할 수 있다.   
 
 ---
 
-## 2. txt 저장
+## 2. 저장
+### 2.1 엑셀 저장
+- df = pd.DataFrame(data) : 데이터프레임으로 변환
+- df.to_excel('ooo.xlsx', encoding='utf-8')
 
-### 2.1 텍스트를 txt 파일에 저장하는 방법
+### 2.2 텍스트를 txt 파일에 저장하는 방법
 - with 구문 활용
 - with open("파일","모드") as sth:
 | 모드 | 기능 |
@@ -152,10 +196,13 @@ source_news = BeautifulSoup(web_news, 'html.parser')
 ```
 
 ### 3.2 HTTP Request (↔ HTTP Response)
+- http 상태 코드 : 요청과 으답이 잘 이루어졌는지 확인
 ```
 import requests
-requests.get(URL).content
+response = requests.get(URL).content
+response.status
 ```
+200
 
 - POST 요청 : Create  
 - GET 요청 : Read  
