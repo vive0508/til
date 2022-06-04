@@ -55,6 +55,16 @@ response = urlopen(req)
 
 soup = BeautifulSoup(response, 'html.parser')
 ```
+- url을 합쳐야 할 경우 하기 코드를 사용한다
+```
+# 모듈을 임포트한다
+from urllib.parse import urljoin
+
+# 상대주소와 절대주소에 대해 잘 대응해준다
+# 상대 주소를 절대주소로 변환해준다
+# 절대주소를 지정해주어야 한다
+urljoin(url_base, url_sub)
+```
 
 ### 1.2 HTTP Response 얻기
 - 서버에서 웹페이지에 대한 정보를 얻은 후 html을 모두 가져온다.
