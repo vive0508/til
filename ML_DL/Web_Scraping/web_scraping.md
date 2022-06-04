@@ -40,8 +40,8 @@ from tqdm import tqdm
 
 ### 1.1 URL 분석
 - URL을 분석하며 패턴 존재 여부를 확인하고, query의 종류를 파악한다.   
-- 함수의 역할을 하는 것이 무엇인지, 파라미터 역할을 하는 query가 어떤 것이 있는지 무엇인지 확인한다.
-- url 디코드
+- 함수의 역할을 하는 것이 무엇인지, 파라미터 역할을 하는 query가 어떤 것이 있는지 무엇인지 확인한다.   
+- 주소에 한글이 포함된 경우에 하기 코드를 사용한다.
 ```
 # url 디코드를 검색하여 이용하거나,
 # format 함수를 사용하여 원하는 검색어로 검색한다.
@@ -51,7 +51,7 @@ form urllib.request import urlopen, Request
 url = 'http://www.ooo.com/search/{search_keyword}'
 req = Request(url.format(search_keyword=urllib.parse.quote('검색어')))
 
-respons = urlopen(req)
+response = urlopen(req)
 
 soup = BeautifulSoup(response, 'html.parser')
 ```
