@@ -452,8 +452,9 @@ df= df.rename({df.index[0]:'2020', df.index[1]:'2021', df.index[2]:'2022'},axis=
 df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
 ```
 
-#### 3.5.7 열의 순서를 는 방법
+#### 3.5.7 열의 순서를 바꾸는 방법
 - df = df[['d','c','a','b']]
+- df = pd.DataFrame(data, columns=['d','c','a','b'])
 ---
 
 ### 3.6 삭제하기
