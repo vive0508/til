@@ -24,26 +24,18 @@
 5. Tag로부터 텍스트 혹은 Attribute values 꺼내기 : Tag.get_text() or Tag.attrs
 
 ```python
-# BeautifulSoup 설치(아래 둘 중 하나 방법으로)
-conda install -c anaconda beautifulsoup4
-!pip install beautifulsoup4
+import re  
+import pandas as pd 
+import numpy as np
+import googlemaps
+import folium
 
-# beautifulsup4 : 웹 스크래핑할 때 사용
-from bs4 import BeautifulSoup 
-
-# urllib.request : URL을 가져오는데 사용
-from urllib.request import urlopen, Request
-
-# urllib.request를 사용할 때 URL에 한글이 포함되어있으면 문제가 발생할 수 있음.
-# 이럴 때는 requests 라이브러리를 활용하여 requests.get(URL).content 사용
-!pip install requests
-import requests
-
-#
-import re 
-
-#
+from bs4 import BeautifulSoup
+from urllib.request import Request, urlopen 
+from fake_useragent import UserAgent
 from urllib.parse import urljoin 
+
+from tqdm import tqdm 
 ```
 
 ### 1.1 URL 분석
@@ -168,6 +160,9 @@ import re
 # text를 \n 또는 \r\n 기준으로 나누어서 리스트로 만들어라
 text = Tag.get_text()
 re.split(("\n|\r\n"), text))
+
+# 정규표현식
+re.search("정규표현식", str).group()
 ```
 - urljoin 모듈
 ```python
