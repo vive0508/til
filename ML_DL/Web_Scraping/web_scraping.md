@@ -195,8 +195,30 @@ web_news = requests.get(url, headers=headers).content
 source_news = BeautifulSoup(web_news, 'html.parser')
 ```
 
-### 3.2 HTTP Request (↔ HTTP Response)
-- http 상태 코드 : 요청과 으답이 잘 이루어졌는지 확인
+### 3.2 url 디코드
+```
+# url 디코드를 검색하여 이용하거나,
+# format 함수를 사용하여 원하는 검색어로 검색한다.
+import urllib
+form urllib.request import urlopen, Request
+
+url = 'http://www.ooo.com/search/{search_keyword}'
+req = Request(url.format(search_keyword=urllib.parse.quote('검색어')))
+
+respons = urlopen(req)
+
+soup = BeautifulSoup(response, 'html.parser')
+```
+
+### 3.3 문자 추출 후 정리
+```
+str.strip() : 공백 제거
+str.replace('A','a') : 변경
+```
+
+
+### 3.4 HTTP Request (↔ HTTP Response)
+- http 상태 코드 : 요청과 응답이 잘 이루어졌는지 확인
 ```
 import requests
 response = requests.get(URL).content
@@ -209,7 +231,7 @@ response.status
 - PUT 요청 : Update  
 - DELETE 요청 : Delete
 
-### 3.3 strftime
+### 3.5 strftime
 ```
 from datetime import datetime
 article_df.to_excel('ooo.xlsx'.format(datetime.now().strftime('%y%m%d_%H%M')), index=False, encoding='utf-8')
