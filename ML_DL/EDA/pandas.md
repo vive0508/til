@@ -363,6 +363,12 @@ sum(df['E'].str.contains('one'))
 # 필터링 :  one을 요소로 하는 것의 행으로, 열은 전체
 df.loc[df['E'].str.contains('one'), :]
 ```
+
+- df.query()
+```
+# name 컬럼에 철수인 데이터만 선택할 경우
+df.query("name == ['철수']")
+```
 ---
 
 ### 3.4 칼럼 만들기
