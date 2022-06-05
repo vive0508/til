@@ -425,8 +425,6 @@ A.div(B['열 이름'], axix=0)
 - axis = 1 : 행방향으로 연산
 ```
 
-
-
 ---
 
 ### 3.5 변경
@@ -446,6 +444,13 @@ df.rename(columns={'before_1':'after_1'}, index={'before_2':'after_2'}, inplace=
 # 인덱스명을 바꾸고 싶을때({})
 df= df.rename({df.index[0]:'2020', df.index[1]:'2021', df.index[2]:'2022'},axis='index')
 ```
+
+#### 3.5.3 타입변경
+```
+# A 컬럼의 데이터를 실수형으로 변경
+df['A'] = df['A'].astype(float)
+```
+
 
 #### 3.5.6 열의 value의 이름을 변경하고 싶을 때
 ```python
