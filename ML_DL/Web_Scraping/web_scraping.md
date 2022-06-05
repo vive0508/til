@@ -79,6 +79,12 @@ res = urlopen(url)
 # url의 정보를 서버에서 받음 (urllib.request 사용시)
 res = requests.get(url).content
 ```
+
+- 정상적으로 가져왔는지 확인
+```python
+res.status
+```
+
 ### 1.3 HTML source 얻기
 ```
 # 웹페이지의 HTML 구조를 파싱
