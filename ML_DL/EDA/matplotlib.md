@@ -36,6 +36,23 @@ rc('axes', unicode_minus=False)
 get_ipython().run_line_magic("matplotlib", "inline")
 ```
 
+### 1.2 한글 설정
+```
+import platform
+import seaborn as sns 
+from matplotlib import font_manager, rc 
+
+path = "C:/Windows/Fonts/malgun.ttf"
+
+if platform.system() == "Darwin":
+    rc("font", family="Arial Unicode MS")
+elif platform.system() == "Windows":
+    font_name = font_manager.FontProperties(fname=path).get_name()
+    rc("font", family=font_name)
+else:
+    print("Unknown system. sorry")
+```
+
 ### 1.2 그래프 그리기
 #### 1.2.1 그래프 그리기 기본 형태
 - plt.figure(figsize=(10, 6)) : 도화지 사이즈    
