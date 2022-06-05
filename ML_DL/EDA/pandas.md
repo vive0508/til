@@ -641,11 +641,31 @@ for idx, rows in df.iterrows():
   print(rows) # 내용
 ```
 
-
-
 ---
 
-## 4. 통계
+## 4. 기타
 ### 4.1 상관계수
 - df.corr()
 - correlation의 약자
+
+### 4.2 strftime
+```
+import pandas as pd
+
+pd.date_range("2022.01.01", periods=100, freq="D")
+
+# %Y : 연도 4자리   
+# %y : 연도 두자리   
+# %m : 월   
+# %d : 일   
+# %h : 영문 월   
+# %H : 시각   
+# %M : 분    
+# %S : 초    
+
+print(date[0].strftime("%Y-%m-%d"))
+print(date[0].strftime("%Y.%m.%d"))
+```
+'2022-01-01'   
+'2022.01.01'
+
