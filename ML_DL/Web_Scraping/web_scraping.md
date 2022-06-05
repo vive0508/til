@@ -274,22 +274,7 @@ for i in range(10):
     except:
         print('*** {}번 글 스크래핑 중 에러가 발생했습니다.'.format(i))
 ```
---- 
 
-## 4. strftime
-```
-from datetime import datetime
-article_df.to_excel('ooo.xlsx'.format(datetime.now().strftime('%y%m%d_%H%M')), index=False, encoding='utf-8')
-```
-
-%Y : 연도 4자리   
-%y : 연도 두자리   
-%m : 월   
-%d : 일   
-%h : 영문 월   
-%H : 시각   
-%M : 분   
-%S : 초   
 
 ---
 
