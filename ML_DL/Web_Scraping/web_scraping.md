@@ -105,7 +105,7 @@ html.body
 
 | 구분 | 내용 |   
 | :--: | :-- |   
-| Tag 이름 | html, head, body, h1, p, span, li, ol, ul, div |   
+| Tag 이름 | html, head, body, h1, p, span, li, ol, ul, div, a |   
 | Tag Attribute | class, id, style, href, src |   
 
 - .find or find_all ('Tag 이름', {'Attr 이름':'Attr 값'})   
