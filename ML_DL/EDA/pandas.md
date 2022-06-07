@@ -318,16 +318,6 @@ df.sort_values(by='열이름', ascending=False, inplace=True)
 df.set_index('기준 열의 이름', inplace=True)
 ```
 
-#### 3.2.4 `reset_index()`
-- 전처리를 거치면서 인덱스가 뒤죽박죽인 경우가 있다.   
-- 이럴때 인덱스를 다시 처음부터 재배열 해주는 함수이다.   
-
-```python
-# 인덱스 초기화
-# drop 인덱스 생성 여부
-df.reset_index(drop=False, inlace=True)
-```
-
 ---
 
 ### 3.3 Condition : 마스킹
@@ -457,13 +447,22 @@ df= df.rename({df.index[0]:'2020', df.index[1]:'2021', df.index[2]:'2022'},axis=
 df['A'] = df['A'].astype(float)
 ```
 
+#### 3.5.4 인덱스 재배열 `reset_index()`
+- 전처리를 거치면서 인덱스가 뒤죽박죽인 경우가 있다.   
+- 이럴때 인덱스를 다시 처음부터 재배열 해주는 함수이다.   
 
-#### 3.5.6 열의 value의 이름을 변경하고 싶을 때
+```python
+# 인덱스 초기화
+# drop 인덱스 생성 여부
+df.reset_index(drop=False, inplace=True)
+```
+
+#### 3.5.5 열의 value의 이름을 변경하고 싶을 때
 ```python
 df['열이름'] = df['열이름'].replace([value_a, value_b], ['1', '2'])
 ```
 
-#### 3.5.7 열의 순서를 바꾸는 방법
+#### 3.5.6 열의 순서를 바꾸는 방법
 - df = df[['d','c','a','b']]
 - df = pd.DataFrame(data, columns=['d','c','a','b'])
 ---
@@ -586,7 +585,8 @@ df['열이름'].dropna()
 - 단, A와 B 데이터프레임의 index열의 길이가 동일해야 함  
 
 ③ pd.concat([A, B], axix=?) # concatenate   
-- 그대로 이어붙이는 방법   
+- 형식이 동일하고 그대로 이어붙이기만 할 경우
+- 리스트형으로 묶은 후 concat 사용
 - axis = 0 : 기본적으로 열방향으로 연산 (많은 함수에서 Default)   
 - aixs = 1 : 행방향으로 연산   
 
