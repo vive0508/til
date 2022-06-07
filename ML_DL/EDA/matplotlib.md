@@ -21,7 +21,7 @@ ___
 ```python
 # import matplotlib as mpl
 # matplotlib에서 pyplot 기능을 plt라는 이름으로 가져와서 사용
-import matplotlib.pplot as plt
+import matplotlib.pyplot as plt
 
 # 한글설정
 from matplotlib import rc
