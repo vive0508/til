@@ -17,6 +17,7 @@ ___
 ## 1. seaborn 기초
 
 ## 1.1 seaborn 설치 및 모듈 임포트
+- 기본 설정
 ```python
 # seaborn이 설치가 안되어있다면 아래의 코드 중 하나로 설치
 !conda install -y seaborn 
@@ -28,12 +29,38 @@ import seaborn as sns
 from matplotlib import rc 
 
 # 한글 설정
-plt.rcParams["axes.unicode_minus"] = False 
+# plt.rcParams["axes.unicode_minus"] = False로 대체 가능
 rc("font", family="Malgun Gothic")
 
-# 주피터 노트북에서 그래프를 그리기 위한 설정
+# 주피터 노트북에서 그래프를 그릴 수 있도록 하는 설정
+# %matplotlib inline로 대체 가능 
+get_ipython().run_line_magic("matplotlib", "inline")
+```
+
+- 플랫폼을 활용한 한글 설정
+```python
+import platform
+import matplotlib.pyplot as plt
+import seaborn as sns 
+from matplotlib import font_manager, rc
+
 get_ipython().run_line_magic("matplotlib", "inline")
 
+# %matplotlib inline
+path = "c:/Windows/Fonts/malgun.ttf"
+
+if platform.system() == "Darwin":
+    print("Hangul OK in your MAC !!!")
+    rc("font", family="AppleGothic")
+elif platform.system() == "Windows":
+    font_name = font_manager.FontProperties(fname=path).get_name()
+    print("Hangul OK in your Windows !!!")
+    rc("font", family=font_name)
+else:
+    print("Unknown system... sorry~~~~")
+
+# plt.rcParams["axes.unicode_minus"]
+plt.rcParams["axes.unicode_minus"] = False
 ```
 
 ---
