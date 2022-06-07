@@ -121,7 +121,6 @@ raw_data =  driver.find_element_by_xpath('xpath')
 
 raw_data.text
 ```
-```
 - 입력창에 글자 넣기
 ```python
 # 원하는 지점의 태그가 화면에 보여야 가능하다
