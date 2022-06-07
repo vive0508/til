@@ -160,6 +160,19 @@ dates = pd.date_range("20220526", periods=6)
 # 열 이름을 A,B,C,D로 같는 데이터 프레임을 만들어보자.
 df = pd.DataFrame(data, index=dates, columns=['A','B','C','D'])
 ```
+- 리스트를 데이터프레임으로 만들기
+```python
+import pandas as pd
+import numpy as np
+
+new_df = pd.DataFrame({
+    '열이름A' : 리스트A,
+    '열이름B' : 리스트B,
+    '열이름C' : 리스트C
+})
+
+starbucks_raw.head()
+```
 
 #### 2.2.1 연산
 - 시리즈와 마찬가지로 value의 dtype이 숫자여야 함
