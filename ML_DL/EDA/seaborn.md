@@ -62,6 +62,11 @@ else:
 # plt.rcParams["axes.unicode_minus"]
 plt.rcParams["axes.unicode_minus"] = False
 ```
+- 빨간색 오류창이 안뜨기 위한 설정
+```python
+import warnings
+warnings.simplefilter(action="ignore", category=FutureWarning)
+```
 
 ---
 
