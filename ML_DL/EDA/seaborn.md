@@ -79,6 +79,14 @@ tips = sns.load_dataset("tips")
 ```
 
 ### 3.1 boxplot
+#### 3.1.1 boxplot 개념
+![image](https://user-images.githubusercontent.com/101171109/172293036-dd18f612-22c4-4c47-90cb-c85087ffb132.png)
+- [사진출처](https://www.wellbeingatschool.org.nz/information-sheet/understanding-and-interpreting-box-plots)
+- Median 중심으로 아래 위 상자가 각각 전체 데이터 25%씩 총 50%를 가진다.
+- 상자 전체 길이를 IQR(Inter Quatile Range)라고 한다.
+- IQR의 1.5배 이상을 벗어나면 outlier로 점으로 별도 표기한다
+
+#### 3.1.2 boxplot 그리기
 - 기본 형태
 ```python
 # 도화지를 펼치고
