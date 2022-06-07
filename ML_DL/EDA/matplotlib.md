@@ -28,7 +28,7 @@ from matplotlib import rc
 rc("font", family="Malgun Gothic")
 
 # 마이너스 부호 때문에 한글이 깨질 수가 있어 주는 설정
-#plt.rcParams["axes.unicode_minus"]로 대체 가능
+# plt.rcParams["axes.unicode_minus"]로 대체 가능
 rc('axes', unicode_minus=False)
 
 # 주피터 노트북에서 그래프를 그릴 수 있도록 하는 설정
@@ -36,21 +36,30 @@ rc('axes', unicode_minus=False)
 get_ipython().run_line_magic("matplotlib", "inline")
 ```
 
-### 1.2 한글 설정
-```
-import platform
-import seaborn as sns 
-from matplotlib import font_manager, rc 
 
-path = "C:/Windows/Fonts/malgun.ttf"
+- 플랫폼을 활용한 한글 설정
+```python
+import platform
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+
+get_ipython().run_line_magic("matplotlib", "inline")
+
+# %matplotlib inline
+path = "c:/Windows/Fonts/malgun.ttf"
 
 if platform.system() == "Darwin":
-    rc("font", family="Arial Unicode MS")
+    print("Hangul OK in your MAC !!!")
+    rc("font", family="AppleGothic")
 elif platform.system() == "Windows":
     font_name = font_manager.FontProperties(fname=path).get_name()
+    print("Hangul OK in your Windows !!!")
     rc("font", family=font_name)
 else:
-    print("Unknown system. sorry")
+    print("Unknown system... sorry~~~~")
+
+# plt.rcParams["axes.unicode_minus"]
+plt.rcParams["axes.unicode_minus"] = False
 ```
 
 ### 1.2 그래프 그리기
