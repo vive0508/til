@@ -30,7 +30,7 @@ driver = webdriver.Chrome("../driver/chromedriver.exe")
 ```
 - 원하는 주소로 이동
 ```python
-url = 'https://pinkwink.kr/' 
+url = 'https://ooo.com/' 
 driver.get(url)
 print(url)
 ```
