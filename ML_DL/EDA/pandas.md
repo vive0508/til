@@ -41,6 +41,14 @@
   - 함수 이름에 \*는 와일드 카드
   - \* : wild-card == whole (all)
 
+### glob 모듈
+- 파일의 목록을 읽어오고 정리해주는 모듈
+```python
+from glob import glob 
+
+# * : wild-card == whole (all)
+glob("../data/datascience_*.xls")
+```
 ___
 
 # pandas : 정형 데이터 전처리 및 분석
