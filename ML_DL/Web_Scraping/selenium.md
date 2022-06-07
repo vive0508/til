@@ -34,6 +34,23 @@ url = 'https://pinkwink.kr/'
 driver.get(url)
 print(url)
 ```
+- 팝업창 때문에 해당 URL로 접근이 안될때
+```python
+# 팝업창 화면 전환 후 닫아주기 
+driver.switch_to_window(driver.window_handles[-1])
+driver.close()
+
+# 다시 메인창으로 전환
+driver.switch_to_window(driver.window_handles[-1])
+
+# 해당 url로 접근
+driver.get(url)
+```
+- 새로고침
+```python
+driver.refresh()
+```
+
 - 현재 브라우저 창 크기, 위치
 ```python
 # 현재 브라우저 창 크기 
@@ -85,8 +102,17 @@ some_tag = driver.find_element_by_xpath('xpath')
 action = ActionChains(driver)
 action.move_to_element(some_tag).perform()
 ```
-- 입력창에 글자 넣기
+- 특정 위치 텍스트 확인
+```python
+# 특정 위치를 잡아주고
+# raw_data = driver.find_element_by_css_selector('css_selector')
+# raw_data = driver.find_element_by_id('id')
+raw_data =  driver.find_element_by_xpath('xpath')
+
+raw_data.text
 ```
+- 입력창에 글자 넣기
+```python
 # 원하는 지점의 태그가 화면에 보여야 가능하다
 # 새로 입력하면 뒤에 추가로 붙음 
 some_tag = driver.find_element_by_xpath('xpath')
