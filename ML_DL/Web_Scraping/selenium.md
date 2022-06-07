@@ -111,6 +111,22 @@ raw_data =  driver.find_element_by_xpath('xpath')
 
 raw_data.text
 ```
+- 특정위치 attr 확인
+```python
+Tag = find_elements_by_tag_name("ooo")
+Tag.get_attribute("xxx")
+```
+
+- 특정 위치 텍스트 확인
+```python
+# 특정 위치를 잡아주고
+# raw_data = driver.find_element_by_css_selector('css_selector')
+# raw_data = driver.find_element_by_id('id')
+raw_data =  driver.find_element_by_xpath('xpath')
+
+raw_data.text
+```
+```
 - 입력창에 글자 넣기
 ```python
 # 원하는 지점의 태그가 화면에 보여야 가능하다
