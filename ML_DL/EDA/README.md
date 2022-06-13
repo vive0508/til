@@ -1,7 +1,7 @@
 ### EDA (Exploratory Data Analysis)
 - [Pandas 이론](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas.md)
 - [Pandas 실습](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas.ipynb)
-- [Numpy 이론](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/.md)
+- [Numpy 이론](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/numpy.md)
 - [matplotlib 이론](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/matplotlib.md)
 - [matplotlib 실습](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/matplotlib.ipynb)
 - [seaborn 이론](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.md)
