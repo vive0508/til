@@ -1,12 +1,11 @@
 ### K번째 큰 수
 
 > n장의 카드 중 3장을 뽑아 각 카드에 적힌 수를 합한 값을 기록한다.   
-> 같은 숫자가 카드에 여러장 있을 수 있다. 기록한 값 중 K번째로 큰 수를 출력하시오.   
+> 기록한 값 중 K번째로 큰 수를 출력하시오.   
 
 ```python
 n, k = map(int, input().split())
 a=list(map(int, input().split()))
-
 
 select_sum=set()
 
