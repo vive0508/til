@@ -93,7 +93,7 @@ folium.Marker(
 
 ___
 
-### 2.5 `folium.ClickForMarker()
+### 2.5 `folium.ClickForMarker()`
 - 마우스 클릭시 마커 생성
 ```python
 m = folium.Map(
