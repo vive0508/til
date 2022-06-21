@@ -26,8 +26,6 @@
 ### 코딩테스트
 - [프로그래머스 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)
 
-### CS
-
 ### ETC
 - [환경설정](https://github.com/vive0508/TIL/blob/main/ETC/setting.md)
 - [파이썬 모듈 설치](https://github.com/vive0508/TIL/blob/main/ETC/module.md)
