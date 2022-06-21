@@ -2,9 +2,8 @@
 
 - [Numpy](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/numpy.ipynb)   
 - [Pandas_series](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_series.ipynb)   
-- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_dataframe.ipynb)   
+- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_dataframe.ipynb)    
 - [matplotlib](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/matplotlib.ipynb)    
-- [seaborn](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.md)   
-- [seaborn 실습](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.ipynb)   
+- [seaborn](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.ipynb)    
 - [지도시각화](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/map.md)   
 - [지도시각화 실습](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/map.ipynb)   
