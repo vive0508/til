@@ -1,4 +1,4 @@
-알고리즘 활용
+기초
 ===
 
 1. [k번째 약수](https://github.com/vive0508/TIL/blob/main/Algorithm_practice/Basic/k%EB%B2%88%EC%A7%B8%20%EC%95%BD%EC%88%98.md)   
