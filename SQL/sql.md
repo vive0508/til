@@ -25,6 +25,8 @@ SQL
 ### 2.0 기타
 - 데이터베이스 목록 확인 : SHOW DATABASES;    
 - 데이터베이스 사용 : USE databasename;   
+- 테이블 확인 : SHOW TABLES;
+- 테이블 정보 확인 : DESC tablename;
 
 ### 2.1 데이터 정의 언어 (DDL : Data Definition Lanaguage)
 - 각 릴레이션(데이터베이스 테이블)을 정의하기 위해 사용하는 언어   
@@ -32,17 +34,55 @@ SQL
 ```sql
 # 데이터베이스 생성
 CREATE DATABASE databasename;
+
+# 데이터베이스 생성 및 기본 자료형 설정
+CREATE DATABASE databasename DEFAULT CHARACTER SET utf8mb4;
+
+# 테이블 생성
+CREATE TABLE tablename
+(
+ columnname datatype,
+ columnname datatype,
+ ...
+)
+
 # 내부 접근 유저 생성
 CREATE USER 'username'@'localhost' identified by 'password';
+
 # 외부 접근 유저 생성 (호스트 정보가 다른 user는 이름이 같아도 상관없음)
 CREATE USER 'username'@'%' identified by 'password';
 ```
 - ALTER : 테이블 변경   
-- DROP : 테이블 삭제   
+```sql
+# 테이블 변경(필수)
+ALTER TABLE tablename
 
+# 테이블 이름 변경
+RENAME new_tablename;
+
+# 컬럼 생성
+ADD COLUMN columnname datatype;
+
+# 컬럼명 변경
+CHANGE COLUMN old_columnname new_columnname new_datatype;
+
+# 컬럼 데이터타입 변경
+MODIFY COLUMN columnname datatype;
+
+# 컬럼 삭제
+DROP COLUMN columnname;
+```
+- DROP : 테이블 삭제   
 ```sql
 # 데이터베이스 삭제
 DROP DATABASE databasename;
+
+# 테이블 삭제
+DROP TABLE tablename;
+
+# 컬럼 삭제
+ALTER TABLE tablename
+DROP COLUMN columnname;
 
 # 유저 삭제
 DROP USER 'username'@'localhost';
@@ -77,7 +117,7 @@ FLUSH PRIVILIEGES;
 - REVOKE : 권한 해제 
 ```sql
 # 부여한 권한 삭제
-REVOKE ALL ON dbname.* from 'username'@'localhost';
+REVOKE ALL ON databasename.* from 'username'@'localhost';
 ```
 - COMMIT
 - ROLLBACK
