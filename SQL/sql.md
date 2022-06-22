@@ -46,6 +46,14 @@ CREATE TABLE tablename
  ...
 )
 
+# 테이블 생성 조건
+CREATE TABLE tablename
+(
+ columnname datatype NOT NULL AUTO_INCREMENT PRIMATY KEY, # null : no, extra : auto_increment 
+ columnname datatype NOT NULL DEFAULT '', # default not null
+ ...
+)
+
 # 내부 접근 유저 생성
 CREATE USER 'username'@'localhost' identified by 'password';
 
@@ -89,17 +97,58 @@ DROP USER 'username'@'localhost';
 DROP USER 'username'@'%';
 ```
 
+___
+
 ### 2.2 데이터 조작 언어 (DML : Data Manipulation Language)
 - 데이터 관리(데이터 CRUD)를 위한 언어   
 - INSERT : Create   
+```sql
+# 입력한 컬럼 이름의 순서와 값의 순서가 일치하도록 주의
+INSERT INTO tablename (column1, column2, ...)
+VALUES (value1, value2, ...);
+
+# 모든 컬럼의 값을 추가하는 경우 컬럼 이름을 지정하지 않아도 됨
+INSERT INTO tablename
+VALUES (value1, value2, ...);
+```
 - SELECT : Read     
 ```sql
+# 테이블 전체내용 조회
+SELECT * from tablename;
+
+# 테이블 특정 컬럼 조회
+SELECT column1, colum2, ...
+FROM tablename;
+
 # 사용자 정보는 mysql에서 관리
 USE mysql;
 SELECT host, user FROM user;
+
+# ORDER BY : 특정 컬럼 기준으로 오름차순 혹은 내림차순 정렬
+SELECT column1, colum2, ...
+FROM tablename
+ORDER BY column1, colum2, ... ASC; # Ascending, 오름차순 (default)
+ORDER BY column1, colum2, ... DESC; # Descending, 내림차순
+ORDER BY column1 DESC, column2 ASC;
+
+# WHERE 조건
+SELECT column1, colum2, ...
+FROM tablename
+WHERE condition;
 ```
 - UPDATE : Update    
+```sql
+Update tablename
+SET column1 = value1, colum2=value2, ...
+WHERE condition;
+```
 - DELETE : Delete    
+```sql
+# 조건에 부합하는 데이터 삭제
+DELETE FROM tablename
+WHERE condition;
+```
+___
  
 ### 2.3 데이터 제어 언어 (DCL : Data Control Language)   
 - 사용자 관리 & 사용자별 권한 (릴레이션 및 데이터에 대한 관리/접근)을 다루기 위한 언어   
@@ -121,3 +170,17 @@ REVOKE ALL ON databasename.* from 'username'@'localhost';
 ```
 - COMMIT
 - ROLLBACK
+
+___
+
+### 2.4 비교 연산자
+
+| 연산자 | 의미 |
+| :--: | :-- |
+| A=B | A와 B가 같다 |
+| A>B | A가 B보다 크다 (초과) |
+| A<B | A가 B보다 작다 (미만) |
+| A>=B | A가 B보다 크거나 같다 (이상) |
+| A<=B | A가 B보다 작거나 같다 (이하) |
+| A<>B | A가 B보다 크거나 작다 (같지 않다) |
+| A!= | A와 B가 같지 않다 |
