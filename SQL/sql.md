@@ -198,3 +198,29 @@ ___
 | BETWEEN | 조건이 범위안에 있으면 TRUE |
 | IN | 조건이 목록에 있으면 TRUE |
 | LIKE | 조건이 패턴에 맞으면 TRUE |
+
+- like
+```sql
+SELECT * FROM tablename
+
+# a로 시작하는 경우
+WHERE columnname LIKE 'a%';
+
+# a로 끝나는 경우
+WHERE columnname LIKE '%a';
+
+# a가 포함된 경우
+WHERE columnname LIKE '%a%';
+
+# a가 두번째에 글자에 포함될 경우
+WHERE columnname LIKE '_a%';
+
+# a로 시작하고 최소 두글자 이상인 경우
+WHERE columnname LIKE 'a_%';
+
+# a로 시작하고 b로 끝나는 경우
+WHERE columnname LIKE 'a%b';
+
+# 요소가 2개 이상인 경우
+WHERE columnname LIKE '%,%';
+```
