@@ -13,6 +13,7 @@
 - [Web Scraping](https://github.com/vive0508/TIL/blob/main/ML_DL/Web_Scraping/README.md)
 
 ### SQL
+- [SQL 기초](https://github.com/vive0508/TIL/blob/main/SQL/sql.md)
 
 ### Tableau
 
