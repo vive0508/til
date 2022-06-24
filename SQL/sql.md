@@ -224,3 +224,51 @@ WHERE columnname LIKE 'a%b';
 # 요소가 2개 이상인 경우
 WHERE columnname LIKE '%,%';
 ```
+---
+### 2.5 UNION
+- SQL문을 합치는 방법   
+- 컬럼의 갯수가 같아야 한다
+```sql
+# 중복된 값을 제거하고 알려준다
+# 중복된 값도 모두 보여준다
+SELECT column1, column2, ... FROM tableA
+UNION | UNION ALL
+SELECT column1, column2, ... FROM tableB;
+```
+
+---
+### 2.6 JOIN
+- INNER JOIN : 교집합   
+- LEFT JOIN : 왼쪽 데이터 기준으로 JOIN   
+- RIGHT JOIN : 오른쪽 데이터 기준으로 JOIN
+
+```sql
+SELECT tableA.column1, tableA.column2, ...,  tableB.column1, tableB.column2 ...
+FROM tableA
+INNER JOIN | LEFT JOIN | RIGHT JOIN | FULL OUTER JOIN tableB  # FULL OUTER JOIN 제외
+ON tableA.column = tableB.column # 기준 설정
+WHERE condition;
+```
+
+- FULL OUTER JOIN : 합집합   
+```sql
+# MySQL에서는 FULL OUTER JOIN을 지원하지 않아 하기의 코드로 대체
+SELECT tableA.column1, tableA.column2, ...,  tableB.column1, tableB.column2 ...
+FROM tableA
+LEFT JOIN tableB  
+ON tableA.column = tableB.column
+UNION
+SELECT tableA.column1, tableA.column2, ...,  tableB.column1, tableB.column2 ...
+FROM tableA
+RIGHT JOIN tableB  
+ON tableA.column = tableB.column
+UNION
+WHERE condition;
+```
+
+- SELF JOIN : 교집합
+```sql
+SELECT column1, column2, ...
+FROM tableA, tableB, ...
+WHERE condition; # where절에 조건으로 기준 설정
+```
