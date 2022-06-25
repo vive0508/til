@@ -4,7 +4,7 @@
 >일일커밋을 지향하지만, 의미 없는 커밋은 지양하기   
 ----------------------------------------------------------------------------------------------------------------------
 ### 기초 학습
-- [기초 파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)
+- [파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)
 - [기초 수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
 - [기초 통계](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/README.md)
 
