@@ -272,3 +272,54 @@ SELECT column1, column2, ...
 FROM tableA, tableB, ...
 WHERE condition; # where절에 조건으로 기준 설정
 ```
+
+___
+### 2.7 CONCAT / ALIAS
+- CONCAT
+```sql
+SELECT CONCAT('stringA', ' ', 'stringB', ...); # stringA stringB
+SELECT CONCAT('정답 :', colmname) FROM tablename; # 정답: ooo
+```
+- ALIAS
+```sql
+# 컬럼명 별칭 생성
+SELECT column1 as alias1, column2 as alias2, ... FROM tablename;
+
+# 테이블명 별칭 생성
+SELECT column1, column2, ... FROM tablename as alias;
+
+# ALIAS (with CONCAT)
+SELECT CONCAT(columnA, ' : ', columnB) as alias FROM tablename;
+
+# ALIAS (with SELF JOIN)
+SELECT a.column1, a.column2, b.column3, b.column3 
+FROM tableA as a, tableB as b
+WEHRE condition; # where절에 조건으로 기준 설정
+```
+as를 생략해도 결과는 똑같이 나온다
+___
+### 2.8 DISTINCT
+- 검색한 결과의 중복 제거
+```python
+SELECT DISTINCT column1, column2, ...
+FROM tablename
+WHERE condition;
+```
+
+___
+### 2.9 LIMIT
+- 검색결과를 정렬된 순으로 주어진 숫자만큼 조회
+```sql
+# WHERE와 함께 사용
+SELECT column1, column2, ...
+FROM tablename
+WHERE condition
+LIMIT number;
+
+# ORDER BY 와 함께 사용
+SELECT * from tablename
+ORDER BY columnname
+LIMIT number;
+```
+
+
