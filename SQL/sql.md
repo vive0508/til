@@ -294,7 +294,7 @@ SELECT CONCAT(columnA, ' : ', columnB) as alias FROM tablename;
 # ALIAS (with SELF JOIN)
 SELECT a.column1, a.column2, b.column3, b.column3 
 FROM tableA as a, tableB as b
-WEHRE condition; # where절에 조건으로 기준 설정
+WHERE condition; # where절에 조건으로 기준 설정
 ```
 as를 생략해도 결과는 똑같이 나온다
 ___
