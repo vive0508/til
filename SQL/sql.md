@@ -322,4 +322,10 @@ ORDER BY columnname
 LIMIT number;
 ```
 
+---
+### 2.10 기타
+- 새로고침
+```sql
+flush privileges;
+```
 
