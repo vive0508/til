@@ -329,3 +329,40 @@ LIMIT number;
 flush privileges;
 ```
 
+___
+### 2.11 SQL 파일 실행 및 백업
+
+- mysql 로그인
+```sql
+# 로컬에서 사용시
+mysql -u root -p비밀번호
+
+# aws rds 사용시
+mysql -h "앤드포인트 주소" -P 포트번호 -u admin -p
+
+# mysql 로그인 종료
+exit
+```
+- sql 파일 실행
+```sql
+# mysql에 접속하여 파일을 실행하는 방법
+mysql> source </path/filename.sql>
+mysql> \. </path/filename.sql> # source 대신 \. 사용가능
+mysql> \. </path/filename.sql> # 현재 폴더에 파일이 있으면 path 생략
+
+# 터미널에서 파일을 바로 실행시키는 방법
+mysql -u username -p <dbname> < </path/filename.sql> #-p 다음에 뛰어쓰면 데이터베이스로 인식
+```
+- sql 파일 백업
+```sql
+# 데이터베이스 백업
+mysqldump -u username -p dbname > backup.sql # 특정 Database Backup
+mysqldump -u username -p --all-databases > backup.sql # 모든 Database Backup
+
+# 테이블 백업
+mysqldump -u username -p dbname tablename > backup.sql
+
+# 테이블 생성 쿼리 백업 (데이터 제외)
+mysqldump -d -u username -p dbname tablename > backup.sql # 특정 Table Schema Backup
+mysqldump -d -u username -p dbname > backup.sql # 모든 Table Schema Backup
+```
