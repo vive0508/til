@@ -365,4 +365,171 @@ mysqldump -u username -p dbname tablename > backup.sql
 # 테이블 생성 쿼리 백업 (데이터 제외)
 mysqldump -d -u username -p dbname tablename > backup.sql # 특정 Table Schema Backup
 mysqldump -d -u username -p dbname > backup.sql # 모든 Table Schema Backup
+
+# AWS RDS에서 백업하는 경우 필요한 옵션
+mysqldump --set-gtid-purged=OFF -h <hostname> -P <port> -u <username> -p <databasename> > <filename>.sql
 ```
+
+___
+### 2.12 Python with MySQL
+- 설치 및 불러오기
+```sql
+pip install mysql-connector-python
+import mysql.connector
+```
+- mysql에 접속하기 위한 코드 (커넥션 만들기)
+```sql
+local = mysql.connector.connect(
+ host = "<hostname>",
+ user = "<username>",
+ password = "<password>",
+ database = "<databasename>" #옵션
+)
+
+remote = mysql
+mysql.connector.connect(
+ host = "<hostname>",
+ port = "<port>",
+ user = "<username>",
+ password = "<password>"
+ database = "<databasename>" #옵션
+)
+```
+- mysql 종료
+```sql
+local.close()
+remote.close()
+```
+- 쿼리 및 파일 실행 & 결과 확인
+```sql
+import mysql.connector
+
+mydb = mysql.connector.connec(
+host = "<hostname>",
+ user = "<username>",
+ password = "<password>",
+ database = "<databasename>" #옵션
+)
+
+cur = mydb.cursor(burffered=True) # 읽을 데이터의 양이 많은 경우
+
+# Query를실행하기 위한 코드
+cur.execute(<querty>)
+
+# SQL 파일을 실행하기 위한 코드
+sql = open("<filename>.sql").read()
+cur.execute(sql)
+
+# SQL 파일 내에 쿼리가 여러개 존재하는 경우
+sql = open("<filename>.sql").read()
+cur.execute(sql)
+
+# 결과값 확인
+result = cur.fetchall()
+for result_iterator in result:
+    print(result_iterator)
+
+mydb.close()
+
+# 결과값 확인 (with Pandas)
+import pandas as pd
+
+df = pd.DataFrame(result)
+df.head()
+```
+___
+### 2.13 Python with CSV
+#### 예제 1
+- 파일 불러오기
+```sql
+import pandas as pd
+import mysql.connector
+
+# 파일 불러오기 
+df = pd.read_csv('ooo.csv', encoding='utf-8') # utf-8이 안되면 euc-kr로
+
+# mysql에 접속하기 위한 코드 만들기
+conn = mysql.connector.connect(
+ host = "<hostname>",
+ port = "<port>",
+ user = "<username>",
+ password = "<password>"
+ database = "<databasename>"
+)
+
+# cursor 만들기
+cur = conn.cursor(burffered=True)
+
+# insert와 itterows를 활용하여 데이터를 넣고
+sql = "INSERT INTO tablename VALUES ('2022', %s, %s, ...)"
+
+for i, row in df.interrows():
+ cursor.execute(sql, tuple(row)):
+ conn.commit()  # commit() : 데이터베이스에 적용하기 위한 명령어
+ 
+# 결과를 확인한다
+cursor.execute("SELECT * FROM tablename")
+result = cursor.fetchall()
+
+for row in result;
+ print(row)
+ 
+# 판다스로 다시 확인
+import pandas as pd
+
+df = pd.DataFrame(result)
+df.head()
+```
+
+#### 예제 2
+- 파일 불러오기
+```sql
+import pandas as pd
+df = pd.read_csv('ooo.csv')
+```
+- 
+```sql
+import mysql.connector
+
+# mysql에 접속하기 위한 코드 만들기
+conn = mysql.connector.connect(
+ host = "<hostname>",
+ port = "<port>",
+ user = "<username>",
+ password = "<password>"
+ database = "<databasename>"
+)
+
+# cursor 만들기
+cur = conn.cursor(burffered=True)
+
+# insert와 itterows를 활용하여 데이터를 넣고
+sql = "INSERT INTO tablename VALUES (%s, %s, ...)"
+
+for i, row in df.interrows():
+ cursor.execute(sql, tuple(row)):
+ conn.commit()  # commit() : 데이터베이스에 적용하기 위한 명령어
+ 
+# 결과를 확인한다
+cursor.execute("SELECT * FROM tablename")
+result = cursor.fetchall()
+
+for row in result;
+ print(row)
+ 
+# 판다스로 다시 확인
+import pandas as pd
+
+df = pd.DataFrame(result)
+df.head()
+```
+
+
+
+
+
+
+
+
+
+
