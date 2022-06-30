@@ -305,7 +305,17 @@ SELECT DISTINCT column1, column2, ...
 FROM tablename
 WHERE condition;
 ```
+- SELECT와 함께 사용
+```python
+# 중복제거된 데이터를 3개만 확인할 때
+SELECT DISTINCT column1, column2, ...
+FROM tablename
+WHERE condition
+LIMIT 3;
 
+# 중복값 제외한 결과의 수 확인
+SELECT COUNT (DISTINCT columnname) from tablename;
+```
 ___
 ### 2.9 LIMIT
 - 검색결과를 정렬된 순으로 주어진 숫자만큼 조회
@@ -316,7 +326,7 @@ FROM tablename
 WHERE condition
 LIMIT number;
 
-# ORDER BY 와 함께 사용
+# ORDER BY와 함께 사용
 SELECT * from tablename
 ORDER BY columnname
 LIMIT number;
@@ -480,56 +490,59 @@ import pandas as pd
 df = pd.DataFrame(result)
 df.head()
 ```
-
-#### 예제 2
-- 파일 불러오기
+___
+### 2.14 Primary key
+- Primary key 생성
 ```sql
-import pandas as pd
-df = pd.read_csv('ooo.csv')
+CREATE TABLE tablename
+(
+  column1 datatype NOT NULL,
+  column2 datatype NOT NULL,
+  ...
+  CONSTRAINT constraint_name # 생략가능
+   PRIMARY KEY (column1, column2, ...)
+);
 ```
-- 
+- Primary key 추가
 ```sql
-import mysql.connector
-
-# mysql에 접속하기 위한 코드 만들기
-conn = mysql.connector.connect(
- host = "<hostname>",
- port = "<port>",
- user = "<username>",
- password = "<password>"
- database = "<databasename>"
-)
-
-# cursor 만들기
-cur = conn.cursor(burffered=True)
-
-# insert와 itterows를 활용하여 데이터를 넣고
-sql = "INSERT INTO tablename VALUES (%s, %s, ...)"
-
-for i, row in df.interrows():
- cursor.execute(sql, tuple(row)):
- conn.commit()  # commit() : 데이터베이스에 적용하기 위한 명령어
- 
-# 결과를 확인한다
-cursor.execute("SELECT * FROM tablename")
-result = cursor.fetchall()
-
-for row in result;
- print(row)
- 
-# 판다스로 다시 확인
-import pandas as pd
-
-df = pd.DataFrame(result)
-df.head()
+# 하나의 컬럼을 기본키로 지정
+ALTER TABLE tablename
+ADD CONSTRAINT constraint_name # 생략가능
+PRIMARY KEY (column1, column2, ...);
 ```
-
-
-
-
-
-
-
-
-
-
+- Primary key 삭제
+```sql
+ALTER TABLE tablename
+DROP PRIMARY KEY;
+```
+___
+### 2.15 Foreign key
+- Foreign key 생성
+```sql
+# 한 테이블을 다른 테이블과 연결
+CREATE TABLE tablename
+(
+ column1 datatype NOT NULL,
+ column2 datatype NOT NULL,
+ column3 datatype,
+ column4 datatype,
+ ...
+ CONSTRAINT constraint_name # 생략가능
+  PRIMARY KEY (column1, column2, ...),
+ CONSTRAINT constraint_name # 생략가능
+  FOREINGN KEY (column2, column4, ...) REFERENCES REF_tablename(REF_column)
+```
+- 자동생성된 CONSTRAINT 확인방법
+```sql
+SHOW CREATE TABLE tablename;
+```
+- FOREIGN KEY 추가
+```sql
+ALTER TABLE tablename
+ADD FOREIGN KEY (column) REFERENCES REF_tablename(REF_column);
+```
+- FOREIGN KEY 삭제
+```sql
+ALTER TABLE tablename
+DROP FOREIGN KEY FK_constraint;
+```
