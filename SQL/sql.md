@@ -546,3 +546,133 @@ ADD FOREIGN KEY (column) REFERENCES REF_tablename(REF_column);
 ALTER TABLE tablename
 DROP FOREIGN KEY FK_constraint;
 ```
+___
+### 2.16 Aggregate Function (집계함수)
+
+| Function | Description |
+| :--: | :-- |
+| COUNT | 총 갯수를 계산해주는 함수 |
+| SUM | 합계를 계산해주는 함수 |
+| AVG | 평균을 계산해주는 함수 |
+| MIN | 가장 작은 값을 찾아주는 함수 |
+| MAX | 가장 큰 값을 찾아주는 함수 |
+| FIRST | 첫번째 결과값을 리턴하는 함수 |
+| LAST | 마지막 결과값을 리턴하는 함수 |
+
+```sql
+SELECT Aggregate_Functions(column)
+FROM tablename
+WHERE condition;
+```
+___
+### 2.17 GROUP BY
+```sql
+SELECT colunm1, colunm2, ...
+FROM table
+WHERE condition
+GROUP BY colunm1, colunm2, ... # DISTINCT로 대체하여 사용 가능
+ORDER BY colunm1, colunm2, ...; # DISTINCT를 사용하는 경우 ORDER BY 불가능
+```
+
+___
+### 2.18 HAVING
+- 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
+```sql
+SELECT colunm1, colunm2, ...
+FROM table
+WHERE condition
+GROUP BY colunm1, colunm2, ... 
+HAVING condition (Aggregate_Functions)
+ORDER BY colunm1, colunm2, ...; 
+```
+---
+### 2.19 Scalar Function
+- 입력값을 기준으로단일 값을 반환하는 함수
+
+| Function | Description |
+| :--: | :-- |
+| UCASE | 영문을 대문자로 변환하는 함수 |
+| LCASE | 영문을 소문자로 변환하는 함수 |
+| MID | 문자열 부분을 반환하는 함수 |
+| LENGTH | 문자열의 길이를 반환하는 함수 |
+| ROUND | 지정한 자리에서 숫자를 반올림하는 함수 (0이 소숫점 첫째 자리) |
+| FORMAT | 숫자를 천단위 콤마가 있는 형식으로 반환하는 함수 |
+| NOW | 현재 날짜 및 시간을 반환하는 함수 |
+
+
+```sql
+# UCASE/LACASE/LENGTH
+SELECT Scalar_function() #LENGTH의 경우 공백을 1로 반환, NULL은 NULL로 반환
+FROM table
+where condition;
+
+# MID
+SELECT MID(string, start_position, length) # 첫글자는 1
+FROM table
+where condition;
+
+# ROUND / FORMAT
+SELECT FORMAT(numer, decimal_place);
+
+# NOW
+SELECT NOW();
+```
+___
+### 2.20 SQL Subquery
+- Scalar subquery : Select절에 사용   
+```sql
+SELECT column1, (SELECT column2 FROM table2 WHERE condition)
+FROM table1
+WHERE condtion;
+```
+- Inline View : From절에 사용   
+```sql
+SELECT a.column, b.column
+FROM table1 a, (SELECT  column1, column2 FROM table2) b
+WHERE condition;
+```
+- Nested Subquery : Where절에 사용
+  - Single ROW : 하나의 열을 검색하는 서브쿼리
+  ```sql
+  # 서브쿼리가 비교연산자와 함게 사용되는 경우, 한 개의 결과값을 가져와야 한다.
+  SELECT column_names
+  FROM table_name
+  WHERE column_name = (SELECT column_name From table_name WHERE condtion)
+  ORDER BY column_name;
+  ```
+  
+  - Multiple ROW : 하나 이상의 열을 검색하는 서브쿼리
+  ```sql
+  # IN : 서브쿼리 결과 중에 포함될 때
+  SELECT column_names
+  FROM table_name
+  WHERE column_name IN (SELECT column_name FROM table_name WHERE condtion)
+  ORDER BY column_name;
+
+  # EXISTS : 서브쿼리 결과에 값이 있을 때
+  SELECT column_names
+  FROM table_name
+  WHERE column_name EXISTS (SELECT column_name FROM table_name WHERE condtion)
+  ORDER BY column_name;
+
+  # ANY : 서브쿼리 결과 중에 최소한 하나라도 만족하면 (비교연산자 사용)
+  SELECT column_names
+  FROM table_name
+  WHERE column_name = ANY (SELECT column_name FROM table_name WHERE condtion)
+  ORDER BY column_name;
+
+  # ALL : 서브쿼리 결과를 모두 만족하면 (비교연산자 사용)
+  SELECT column_names
+  FROM table_name
+  WHERE column_name = ALL (SELECT column_name FROM table_name WHERE condtion);
+  ```
+  
+  - Multiple Column : 하나 이상의 행을 검색하는서브 쿼리
+  ```sql
+  SELECT column_names
+  FROM tablename a
+  WHERE (a.column1, a.column2, ...) IN (SELECT b.column1, b.column2,...
+                                        FROM tablename b
+                                        WHERE a.column_name=b.column_name)
+  ORDER BY column_names;
+  ```
