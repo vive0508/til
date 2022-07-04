@@ -1,10 +1,14 @@
 Git
 ===
 
+## 1. Git
+- 버전관리 시스템(형상관리)   
+- Configuratin Management System   
+- Version Control Systems
 
-# 1. Git
-## 1.1 Git 설치
-### 1.1.1 CLI (Command Line Interface)
+___
+### 1.1 Git 설치
+#### 1.1.1 CLI (Command Line Interface)
 - GitBash를 포함하여 Git을 설치한다. ([http://git-scm.com/](http://git-scm.com/))   
 
     (1) Git의 버전을 확인한다.
@@ -17,17 +21,17 @@ Git
     git config --global core.autocrlf true 
     ```
 
-### 1.1.2 GUI (Graphical User Interface)
+#### 1.1.2 GUI (Graphical User Interface)
 - SourceTree를 설치한다. ([https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/))
 
 
-### 1.1.3 Integrated Development Environmen
+#### 1.1.3 Integrated Development Environmen
 - Visual Studion Code를 설치한다. ([https://code.visualstudio.com/](https://code.visualstudio.com/))
 - 기본 터미널을 Git Bash로 설정한다.
 
 ___
 
-## 1.2 Git 최초 설정
+### 1.2 Git 최초 설정
 터미널 프로그램(Git Bash)에서 아래 명령어를 실행한다
 ```
 git config --global user.name "(본인 이름)"
@@ -44,9 +48,10 @@ git config --global user.email
 ```
 git config --global init.defaultBranch main
 ```
+___
 
-## 1.2 문법
-### 1.2.1 Git의 Workflow
+### 1.3 문법
+#### 1.3.1 Git의 Workflow
 > 1. working directory
 > 2. staging area
 >>  (1) untracked   
@@ -55,7 +60,7 @@ git config --global init.defaultBranch main
 > 4. remote
 
 
-### 1.2.1 Git 문법
+#### 1.3.1 Git 문법
 - 히스토리를 저장할 .git 폴더 생성 `git init`
 - 배제할 요소 지정 `git ignore`
 - Workflow의 현재상황 확인하기 `git status`
@@ -66,7 +71,7 @@ git config --global init.defaultBranch main
 - .git directiory 히스토리 확인 `git log`
 
 
-### 1.2.2 Vim 문법
+#### 1.3.2 Vim 문법
 |Vi 명령어|작업|
 |:--:|:--:|
 |i|텍스트 입력 시작|   
@@ -77,11 +82,12 @@ git config --global init.defaultBranch main
 |k|위로 스크롤| 
 |j|아래로 스크롤|
 
+___
 
-## 1.3 시간
+### 1.4 시간
 - 시간 : 프로젝트의 버전을 과거로 되돌리거나 특정내역을 취소할 수 있
 
-### 1.3.1 reset
+#### 1.4.1 reset
 - 원하는 시점으로 돌아간 뒤 이후 내역을 지운다.
   ```
   git log
@@ -102,17 +108,18 @@ git config --global init.defaultBranch main
   백업해둔 .git 폴더가 있다면 폴더를 복원한 후
   위의 명령어로 마지막 커밋으로 이동을 한다
 
-### 1.3.2 revert
+#### 1.4.2 revert
 - 되돌리기 원하는 시점의 커밋을 거꾸로 시작한다.
   ```
   git revert --no-commit (되돌릴 커밋의 해시)
   ```
 
+___
 
-## 1.4 차원
+### 1.5 차원
 - 차원 : 프로젝트의 여러 모드를 쉽게 전환하고 관리할 수 있다   
 
-### 1.4.1 브랜치 생성/이동/삭제
+#### 1.5.1 브랜치 생성/이동/삭제
   브랜치 생성 `git branch (브랜치명)`   
   브랜치 목록 조회 `git branch`   
   브랜치 목록 상세조회 `git log --all --decorate --oneline --graph`   
@@ -122,7 +129,7 @@ git config --global init.defaultBranch main
   브랜치 강제삭제 `git branch -D (브랜치명)`   
   브랜치 이름 변경 `git branch -m (기존이름)(새이름)`   
    
-### 1.4.2 브랜치 병합 `merge`
+#### 1.5.2 브랜치 병합 `merge`
 - 두 브랜치를 한 커밋에 이어붙인다
 - 브랜치의 사용내역이 남는다   
  `B` 브랜치를 `A` 브랜치로 merge 할 때,   
@@ -134,7 +141,7 @@ git config --global init.defaultBranch main
   병합된 브랜치는 삭제한다.
 
 
-### 1.4.3 브랜치 병합 `rebase`
+#### 1.5.3 브랜치 병합 `rebase`
 - 브랜치를 다른 브랜치에 이어 붙인다
 - 한줄로 커밋이 깔끔하게 정리된다   
   `C` 브랜치를 `A` 브랜치로 merge 할 때,   
@@ -149,14 +156,16 @@ git config --global init.defaultBranch main
   ```
   그리고 브랜치 c는 삭제한다.
 
-# 2. GitHub
-## 2.1 토큰 생성 및 관리
+___
+
+## 2. GitHub
+### 2.1 토큰 생성 및 관리
   1. Personal access token을 만든다
   2. 토큰을 컴퓨터에 저장한다(Windows 자격 증명 관리자 > Windows 자격 증명 > `git:https://github.com` )
   3. 소스트리에도 토큰을 저장한다. (설정 > 계정 ? 추가 > basic > HTTPS)
 
 
-## 2.2 `push`
+### 2.2 `push`
 - 처음부터 모든 내용을 `push` 해야하는 경우
   로컬 깃 저장소에 원격 저장소 연결 추가
   ```
@@ -183,7 +192,7 @@ git config --global init.defaultBranch main
   git push
   ```
 
-## 2.3 `pull`
+### 2.3 `pull`
 - 파일만 다운로드 `Download ZIP`
 - Git 관리내역 포함 다운로드 `Git clone`
 
@@ -197,12 +206,12 @@ git config --global init.defaultBranch main
   git pull
   ```
 
-## 2.4 `push`할 것이 있을 때 `pull`하는 방법
-### 2.4.1 merge 방식
+### 2.4 `push`할 것이 있을 때 `pull`하는 방법
+#### 2.4.1 merge 방식
   ```
   git pull --no-rebase
   ```
-### 2.4.2 rebase 방식
+#### 2.4.2 rebase 방식
   ```
   git pull --rebase
   ```
