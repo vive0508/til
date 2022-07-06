@@ -48,13 +48,13 @@ ___
 ___
 
 ### 1.2 Git 최초 설정
-터미널 프로그램(Git Bash)에서 아래 명령어를 실행한다
+- 터미널 프로그램(Git Bash)에서 아래 명령어를 실행한다
 ```
 git config --global user.name "(본인 이름)"
 git config --global user.email "(본인 이메일)"
 ```
 
-확인은 다음의 명령어로 진행한다.
+- 확인은 다음의 명령어로 진행한다.
 ```
 # 하나씩 확인하고 싶을 경우
 git config --global user.name
@@ -63,12 +63,12 @@ git config --global user.email
 # 전체를 한번에 확인하는 방법 (종료시 q 사용)
 git config --list
 ```
-서버에서 가져올때는 LF를 CRLF로 변경하고 보낼때는 CRLF를 LF로 변경한다.(Windows)
+- 서버에서 가져올때는 LF를 CRLF로 변경하고 보낼때는 CRLF를 LF로 변경한다.(Windows)
 ```
 git config --global core.autocrlf true
 ```
 
-기본 브랜치명을 변경한다.
+- 기본 브랜치명을 변경한다.
 ```
 git config --global init.defaultBranch main
 ```
