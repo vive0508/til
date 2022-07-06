@@ -1,10 +1,39 @@
 Git
 ===
 
-## 1. Git
-- 버전관리 시스템(형상관리)   
-- Configuratin Management System   
-- Version Control Systems
+## 1. 용어
+- GIT
+    - 버전관리 시스템(형상관리)   
+    - Configuratin Management System    
+    - Version Control Systems   
+- Repository
+    - 소스코드가 저장되어 있는 여러 개의 Branch들이 모여있는 디스크상의 물리적인 공간   
+    - Local Repository와 Remote Repository로 구분   
+- Checkout
+    - 특정 시점이나 Branch의 소스코드로 이동한다
+    - Checkout의 대상 : Branch, Commit, Tag
+- Stage
+    - 작업할 내용이 올라가는 임시저장영역   
+    - 이 영역을 이용하여 작업한 내용중 commit에 반영할 파일만 선별하여 commit을 수행할 수 있음
+- Commit
+    - 작업할 내용을 Local Repository에 저장하는 과정   
+    - 변경에 대하 설명은 commit log로 남김   
+- Tag
+    - 임의의 commit 위치에 쉽게 찾아갈 수 있도록 붙여놓은 이정표   
+    - Tag가 붙은 commit은 commit id(version) 대신 tag name으로 쉽게 checkout 가능   
+
+- Push
+    - Local Repository의 내용 중, Remote Repositoryt에 반영되지 않은 commit을 Remot Repository로봬는 과정   
+    - Push를 하는 순간 다른 개발자들도 영향을 받음   
+
+- Pull
+    - Remote Repository에 있는 내용 중, Local Repositry에 반영되지 않은 내용을 가져와서 Local Repository에 저장하는 과정   
+    - Push과정에서 Conflict가 발생하여 Push가 거절된 경우에는, Pull을 통해 문제를 해결한 뒤 다시 Push를 시도해야 함   
+
+- Branch
+    - 특정 시점(commit 단위)에서 분기하여 새로운 commit을 쌓을수 있는 가지를 만드는 것   
+    - 개발의 주축이 되는 branch를 master branch(main branch)라고 함   
+    - 모든 branch는 최종적으로 다시 master branch에 merge되는 방식으로 진행됨
 
 ___
 ### 1.1 Git 설치
@@ -20,6 +49,7 @@ ___
     ```
     git config --global core.autocrlf true 
     ```
+
 
 #### 1.1.2 GUI (Graphical User Interface)
 - SourceTree를 설치한다. ([https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/))
@@ -40,8 +70,16 @@ git config --global user.email "(본인 이메일)"
 
 확인은 다음의 명령어로 진행한다.
 ```
+# 하나씩 확인하고 싶을 경우
 git config --global user.name
 git config --global user.email
+
+# 전체를 한번에 확인하는 방법 (종료시 q 사용)
+git config --list
+```
+서버에서 가져올때는 LF를 CRLF로 변경하고 보낼때는 CRLF를 LF로 변경한다.(Windows)
+```
+git config --global core.autocrlf true
 ```
 
 기본 브랜치명을 변경한다.
