@@ -76,12 +76,12 @@ ___
 
 ### 1.3 문법
 #### 1.3.1 Git의 Workflow
-- 1. working directory(작업공간) : 실제 소스파일, 생성한 파일들이 존재     
-- 2. Index(stage) : staging area, 작업할 내용이 올라가는 임시저장 영역, `git add`한 파일들이 존재     
+- Working directory(작업공간) : 실제 소스파일, 생성한 파일들이 존재     
+- Index(stage) : staging area, 작업할 내용이 올라가는 임시저장 영역, `git add`한 파일들이 존재 
     - (1) untracked   
     - (2) tracked : unmodified, modified   
-- 3. Head - git directiory, 최종확정본, git commit한 파일들이 존재
-- 4. remote
+- Head - git directiory, 최종확정본, git commit한 파일들이 존재
+- Remote
 
 
 #### 1.3.2 Git 문법
@@ -187,50 +187,54 @@ ___
 ### 2.1 토큰 생성 및 관리
   1. Personal access token을 만든다
   2. 토큰을 컴퓨터에 저장한다(Windows 자격 증명 관리자 > Windows 자격 증명 > `git:https://github.com` )
-  3. 소스트리에도 토큰을 저장한다. (설정 > 계정 ? 추가 > basic > HTTPS)
-
+  3. 소스트리에도 토큰을 저장한다. (설정 > 계정 > 추가 > basic > HTTPS)
+  
 
 ### 2.2 `push`
-- Local Repository의 내용 중, Remote Repositoryt에 반영되지 않은 commit을 Remote Repository로 보내는 과정   
-- Push를 하는 순간 다른 개발자들도 영향을 받음    
-      - 처음부터 모든 내용을 `push` 해야하는 경우 로컬 깃 저장소에 원격 저장소 연결 추가   
-      ```
-      git remote add origin (원격 저장소 주소)
-      ```
-      - 기본 브랜치 명을 main으로 설정   
-      ```
-      git branch -M main   
-      ```
-      - 로컬 저장소의 커밋 내역들을 원격으로 push   
-      ```
-      git push -u origin main 
-      ```
-      - 원격 목록 보기   
-      ```
-      git remote
-      ```
-      - 원격 지우기   
-      ```
-      git remote remove (origin 등 원격 이름)
-      ```
-      - 변경 내역을 `push` 해야하는 경우   
-      ```
-      git push
-      ```
+> Local Repository의 내용 중, Remote Repository에 반영되지 않은 commit을 Remote Repository로 보내는 과정      
+> Push를 하는 순간 다른 개발자들도 영향을 받음    
+- 처음부터 모든 내용을 `push` 해야하는 경우 로컬 저장소에 원격 저장소 연결 추가    
+```
+# 매번 아이디와 비밀번호 따로 입력해야 함
+git remote add origin http://github.com/<repository>.git(원격 저장소 주소)
+
+# 유저네임과 토큰을 활용하여 아이디 비밀번호 입력을 생략할 수 있음
+git remote add origin http://<username>:<token>@github.com/<repository>.git
+```
+- 기본 브랜치 명을 main으로 설정    
+```
+git branch -M main   
+```
+- 로컬 저장소의 커밋 내역들을 원격으로 push    
+```
+git push origin <branchname>
+```
+- 원격 목록 보기    
+```
+git remote
+```
+- 원격 지우기   
+```
+git remote remove (origin 등 원격 이름)
+```
+- 변경 내역을 `push` 해야하는 경우   
+```
+git push
+```
 
 ### 2.3 `pull`
-- Remote Repository에 있는 내용 중, Local Repositry에 반영되지 않은 내용을 가져와서 Local Repository에 저장하는 과정    
-- Push과정에서 Conflict가 발생하여 Push가 거절된 경우에는, Pull을 통해 문제를 해결한 뒤 다시 Push를 시도해야 함   
-    - 파일만 다운로드 `Download ZIP`   
-    - Git 관리내역 포함 다운로드 `Git clone`   
-      ```
-      # 터미널 or Git Bash에서 대상 폴더 이동 후   
-      git clone (원격 저장소 주소)
-      ```
-    - 변경된 내역을 `pull`해야하는 경우   
-      ```
-      git pull
-      ```
+> Remote Repository에 있는 내용 중, Local Repositry에 반영되지 않은 내용을 가져와서 Local Repository에 저장하는 과정    
+> Push과정에서 Conflict가 발생하여 Push가 거절된 경우에는, Pull을 통해 문제를 해결한 뒤 다시 Push를 시도해야 함   
+- 파일만 다운로드 `Download ZIP`   
+- Git 관리내역 포함 다운로드 `Git clone`   
+  ```
+  # 터미널 or Git Bash에서 대상 폴더 이동 후    
+  git clone (원격 저장소 주소)
+  ```
+- 변경된 내역을 `pull`해야하는 경우   
+  ```
+  git pull origin <branchname>
+  ```
 
 ### 2.4 `push`할 것이 있을 때 `pull`하는 방법   
 - merge 방식    
