@@ -96,31 +96,17 @@ ___
 >>> This is third sentence   
 
 ### 1.2.7. quoting code
+> 코드블럭 시작점에 사용하려는 언어를 선언하면 문법강조(Syntax highlighting)가 가능하다.   
 
-- 코드가 한줄일때, 코드블럭코드("\``")을 이용한다
-<pre>
-<code>
-`code`
-</code>
-</pre>
+- 코드가 한줄일때, 코드블럭코드(\``)을 이용한다
+<pre><code>`code`</code></pre>
 
-- 코드가 여러줄일때, 코드블럭코드("\```")을 이용한다
-<pre>
-<code>
-```
-code
-```
-</code>
-</pre>
-코드블럭("\```") 시작점에 사용하려는 언어를 선언하면 **문법강조(Syntax highlighting)**이 가능하다.
+- 코드가 여러줄일때, 코드블럭코드(\```)을 이용한다
+<pre><code>```code```</code></pre>
 
 - `<pre><code></code></pre>`을 이용한다
 ```
-<pre>
-<code>
-code what you want
-</code>
-</pre>
+<pre><code> code </code></pre>
 ```
 
 
