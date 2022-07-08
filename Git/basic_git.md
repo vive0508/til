@@ -146,14 +146,17 @@ ___
 - 차원 : 프로젝트의 여러 모드를 쉽게 전환하고 관리할 수 있다   
 
 #### 1.5.1 브랜치 생성/이동/삭제
-- 브랜치 생성 `git branch (브랜치명)`   
-- 브랜치 목록 조회 `git branch`   
-- 브랜치 목록 상세조회 `git log --all --decorate --oneline --graph`   
-- 브랜치 이동 `git switch (브랜치명)`   
-- 브랜치 생성, 이동 동시에 `git switch -c (브랜치명)`   
-- 브랜치 삭제 `git branch -d (브랜치명)`   
-- 브랜치 강제삭제 `git branch -D (브랜치명)`   
-- 브랜치 이름 변경 `git branch -m (기존이름)(새이름)`   
+- 브랜치 생성 : `git branch (브랜치명)`   
+- 브랜치 목록 조회(Local Branch) : `git branch`   
+- 브랜치 목록 조회(Remote Branch) : `git branch -r`   
+- - 브랜치 목록 조회(All Branch) : `git branch -a`   
+- 브랜치 목록 상세조회 : `git log --all --decorate --oneline --graph`   
+- 브랜치 이동 : `git switch (브랜치명)` or `git checkout (브랜치명)`   
+- 브랜치 생성, 이동 동시에 : `git switch -c (브랜치명)` or `git chekout -b (브랜치명)`   
+- 브랜치 삭제 (Local Branch) : `git branch -d (브랜치명)`   
+- 브랜치 삭제 (Remote Branch) : `git push origin --delete (브랜치명)`   
+- 브랜치 강제삭제 : `git branch -D (브랜치명)`   
+- 브랜치 이름 변경 : `git branch -m (기존이름)(새이름)`   
    
 #### 1.5.2 브랜치 병합 `merge`
 - 두 브랜치를 한 커밋에 이어붙인다   
@@ -228,8 +231,11 @@ git push
 - 파일만 다운로드 `Download ZIP`   
 - Git 관리내역 포함 다운로드 `Git clone`   
   ```
-  # 터미널 or Git Bash에서 대상 폴더 이동 후    
-  git clone (원격 저장소 주소)
+  # 터미널 or Git Bash에서 대상 폴더 이동 후 Git Init으로 해당 폴더를 초기화   
+  # Remote Repository 등록
+  # git clone으로 Remote Repository의 내용을 Pull
+  git clone http://github.com/<repository>.git (원격 저장소 주소)
+  git clone http://<username>L<token>@github.com/<repository>.git
   ```
 - 변경된 내역을 `pull`해야하는 경우   
   ```
