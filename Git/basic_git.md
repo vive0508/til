@@ -1,7 +1,7 @@
 Git
 ===
 
-## 1. 용어
+### 1. 용어
 - GIT
     - 버전관리 시스템(형상관리)   
     - Configuratin Management System    
@@ -15,11 +15,6 @@ Git
     - 특정 시점(commit 단위)에서 분기하여 새로운 commit을 쌓을수 있는 가지를 만드는 것   
     - 개발의 주축이 되는 branch를 master branch(main branch)라고 함   
     - 모든 branch는 최종적으로 다시 master branch에 merge되는 방식으로 진행됨
-
-- Tag
-    - 임의의 commit 위치에 쉽게 찾아갈 수 있도록 붙여놓은 이정표   
-    - Tag가 붙은 commit은 commit id(version) 대신 tag name으로 쉽게 checkout 가능   
-
 
 ___
 ### 1.1 Git 설치
@@ -95,8 +90,9 @@ ___
 - Index → working directory : `git rm --cached .`
 - head 히스토리 확인 : `git log`
 
-#### 1.3.3 Vim 문법
-|Vi 명령어|작업|
+#### 1.3.3 Git Editor
+- Vim 문법
+|Vim 명령어|작업|
 |:--:|:--:|
 |i|텍스트 입력 시작|   
 |ESC|텍스트 입력 종료|   
@@ -138,7 +134,6 @@ ___
   ```
   git revert --no-commit (되돌릴 커밋의 해시)
   ```
-
 ___
 
 ### 1.5 차원
@@ -149,7 +144,7 @@ ___
 - 브랜치 생성 : `git branch (브랜치명)`   
 - 브랜치 목록 조회(Local Branch) : `git branch`   
 - 브랜치 목록 조회(Remote Branch) : `git branch -r`   
-- - 브랜치 목록 조회(All Branch) : `git branch -a`   
+- 브랜치 목록 조회(All Branch) : `git branch -a`   
 - 브랜치 목록 상세조회 : `git log --all --decorate --oneline --graph`   
 - 브랜치 이동 : `git switch (브랜치명)` or `git checkout (브랜치명)`   
 - 브랜치 생성, 이동 동시에 : `git switch -c (브랜치명)` or `git chekout -b (브랜치명)`   
@@ -161,12 +156,39 @@ ___
 #### 1.5.2 브랜치 병합 `merge`
 - 두 브랜치를 한 커밋에 이어붙인다   
 - 브랜치의 사용내역이 남는다   
-  ```
-  # 브랜치 B를 브랜치 A로 merge 할 때, 우선 A브랜치로 이동을 한 후 아래의 코드를 입력한다
-  git merge B
-  ```
-  `:wq`로 자동입력된 커밋 메시지를 저장한 뒤 마무리한다.   
-  병합된 브랜치는 삭제한다.
+  
+    - Git Configuration 파일 열기
+    ```
+    # 설정한 Git Editor로 실행됨
+    git config --global -e
+    ```
+
+    - Git Merge 설정 추가
+    ```
+    [merge]
+        tool = vscode
+    [mergetool "vscode"]
+        cmd = "code --wait --MERGED"
+    ```
+    - Git Merge
+    ```
+    # 브랜치 B를 브랜치 A로 merge 할 때, 우선 A브랜치로 이동을 한 후 아래의 코드를 입력한다
+    git merge B
+    ```
+    `:wq`로 자동입력된 커밋 메시지를 저장한 뒤 마무리하고, 병합된 브랜치는 삭제한다.
+    - Merge Tool 실행
+    ```
+    # Conflict 발생 시
+    git mergetool
+    ```
+    - Conflict 해제
+    ```
+    #1
+    git add 
+
+    #2
+    git commit
+    ```
 
 
 #### 1.5.3 브랜치 병합 `rebase`
@@ -252,7 +274,87 @@ git pull --no-rebase
 ```
 git pull --rebase
 ```
+___
+
+## 3. 기타
+### 3.1 Git Diff Tool 설정
+- Git Editor 변경
+```
+# git config --global core.editor <editorname> --wait
+# --wait 옵션 : VSCode 실행시 인스턴스를 닫을 때까지 command 대기
+
+git config --global core.editor "vim"
+git config --global core.editor "code --wait"
+```
+- Git Configuration 파일 열기
+```
+# 설정한 Git Editor로 실행됨
+git config --global -e
+```
+- Git Diff 설정 추가
+```
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = "code --wait --diff $LOCAL $REMOTE"
+```
+- Local Branch간 비교
+```
+git diff <branch1> <branch2>
+```
+- Commit간 비교
+```
+# git log로 해시 확인 가능
+git diff <commithash1> <commithash2>
+```
+- 마지막 Commit과 이전 Commit 비교
+```
+git diff HEAD HEAD^
+```
+- 마지막 Commit과 현재 수정사항 확인
+```
+git diff HEAD
+```
+- Local과 Remote 비교
+```
+git diff <branch> origin/<branch2>
+```
+
+___
+### 3.2 Tag
+> 임의의 commit 위치에 쉽게 찾아갈 수 있도록 붙여놓은 이정표   
+> Tag가 붙은 commit은 commit id(version) 대신 tag name으로 쉽게 checkout 가능   
+
+#### 3.2.1 Local
+- 현재 버전에 Tag 달기
+```
+git tag <tagname>
+```
+- 특정 버전에 Tag 달기
+```
+git tag <tagname> <commithash>
+```
+- Tag를 Remote Repository에 Push
+```
+git push origin <tagname>
+```
+- Tag 확인
+```
+# 전체 정보
+git log
+
+# 태그 목록
+git tag
+
+# 태그 상세 정보
+git show <tagname>
+```
+- Git tag 삭제
+```
+git tag --delete <tagname>
+```
+
 
 ## ○ 레퍼런스
-* [[얄팍한 코딩사전] 제대로 파는 깃강좌(무료)](https://www.youtube.com/watch?v=1I3hMwQU6GU&t=726s)
-* [[드림코딩] 깃의 중요한 컨셉 이해하기(무료)](https://academy.dream-coding.com/courses/git)
+* [[얄팍한 코딩사전] 제대로 파는 깃강좌](https://www.youtube.com/watch?v=1I3hMwQU6GU&t=726s)
+* [[드림코딩] 깃의 중요한 컨셉 이해하기](https://academy.dream-coding.com/courses/git)
