@@ -29,7 +29,7 @@
 - [마크다운 문법](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)  
 - [Shell 커맨드](https://github.com/vive0508/TIL/blob/main/ETC/shell_commands.md)  
 
-### Tableu
+### BI
 - [Tableau]()
 
 ### ETC
