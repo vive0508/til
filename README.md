@@ -6,13 +6,15 @@
 ### Python
 - [파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)   
 - [파이썬 모듈 설치](https://github.com/vive0508/TIL/blob/main/ETC/module.md)    
-- [알고리즘 기초](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)    
-- [알고리즘 실습](https://github.com/vive0508/TIL/blob/main/Algorithm_practice/README.md)   
-- [프로그래머스 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)   
 
 ### SQL
 - [SQL 문법](https://github.com/vive0508/TIL/blob/main/SQL/sql.md)
 - [해커링크 문제풀이]()
+
+### Algorithm
+- [알고리즘 기초](https://github.com/vive0508/TIL/blob/main/Algorithm/README.md)    
+- [알고리즘 실습](https://github.com/vive0508/TIL/blob/main/Algorithm_practice/README.md)   
+- [프로그래머스 문제풀이](https://github.com/vive0508/TIL/tree/main/Coding_Test/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)   
 
 ### 머신러닝 & 딥러닝
 - [EDA](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/README.md)
