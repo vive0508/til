@@ -27,6 +27,7 @@ SQL
 - 데이터베이스 사용 : USE databasename;   
 - 테이블 확인 : SHOW TABLES;
 - 테이블 정보 확인 : DESC tablename;
+- 주석처리 : '--' or '/* */'
 
 ### 2.1 데이터 정의 언어 (DDL : Data Definition Lanaguage)
 - 각 릴레이션(데이터베이스 테이블)을 정의하기 위해 사용하는 언어   
@@ -263,9 +264,23 @@ WHERE columnname LIKE 'a%b';
 # 요소가 2개 이상인 경우
 WHERE columnname LIKE '%,%';
 ```
+---
+### 2.5 MySQL 함수
+- 문자열 자르기
+```sql
+LEFT(컬럼명 또는 문자열, 문자열의 길이)
+RIGHT(컬럼명 또는 문자열, 문자열의 길이)
+SUBSTRING/SUBSTR(컬럼명 또는 문자열, 시작 위치, 길이)
+```
+- [숫자 함수](https://jjeongil.tistory.com/928)
+```sql
+CEIL(수) -- 값보다 큰 정수 중 가장 작은 정수를 구한다
+FLOOR(수) -- 값보다 작은 정수 중 가장 큰 정수를 구한다
+ROUND(수, 자릿수)
+```
 
 ---
-### 2.5 UNION
+### 2.6 UNION
 - SQL문을 합치는 방법   
 - 컬럼의 갯수가 같아야 한다
 ```sql
@@ -277,7 +292,7 @@ SELECT column1, column2, ... FROM tableB;
 ```
 
 ---
-### 2.6 JOIN
+### 2.7 JOIN
 - INNER JOIN : 교집합   
 - LEFT JOIN : 왼쪽 데이터 기준으로 JOIN   
 - RIGHT JOIN : 오른쪽 데이터 기준으로 JOIN
@@ -314,7 +329,7 @@ WHERE condition; # where절에 조건으로 기준 설정
 ```
 
 ___
-### 2.7 CONCAT / ALIAS
+### 2.8 CONCAT / ALIAS
 - CONCAT
 ```sql
 SELECT CONCAT('stringA', ' ', 'stringB', ...); # stringA stringB
@@ -338,7 +353,7 @@ WHERE condition; # where절에 조건으로 기준 설정
 ```
 as를 생략해도 결과는 똑같이 나온다
 ___
-### 2.8 DISTINCT
+### 2.9 DISTINCT
 - 검색한 결과의 중복 제거
 ```python
 SELECT DISTINCT column1, column2, ...
@@ -357,7 +372,7 @@ LIMIT 3;
 SELECT COUNT (DISTINCT columnname) from tablename;
 ```
 ___
-### 2.9 LIMIT
+### 2.10 LIMIT
 - 검색결과를 정렬된 순으로 주어진 숫자만큼 조회
 ```sql
 # WHERE와 함께 사용
@@ -373,14 +388,14 @@ LIMIT number;
 ```
 
 ---
-### 2.10 기타
+### 2.11 기타
 - 새로고침
 ```sql
 flush privileges;
 ```
 
 ___
-### 2.11 SQL 파일 실행 및 백업
+### 2.12 SQL 파일 실행 및 백업
 
 - mysql 로그인
 ```sql
@@ -421,7 +436,7 @@ mysqldump --set-gtid-purged=OFF -h <hostname> -P <port> -u <username> -p <databa
 ```
 
 ___
-### 2.12 Python with MySQL
+### 2.13 Python with MySQL
 - 설치 및 불러오기
 ```sql
 pip install mysql-connector-python
@@ -488,7 +503,7 @@ df = pd.DataFrame(result)
 df.head()
 ```
 ___
-### 2.13 Python with CSV
+### 2.14 Python with CSV
 #### 예제 1
 - 파일 불러오기
 ```sql
@@ -531,7 +546,7 @@ df = pd.DataFrame(result)
 df.head()
 ```
 ___
-### 2.14 Primary key
+### 2.15 Primary key
 - Primary key 생성
 ```sql
 CREATE TABLE tablename
@@ -556,7 +571,7 @@ ALTER TABLE tablename
 DROP PRIMARY KEY;
 ```
 ___
-### 2.15 Foreign key
+### 2.16 Foreign key
 - Foreign key 생성
 ```sql
 # 한 테이블을 다른 테이블과 연결
@@ -587,7 +602,7 @@ ALTER TABLE tablename
 DROP FOREIGN KEY FK_constraint;
 ```
 ___
-### 2.16 Aggregate Function (집계함수)
+### 2.17 Aggregate Function (집계함수)
 
 | Function | Description |
 | :--: | :-- |
@@ -605,7 +620,7 @@ FROM tablename
 WHERE condition;
 ```
 ___
-### 2.17 GROUP BY
+### 2.18 GROUP BY
 ```sql
 SELECT colunm1, colunm2, ...
 FROM table
@@ -615,7 +630,7 @@ ORDER BY colunm1, colunm2, ...; # DISTINCT를 사용하는 경우 ORDER BY 불�
 ```
 
 ___
-### 2.18 HAVING
+### 2.19 HAVING
 - 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
 ```sql
 SELECT colunm1, colunm2, ...
@@ -626,7 +641,7 @@ HAVING condition (Aggregate_Functions)
 ORDER BY colunm1, colunm2, ...; 
 ```
 ---
-### 2.19 Scalar Function
+### 2.20 Scalar Function
 - 입력값을 기준으로단일 값을 반환하는 함수
 
 | Function | Description |
@@ -658,7 +673,7 @@ SELECT FORMAT(numer, decimal_place);
 SELECT NOW();
 ```
 ___
-### 2.20 SQL Subquery
+### 2.21 SQL Subquery
 - Scalar subquery : Select절에 사용   
 ```sql
 SELECT column1, (SELECT column2 FROM table2 WHERE condition)
@@ -707,7 +722,7 @@ WHERE condition;
   WHERE column_name = ALL (SELECT column_name FROM table_name WHERE condtion);
   ```
   
-  - Multiple Column : 하나 이상의 행을 검색하는서브 쿼리
+  - Multiple Column : 하나 이상의 행을 검색하는 서브 쿼리
   ```sql
   SELECT column_names
   FROM tablename a
