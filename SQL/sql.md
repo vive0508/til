@@ -239,6 +239,7 @@ WHERE country IN ('Germany', 'France')
 -- 아래와 같이 패턴으로 찾을 경우에는 LIKE를 사용하지만
 -- 원하는 문자가 명확하게 있을 경우에는 비교연산자(=)를 사용하는 것이 속도가 빠르다
 -- '%'나 '_'와 같은 예약어로 인식하지 않게 하기 위해서는 이스케이프('\')사용
+-- not과 같이 사용할 경우에는 LIKE앞에 NOT을 붙인다(NOT LIKE)
 
 SELECT * FROM tablename
 # a로 시작하는 경우
