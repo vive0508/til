@@ -8,9 +8,9 @@ SQL
 ```
 - DBMS (Database Management System)
 ```
-다수의 사용자들이  데이터베이스 내의 데이터를 접근할 수 있도록 해주는 소프트웨어 도구의 집합이다. 
+다수의 사용자들이 데이터베이스 내의 데이터를 접근할 수 있도록 해주는 소프트웨어 도구의 집합이다. 
 ```
-- 관계형 데이터베이스 (Relatinal Database, RDB)
+- 관계형 데이터베이스 (Relational Database, RDB)
 ```
 서로간에 관계가 있는 데이터를 키(key)와 값(value)로 테이블화 시킨 매우 간단한 원칙의 전산정보 데이터베이스이다.
 ```
@@ -135,6 +135,17 @@ ORDER BY column1 DESC, column2 ASC;
 SELECT column1, colum2, ...
 FROM tablename
 WHERE condition;
+
+# NULL값 조회
+-- NULL, NaN (Not a Number) : 숫자도 문자도 아니고 비어있는 값이다
+SELECT *
+FROM tablename
+WHERE columnname IS NULL;
+
+# NULL이 아닌 값을 조회
+SELECT *
+FROM tablename
+WHERE columnname IS NOT NULL;
 ```
 - UPDATE : Update    
 ```sql
@@ -199,10 +210,37 @@ ___
 | IN | 조건이 목록에 있으면 TRUE |
 | LIKE | 조건이 패턴에 맞으면 TRUE |
 
-- like
-```sql
-SELECT * FROM tablename
 
+- AND vs BETWEEN
+```sql
+# AND
+SELECT * FROM Customers
+WHERE customerID >= 3 AND customerID <=5
+
+# BETWEEN
+SELECT * FROM Customers
+WHERE customerID BETWEEN 3 AND 5
+```
+
+- OR vs IN 
+```sql
+# OR
+SELECT * FROM customers
+WHERE country = 'Germany' OR country = 'France'
+
+# IN
+-- 구문이 길어질 경우에는 IN을 활용
+SELECT * FROM customers
+WHERE country IN ('Germany', 'France')
+```
+
+- LIKE
+```sql
+-- 아래와 같이 패턴으로 찾을 경우에는 LIKE를 사용하지만
+-- 원하는 문자가 명확하게 있을 경우에는 비교연산자(=)를 사용하는 것이 속도가 빠르다
+-- '%'나 '_'와 같은 예약어로 인식하지 않게 하기 위해서는 이스케이프('\')사용
+
+SELECT * FROM tablename
 # a로 시작하는 경우
 WHERE columnname LIKE 'a%';
 
@@ -224,6 +262,7 @@ WHERE columnname LIKE 'a%b';
 # 요소가 2개 이상인 경우
 WHERE columnname LIKE '%,%';
 ```
+
 ---
 ### 2.5 UNION
 - SQL문을 합치는 방법   
