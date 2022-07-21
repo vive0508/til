@@ -12,6 +12,8 @@
 ### SQL
 - [SQL 문법](https://github.com/vive0508/TIL/blob/main/SQL/sql.md)
 - [해커링크 문제풀이](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/README.md)
+- [리트코드 문제풀이]()
+- [프로그래머스 문제풀이]()
 
 ### 머신러닝 & 딥러닝
 - [EDA](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/README.md)
