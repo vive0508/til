@@ -644,22 +644,23 @@ FROME tablename
 ___
 ### 2.18 GROUP BY
 ```sql
+-- 집계함수와 함께 사용할 수 있다.
 SELECT colunm1, colunm2, ...
 FROM table
 WHERE condition
-GROUP BY colunm1, colunm2, ... # DISTINCT로 대체하여 사용 가능
-ORDER BY colunm1, colunm2, ...; # DISTINCT를 사용하는 경우 ORDER BY 불가능
+GROUP BY colunm1, colunm2, ... # DISTINCT와 함께 사용 가능
+ORDER BY colunm1, colunm2, ...; # DISTINCT와 함께 사용하는 경우 ORDER BY 불가능
 ```
 
 ___
 ### 2.19 HAVING
 - 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
 ```sql
-SELECT colunm1, colunm2, ...
+SELECT colunm1, colunm2, ... # as(alias)를 사용한 후
 FROM table
 WHERE condition
 GROUP BY colunm1, colunm2, ... 
-HAVING condition (Aggregate_Functions)
+HAVING condition (Aggregate_Functions) # alias로 조건을 활용할 수 있다
 ORDER BY colunm1, colunm2, ...; 
 ```
 ---
