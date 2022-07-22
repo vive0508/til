@@ -12,3 +12,10 @@
 - [employee salaries](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/employee%20salaries.md)   
 - [higher than 75 marks](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/higher%20than%2075%20marks.md)   
   
+### 2. 중급
+- [revising aggregations-averages](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-average.md)   
+- [revising aggregations-the sum function](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-the%20sum%20function.md)   
+- [revising aggregations-the count function](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-the%20count%20function.md)   
+- [average population](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population.md)   
+- [population density difference](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20density%20difference.md)   
+- [weather observation station 4](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%204.md)   
