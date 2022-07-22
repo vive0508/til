@@ -615,9 +615,31 @@ ___
 | LAST | 마지막 결과값을 리턴하는 함수 |
 
 ```sql
-SELECT Aggregate_Functions(column)
+/*SELECT Aggregate_Functions(column)
 FROM tablename
-WHERE condition;
+WHERE condition;*/
+
+# COUNT
+-- 테이블 안에 있는 모든 행(데이터 레코드)의 갯수를 센다.
+SELECT COUNT(*)
+FROM tablename
+
+-- 컬럼에 Null값을 빼고 갯수를 센다.
+SELECT COUNT(columnname)
+FROM tablename
+
+-- 컬럼의 Null, 중복값을 빼고 갯수를 센다.
+SELECT COUNT(DISTINCT coulumnname)
+FROM tablename
+
+# AVG
+-- AVG 함수에서는 Null값을 무시한다. 그래서 총합을 null을 제외한 값의 수로 나눈다.
+SELECT AVG(columnname)
+FROME tablename
+
+-- Null을 무시하지 않고, 0으로 취급해서 계산을 해주기 위해서는 하기의 방법을 사용한다. 
+SELECT SUM(columnname)/COUNT(*)
+FROME tablename
 ```
 ___
 ### 2.18 GROUP BY
