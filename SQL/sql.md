@@ -674,9 +674,9 @@ SELECT CASE
             ELSE resultZ
        END AS sth, *
 FROM tablename
-```
+```   
 - GROUP BY와 함께 사용할 수 있다.
--- 
+```sql
 SELECT CASE
             WHEN condition THEN result
             ELSE result
