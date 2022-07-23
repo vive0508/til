@@ -685,6 +685,8 @@ SELECT CASE
 FROM tablename
 GROUP BY sth
 ```
+- case 활용하여 피봇테이블을 사용할 수 있다
+[관련문제]([https://github.com/vive0508/TIL/tree/main/SQL/LeetCode](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/reformat%20department%20table.md))
 ---
 ### 2.21 Scalar Function
 - 입력값을 기준으로단일 값을 반환하는 함수
