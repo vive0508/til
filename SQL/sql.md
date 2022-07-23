@@ -664,7 +664,29 @@ HAVING condition (Aggregate_Functions) # alias로 조건을 활용할 수 있다
 ORDER BY colunm1, colunm2, ...; 
 ```
 ---
-### 2.20 Scalar Function
+### 2.20 CASE
+- CASE 구문 기본 형태
+```sql
+SELECT CASE
+            WHEN condition1 THEN resultA
+            WHEN condition2 THEN resultB
+            ...
+            ELSE resultZ
+       END AS sth, *
+FROM tablename
+```
+- GROUP BY와 함께 사용할 수 있다.
+-- 
+SELECT CASE
+            WHEN condition THEN result
+            ELSE result
+       END AS sth
+     , AVG(columnname)
+FROM tablename
+GROUP BY sth
+```
+---
+### 2.21 Scalar Function
 - 입력값을 기준으로단일 값을 반환하는 함수
 
 | Function | Description |
@@ -696,7 +718,7 @@ SELECT FORMAT(numer, decimal_place);
 SELECT NOW();
 ```
 ___
-### 2.21 SQL Subquery
+### 2.22 SQL Subquery
 - Scalar subquery : Select절에 사용   
 ```sql
 SELECT column1, (SELECT column2 FROM table2 WHERE condition)
