@@ -1,5 +1,4 @@
-Population Census
-===
+## Population Census
 [문제링크](https://www.hackerrank.com/challenges/asian-population)
 ```sql
 SELECT SUM(city.population)
