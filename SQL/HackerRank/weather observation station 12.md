@@ -1,5 +1,4 @@
-Weather Observation Station 12
-===
+## Weather Observation Station 12
 [문제링크](https://www.hackerrank.com/challenges/weather-observation-station-12/problem?isFullScreen=true)
 ```sql
 SELECT DISTINCT city FROM station
