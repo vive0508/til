@@ -1,5 +1,4 @@
-Customers Who Never Order
-===
+### Customers Who Never Order
 [문제링크](https://leetcode.com/problems/customers-who-never-order/)
 ```sql
 SELECT name AS customers
