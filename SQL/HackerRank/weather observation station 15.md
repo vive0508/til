@@ -1,5 +1,4 @@
-Weather Observation Station 15
-===
+## Weather Observation Station 15
 
 [문제링크](https://www.hackerrank.com/challenges/weather-observation-station-15)  
 ```sql
