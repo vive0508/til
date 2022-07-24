@@ -1,5 +1,4 @@
-Employee Salaries
-===
+## Employee Salaries
 [문제링크](https://www.hackerrank.com/challenges/salary-of-employees/)   
 ```sql
 SELECT name FROM employee
