@@ -23,4 +23,4 @@
 - [\*type of triangle](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/type%20of%20triangle.md)
 - [african cities](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/african%20cities.md)   
 - [population census](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20census.md) 
-- [average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)
+- [\*average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)
