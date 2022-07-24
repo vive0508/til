@@ -1,5 +1,4 @@
-Reformat Department Table
-===
+### Reformat Department Table
 [문제링크](https://leetcode.com/problems/reformat-department-table/)
 ```sql
 SELECT id
