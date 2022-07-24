@@ -1,5 +1,4 @@
-Rising Temperature
-===
+## Rising Temperature
 [문제링크](https://leetcode.com/problems/rising-temperature/)
 ```sql
 SELECT today.id
