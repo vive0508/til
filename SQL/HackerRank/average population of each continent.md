@@ -1,5 +1,4 @@
-Average Population of Each Continent
-===
+## Average Population of Each Continent
 [문제링크](https://www.hackerrank.com/challenges/average-population-of-each-continent/problem?h_r=internal-search)
 ```sql
 SELECT country.continent
