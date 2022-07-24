@@ -278,23 +278,37 @@ CEIL(수) -- 값보다 큰 정수 중 가장 작은 정수를 구한다
 FLOOR(수) -- 값보다 작은 정수 중 가장 큰 정수를 구한다
 ROUND(수, 자릿수)
 ```
+- 시간 더하기 빼기
+```sql
+-- 시간 더하기 : DATE_ADD(기준날짜, INTERVAL)
+SELECT DATE_ADD(NOW(), INTERVAL 1 SECOND)
+SELECT DATE_ADD(NOW(), INTERVAL 1 MINUTE)
+SELECT DATE_ADD(NOW(), INTERVAL 1 HOUR)
+SELECT DATE_ADD(NOW(), INTERVAL 1 DAY)
+SELECT DATE_ADD(NOW(), INTERVAL 1 MONTH)
+SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR)
+SELECT DATE_ADD(NOW(), INTERVAL -1 YEAR)
+
+-- 시간 빼기
+SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
+```
 
 ---
 ### 2.6 UNION
 - SQL문을 합치는 방법   
 - 컬럼의 갯수가 같아야 한다
 ```sql
-# 중복된 값을 제거하고 알려준다
-# 중복된 값도 모두 보여준다
+# UNION : 중복된 값을 제거하고 알려준다
+# UNION ALL : 중복된 값도 모두 보여준다
 SELECT column1, column2, ... FROM tableA
 UNION | UNION ALL
-SELECT column1, column2, ... FROM tableB;
+SELECT column1, column2, ... FROM tableB
+ORDER BY columname;
 ```
 
 ---
 ### 2.7 JOIN
 #### 2.7.1 old version
-- SELF JOIN : 교집합
 ```sql
 SELECT column1, column2, ...
 FROM tableA, tableB, ...
@@ -322,12 +336,15 @@ UNION
 SELECT tableA.column1, tableA.column2, ...,  tableB.column1, tableB.column2 ...
 FROM tableA
 RIGHT JOIN tableB  
-ON tableA.column = tableB.column
-UNION
+ON tableA.column = tableB.column;
+```
+- SELF JOIN : 한 테이블을 자기 자신에 같다 붙이는 방법
+```
+SELECT columnname
+FROM tablename
+     INNER JOIN tablename AS new_tablename ON tablename.columnA = newtablename.columnB
 WHERE condition;
 ```
-
-
 
 ___
 ### 2.8 CONCAT / ALIAS
@@ -743,7 +760,6 @@ WHERE condition;
   WHERE column_name = (SELECT column_name From table_name WHERE condtion)
   ORDER BY column_name;
   ```
-  
   - Multiple ROW : 하나 이상의 열을 검색하는 서브쿼리
   ```sql
   # IN : 서브쿼리 결과 중에 포함될 때
