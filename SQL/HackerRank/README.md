@@ -21,3 +21,6 @@
 - [weather observation station 4](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%204.md)   
 - [\*top earners](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/top%20earners.md)
 - [\*type of triangle](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/type%20of%20triangle.md)
+- [african cities](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/african%20cities.md)   
+- [population census](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20census.md) 
+- [average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)
