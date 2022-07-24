@@ -1,5 +1,4 @@
-African Cities
-===
+## African Cities
 [문제링크](https://www.hackerrank.com/challenges/african-cities/problem?h_r=internal-search&isFullScreen=true)
 ```sql
 SELECT city.name
