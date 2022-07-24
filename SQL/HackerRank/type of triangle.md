@@ -1,5 +1,4 @@
-Type of Triangle
-===
+## Type of Triangle
 [문제링크](https://www.hackerrank.com/challenges/what-type-of-triangle/problem?h_r=internal-search)
 ```sql
 SELECT CASE
