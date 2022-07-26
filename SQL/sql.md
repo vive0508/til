@@ -795,3 +795,19 @@ WHERE condition;
                                         WHERE a.column_name=b.column_name)
   ORDER BY column_names;
   ```
+
+---
+### ERD
+
+---
+### Window Function
+
+---
+### Regular Expressions
+
+---
+### MySQL Function
+
+---
+
+
