@@ -8,4 +8,5 @@
 
 ## 고급
 - [swap salary](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/swap%20salary.md)   
-- [deleteduplicate emails](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/delete%20duplicate%20emails.md)   
+- [delete duplicate emails](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/delete%20duplicate%20emails.md)   
+- [\**department highest salary](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/department%20highest%20salary.md)
