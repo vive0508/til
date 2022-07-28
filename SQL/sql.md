@@ -150,14 +150,37 @@ WHERE columnname IS NOT NULL;
 ```
 - UPDATE : Update    
 ```sql
-Update tablename
+UPDATE tablename
 SET column1 = value1, colum2=value2, ...
+WHERE condition;
+
+# 예시 
+UPDATE tablename
+SET columnA = comlumnA + 100
+WHERE condition;
+
+# CASE와 함께 사용
+UPDATE tablename
+SET coulumnname = CASE
+                      WHEN condition1 then value_if_condition1_true
+                      WHEN condition2 then value_if_condition2_true
+                  ELSE value_other_case
+                  END
 WHERE condition;
 ```
 - DELETE : Delete    
 ```sql
-# 조건에 부합하는 데이터 삭제
+# 테이블에 전체 데이터 삭제
+DELETE FROM tablename;
+
+# 조건에 부합하는 특정 행만 삭제
 DELETE FROM tablename
+WHERE condition;
+
+# DELETE에 JOIN 활용
+DELETE T1, T2
+FROM T1
+INNER JOIN T2 ON T1.key = T2.key
 WHERE condition;
 ```
 ___
@@ -797,9 +820,24 @@ WHERE condition;
   ```
 
 ---
-### ERD
-
+### ERD(entity relationship diagram)
+- 구성요소([참고링크](https://www.lucidchart.com/pages/er-diagrams#section_5))
+  - entity : 개체, 테이블   
+  - attribute : 컬럼명, 데이터타입(Primary key, foreign key)   
+  - relationship : one to many, many to many   
 ---
+### data type   
+- 숫자형   
+  - 정수 : tinyint(), sallint(), mediumint(), int(), bigint()     
+  - 실수 : demical(), double(), float()   
+- 문자형   
+  - varchar() : various character의 약자   
+  - char() : 글자수가 일정한 문자
+- 날짜, 시간형
+  - date()   
+  - datetime()   
+  - timestamp() = datetime() + timezone   
+
 ### Window Function
 
 ---
