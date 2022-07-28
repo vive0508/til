@@ -676,7 +676,7 @@ FROM tablename
 # AVG
 -- AVG 함수에서는 Null값을 무시한다. 그래서 총합을 null을 제외한 값의 수로 나눈다.
 SELECT AVG(columnname)
-FROME tablename
+FROM tablename
 
 -- Null을 무시하지 않고, 0으로 취급해서 계산을 해주기 위해서는 하기의 방법을 사용한다. 
 SELECT SUM(columnname)/COUNT(*)
@@ -761,7 +761,7 @@ SELECT FORMAT(numer, decimal_place);
 SELECT NOW();
 ```
 ___
-### 2.22 SQL Subquery
+### 2.22 Subquery
 - Scalar subquery : Select절에 사용   
 ```sql
 SELECT column1, (SELECT column2 FROM table2 WHERE condition)
@@ -770,6 +770,24 @@ WHERE condtion;
 ```
 - Inline View : From절에 사용   
 ```sql
+# 가상의 테이블을 하나 더 만든다고 생각하고 사용
+SELECT columnnameA, Aggregate_Functions(columnnameB)
+FROM (
+      SELECT column1
+           , column2
+           , Aggregate_Functions(column3)
+      FROM tablename
+      GROUP BY columname
+      ) new_name
+WHERE condition
+GROUP BY columnname;
+
+-- AVG 함수에서는 Null값을 무시한다. 그래서 총합을 null을 제외한 값의 수로 나눈다.
+-- Null을 무시하지 않고, 0으로 취급해서 계산을 해주기 위해서는 하기의 방법을 사용한다. 
+SELECT SUM(columnname)/COUNT(*)
+FROM tablename
+
+# 두 테이블을 동시에 활용할 경우
 SELECT a.column, b.column
 FROM table1 a, (SELECT  column1, column2 FROM table2) b
 WHERE condition;
