@@ -272,7 +272,7 @@ WHERE columnname LIKE '%,%';
 LEFT(컬럼명 또는 문자열, 문자열의 길이)
 RIGHT(컬럼명 또는 문자열, 문자열의 길이)
 SUBSTRING/SUBSTR(컬럼명 또는 문자열, 시작 위치, 길이)
-```
+``` 
 - [숫자 함수](https://jjeongil.tistory.com/928)
 ```sql
 CEIL(수) -- 값보다 큰 정수 중 가장 작은 정수를 구한다
