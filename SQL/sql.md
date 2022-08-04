@@ -1,7 +1,7 @@
 SQL 
 === 
 
-## 1. 용어 정리
+## 1. 용어 정리 (위키백과)
 - 데이터베이스 (database, DB)
 ```
 여러 사람이 공유하여 사용할 목적으로 체계화해 통합, 관리하는 데이터의 집합이다.
@@ -21,16 +21,17 @@ SQL
 
 ---
 
-## 2. SQL 언어
-### 2.0 기타
-- 데이터베이스 목록 확인 : SHOW DATABASES;    
-- 데이터베이스 사용 : USE databasename;   
-- 테이블 확인 : SHOW TABLES;
-- 테이블 정보 확인 : DESC tablename;
-- 주석처리 : '--' or '/* */'
+## 2. SQL 명령어
+- 데이터베이스 목록 확인 : SHOW DATABASES;       
+- 데이터베이스 사용 : USE databasename;      
+- 테이블 확인 : SHOW TABLES;   
+- 테이블 정보 확인 : DESC tablename;   
+- 주석처리 : '--' or '/* */'   
+
+---
 
 ### 2.1 데이터 정의 언어 (DDL : Data Definition Lanaguage)
-- 각 릴레이션(데이터베이스 테이블)을 정의하기 위해 사용하는 언어   
+> CREAT(테이블 생성) / ALTER(테이블 변경) / DROP(테이블 삭제)
 - CREATE : 테이블 생성   
 ```sql
 # 데이터베이스 생성
@@ -50,21 +51,15 @@ CREATE TABLE tablename
 # 테이블 생성 조건
 CREATE TABLE tablename
 (
- columnname datatype NOT NULL AUTO_INCREMENT PRIMATY KEY, # null : no, extra : auto_increment 
- columnname datatype NOT NULL DEFAULT '', # default not null
+ columnname datatype NOT NULL AUTO_INCREMENT PRIMATY KEY,  
+ columnname datatype NOT NULL DEFAULT '', 
  ...
 )
-
-# 내부 접근 유저 생성
-CREATE USER 'username'@'localhost' identified by 'password';
-
-# 외부 접근 유저 생성 (호스트 정보가 다른 user는 이름이 같아도 상관없음)
-CREATE USER 'username'@'%' identified by 'password';
 ```
 - ALTER : 테이블 변경   
 ```sql
 # 테이블 변경(필수)
-ALTER TABLE tablename
+ALTER TABLE tablename;
 
 # 테이블 이름 변경
 RENAME new_tablename;
@@ -77,9 +72,6 @@ CHANGE COLUMN old_columnname new_columnname new_datatype;
 
 # 컬럼 데이터타입 변경
 MODIFY COLUMN columnname datatype;
-
-# 컬럼 삭제
-DROP COLUMN columnname;
 ```
 - DROP : 테이블 삭제   
 ```sql
@@ -92,16 +84,12 @@ DROP TABLE tablename;
 # 컬럼 삭제
 ALTER TABLE tablename
 DROP COLUMN columnname;
-
-# 유저 삭제
-DROP USER 'username'@'localhost';
-DROP USER 'username'@'%';
 ```
 
 ___
 
 ### 2.2 데이터 조작 언어 (DML : Data Manipulation Language)
-- 데이터 관리(데이터 CRUD)를 위한 언어   
+> INSERT(create) / SELECT(read) / UPDATE(update) / DELETE(delete)  
 - INSERT : Create   
 ```sql
 # 입력한 컬럼 이름의 순서와 값의 순서가 일치하도록 주의
@@ -113,17 +101,24 @@ INSERT INTO tablename
 VALUES (value1, value2, ...);
 ```
 - SELECT : Read     
+> **순서 익히기**   
+> 1. SELECT
+> 2. FROM   
+> 3. INNER JOIN ~~ ON ~~ 
+> 4. WHERE   
+> 5. GROUP BY ~~ HAVING ~~   
+> 6. ORDER BY   
+> 7. LIMIT
 ```sql
 # 테이블 전체내용 조회
-SELECT * from tablename;
-
-# 테이블 특정 컬럼 조회
-SELECT column1, colum2, ...
+SELECT *
 FROM tablename;
 
-# 사용자 정보는 mysql에서 관리
-USE mysql;
-SELECT host, user FROM user;
+# 테이블 특정 컬럼 조회
+SELECT column1
+     , column2
+     , ...
+FROM tablename;
 
 # ORDER BY : 특정 컬럼 기준으로 오름차순 혹은 내림차순 정렬
 SELECT column1, colum2, ...
@@ -186,32 +181,15 @@ WHERE condition;
 ___
  
 ### 2.3 데이터 제어 언어 (DCL : Data Control Language)   
-- 사용자 관리 & 사용자별 권한 (릴레이션 및 데이터에 대한 관리/접근)을 다루기 위한 언어   
-- GRANT : 권한 부여
-```sql
-# 사용자에게 부여된 모든 권한 목록을 확인
-SHOW GRANTS FOR 'username'@'localhost';
-
-# 사용자에게 특정 데이터베이스의 모든 권한을 부여
-GRANT ALL ON databasename.* to 'username'@'localhost';
-
-# 새로 부여한 권한이 확인이 안되면, 새로고침
-FLUSH PRIVILIEGES;
-```
-- REVOKE : 권한 해제 
-```sql
-# 부여한 권한 삭제
-REVOKE ALL ON databasename.* from 'username'@'localhost';
-```
+- GRANT : 권한 부여   
+- REVOKE : 권한 해제   
 - COMMIT
 - ROLLBACK
 
 ___
 
-### 2.4 연산자
-> WHERE를 연산자와 함께 사용한다.
-
-#### 2.4.1 비교 연산자
+## 3. 연산자
+### 3.1 비교 연산자
 
 | 비교 연산자 | 논리 연산자 |
 | :--: | :-- |
@@ -223,7 +201,7 @@ ___
 | A<>B | A가 B보다 크거나 작다 (같지 않다) |
 | A!=B | A와 B가 같지 않다 |
 
-#### 2.4.2 논리 연산자
+### 3.2 논리 연산자
 
 | 연산자 | 의미 |
 | :--: | :-- |
@@ -288,7 +266,7 @@ WHERE columnname LIKE 'a%b';
 WHERE columnname LIKE '%,%';
 ```
 ---
-### 2.5 MySQL 함수
+### 4 MySQL 함수
 - 문자열 자르기
 ```sql
 LEFT(컬럼명 또는 문자열, 문자열의 길이)
@@ -317,7 +295,7 @@ SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
 ```
 
 ---
-### 2.6 UNION
+## 5. UNION
 - SQL문을 합치는 방법   
 - 컬럼의 갯수가 같아야 한다
 ```sql
@@ -330,14 +308,14 @@ ORDER BY columname;
 ```
 
 ---
-### 2.7 JOIN
-#### 2.7.1 old version
+## 6 JOIN
+### 6.1 old version
 ```sql
 SELECT column1, column2, ...
 FROM tableA, tableB, ...
 WHERE condition; # where절에 조건으로 기준 설정
 ```
-#### 2.7.2 new version
+### 6.2 new version
 - INNER JOIN : 교집합   
 - LEFT JOIN : 왼쪽 데이터 기준으로 JOIN   
 - RIGHT JOIN : 오른쪽 데이터 기준으로 JOIN
@@ -370,7 +348,7 @@ WHERE condition;
 ```
 
 ___
-### 2.8 CONCAT / ALIAS
+## 7. CONCAT / ALIAS
 - CONCAT
 ```sql
 SELECT CONCAT('stringA', ' ', 'stringB', ...); # stringA stringB
@@ -394,7 +372,7 @@ WHERE condition; # where절에 조건으로 기준 설정
 ```
 as를 생략해도 결과는 똑같이 나온다
 ___
-### 2.9 DISTINCT
+## 8. DISTINCT
 - 검색한 결과의 중복 제거
 ```python
 SELECT DISTINCT column1, column2, ...
@@ -413,7 +391,7 @@ LIMIT 3;
 SELECT COUNT (DISTINCT columnname) from tablename;
 ```
 ___
-### 2.10 LIMIT
+## 9. LIMIT
 - 검색결과를 정렬된 순으로 주어진 숫자만큼 조회
 ```sql
 # WHERE와 함께 사용
@@ -422,21 +400,9 @@ FROM tablename
 WHERE condition
 LIMIT number;
 
-# ORDER BY와 함께 사용
-SELECT * from tablename
-ORDER BY columnname
-LIMIT number;
-```
-
----
-### 2.11 기타
-- 새로고침
-```sql
-flush privileges;
-```
 
 ___
-### 2.12 SQL 파일 실행 및 백업
+## 10. SQL 파일 실행 및 백업
 
 - mysql 로그인
 ```sql
@@ -477,7 +443,7 @@ mysqldump --set-gtid-purged=OFF -h <hostname> -P <port> -u <username> -p <databa
 ```
 
 ___
-### 2.13 Python with MySQL
+## 11. Python with MySQL
 - 설치 및 불러오기
 ```sql
 pip install mysql-connector-python
@@ -544,7 +510,7 @@ df = pd.DataFrame(result)
 df.head()
 ```
 ___
-### 2.14 Python with CSV
+## 12. Python with CSV
 #### 예제 1
 - 파일 불러오기
 ```sql
@@ -587,7 +553,7 @@ df = pd.DataFrame(result)
 df.head()
 ```
 ___
-### 2.15 Primary key
+## 13. Primary key
 - Primary key 생성
 ```sql
 CREATE TABLE tablename
@@ -612,7 +578,7 @@ ALTER TABLE tablename
 DROP PRIMARY KEY;
 ```
 ___
-### 2.16 Foreign key
+## 14. Foreign key
 - Foreign key 생성
 ```sql
 # 한 테이블을 다른 테이블과 연결
@@ -643,7 +609,7 @@ ALTER TABLE tablename
 DROP FOREIGN KEY FK_constraint;
 ```
 ___
-### 2.17 Aggregate Function (집계함수)
+## 15. Aggregate Function (집계함수)
 
 | Function | Description |
 | :--: | :-- |
@@ -683,7 +649,7 @@ SELECT SUM(columnname)/COUNT(*)
 FROME tablename
 ```
 ___
-### 2.18 GROUP BY
+## 16. GROUP BY
 ```sql
 -- 집계함수와 함께 사용할 수 있다.
 SELECT colunm1, colunm2, ...
@@ -694,7 +660,7 @@ ORDER BY colunm1, colunm2, ...; # DISTINCT와 함께 사용하는 경우 ORDER B
 ```
 
 ___
-### 2.19 HAVING
+## 17. HAVING
 - 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
 ```sql
 SELECT colunm1, colunm2, ... # as(alias)를 사용한 후
@@ -705,7 +671,7 @@ HAVING condition (Aggregate_Functions) # alias로 조건을 활용할 수 있다
 ORDER BY colunm1, colunm2, ...; 
 ```
 ---
-### 2.20 CASE
+## 18. CASE
 - CASE 구문 기본 형태
 ```sql
 SELECT CASE
@@ -729,7 +695,7 @@ GROUP BY sth
 - case 활용하여 피봇테이블을 사용할 수 있다
 [관련문제]([https://github.com/vive0508/TIL/tree/main/SQL/LeetCode](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/reformat%20department%20table.md))
 ---
-### 2.21 Scalar Function
+## 19. Scalar Function
 - 입력값을 기준으로단일 값을 반환하는 함수
 
 | Function | Description |
@@ -761,7 +727,7 @@ SELECT FORMAT(numer, decimal_place);
 SELECT NOW();
 ```
 ___
-### 2.22 Subquery
+## 20. Subquery
 - Scalar subquery : Select절에 사용   
 ```sql
 SELECT column1, (SELECT column2 FROM table2 WHERE condition)
