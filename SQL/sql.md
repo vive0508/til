@@ -89,17 +89,9 @@ DROP COLUMN columnname;
 ___
 
 ### 2.2 데이터 조작 언어 (DML : Data Manipulation Language)
-> INSERT(create) / SELECT(read) / UPDATE(update) / DELETE(delete)  
-- INSERT : Create   
-```sql
-# 입력한 컬럼 이름의 순서와 값의 순서가 일치하도록 주의
-INSERT INTO tablename (column1, column2, ...)
-VALUES (value1, value2, ...);
+> 데이터의 검색 : SELECT(질의)   
+> 데이터의 갱신 : INSERT(등록) / UPDATE(수정) / DELETE(제거)  
 
-# 모든 컬럼의 값을 추가하는 경우 컬럼 이름을 지정하지 않아도 됨
-INSERT INTO tablename
-VALUES (value1, value2, ...);
-```
 - SELECT : Read     
 > **순서 익히기**   
 > 1. SELECT
@@ -143,6 +135,18 @@ SELECT *
 FROM tablename
 WHERE columnname IS NOT NULL;
 ```
+
+- INSERT : Create   
+```sql
+# 입력한 컬럼 이름의 순서와 값의 순서가 일치하도록 주의
+INSERT INTO tablename (column1, column2, ...)
+VALUES (value1, value2, ...);
+
+# 모든 컬럼의 값을 추가하는 경우 컬럼 이름을 지정하지 않아도 됨
+INSERT INTO tablename
+VALUES (value1, value2, ...);
+```
+
 - UPDATE : Update    
 ```sql
 UPDATE tablename
@@ -163,6 +167,7 @@ SET coulumnname = CASE
                   END
 WHERE condition;
 ```
+
 - DELETE : Delete    
 ```sql
 # 테이블에 전체 데이터 삭제
@@ -178,6 +183,8 @@ FROM T1
 INNER JOIN T2 ON T1.key = T2.key
 WHERE condition;
 ```
+
+
 ___
  
 ### 2.3 데이터 제어 언어 (DCL : Data Control Language)   
@@ -661,8 +668,11 @@ ORDER BY colunm1, colunm2, ...; # DISTINCT와 함께 사용하는 경우 ORDER B
 
 ___
 ## 17. HAVING
-- 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
 ```sql
+- WHERE는 GROUP BY를 사용하기 전에 필터링을 할 경우에 사용한다
+- HAVING은 GROUP BY를 사용한 후에 필터링을 할 경우에 사용한다.
+- 조건에 집계함수가 포함되는 경우 WHERE 대신 HAVING 사용
+
 SELECT colunm1, colunm2, ... # as(alias)를 사용한 후
 FROM table
 WHERE condition
