@@ -681,9 +681,10 @@ HAVING condition (Aggregate_Functions) # alias로 조건을 활용할 수 있다
 ORDER BY colunm1, colunm2, ...; 
 ```
 ---
-## 18. CASE
-- CASE 구문 기본 형태
+## 18. 조건문
+- CASE
 ```sql
+-- ELSE 이후의 값을 입력하지 않으면 NULL이 기본값으로 들어간다.
 SELECT CASE
             WHEN condition1 THEN resultA
             WHEN condition2 THEN resultB
@@ -691,21 +692,17 @@ SELECT CASE
             ELSE resultZ
        END AS sth, *
 FROM tablename
-```   
-- GROUP BY와 함께 사용할 수 있다.
-```sql
-SELECT CASE
-            WHEN condition THEN result
-            ELSE result
-       END AS sth
-     , AVG(columnname)
-FROM tablename
 GROUP BY sth
+```   
+-  IF
+```sql
+SELECT IF(조건, 조건이 True일 때, 조건이 false일 때)
+FROM tablename
 ```
-- case 활용하여 피봇테이블을 사용할 수 있다
+- 피봇테이블 사용
 [관련문제]([https://github.com/vive0508/TIL/tree/main/SQL/LeetCode](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/reformat%20department%20table.md))
 ---
-## 19. Scalar Function
+## 20. Scalar Function
 - 입력값을 기준으로단일 값을 반환하는 함수
 
 | Function | Description |
