@@ -316,13 +316,6 @@ ORDER BY columname;
 
 ---
 ## 6 JOIN
-### 6.1 old version
-```sql
-SELECT column1, column2, ...
-FROM tableA, tableB, ...
-WHERE condition; # where절에 조건으로 기준 설정
-```
-### 6.2 new version
 - INNER JOIN : 교집합   
 - LEFT JOIN : 왼쪽 데이터 기준으로 JOIN   
 - RIGHT JOIN : 오른쪽 데이터 기준으로 JOIN
