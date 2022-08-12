@@ -1,19 +1,47 @@
 해커링크 문제풀이
 ===
-### 1. 기초 
-- [select all](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/select%20all.md)   
-- [select by id](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/select%20by%20id.md)   
+### Easy 
 - [revising the select query 1](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20the%20select%20query%201.md)   
+- [revising the select query 2]
+- [select all](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/select%20all.md)   
+- [select by id](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/select%20by%20id.md) 
+- [japanese cities' attributes]    
+- [japanese cities' names]    
 - [weather observation station 1](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%201.md)   
+- [weather observation station 2] 
+- [weather observation station 3]   
+- [weather observation station 4(밑에)]   
+- [weather observation station 5]   
 - [weather observation station 6](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%206.md)   
+- [weather observation station 7]  
+- [weather observation station 8]   
+- [weather observation station 9]   
+- [weather observation station 10]   
+- [weather observation station 11]   
 - [weather observation station 12](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%2012.md)   
+- [weather observation station 13] 
+- [weather observation station 14] 
 - [weather obeservation station 15](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%2015.md) 
+- [weather observation station 16]   
+- [weather observation station 17]   
+- [higher than 75 marks](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/higher%20than%2075%20marks.md)    
 - [employee names](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/employee%20names.md)   
 - [employee salaries](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/employee%20salaries.md)   
-- [higher than 75 marks](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/higher%20than%2075%20marks.md)   
-  
-### 2. 중급
-- [revising aggregations-averages](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-average.md)   
+- [type of triangle(밑에)]   
+- [revising aggregations-the count function(밑에)]   
+- [revising aggregations-the sum function(밑에)]   
+- [revising aggregations-the averages function(밑에)]   
+- [average population]   
+- [population density difference(밑에)]
+- [the blunder]   
+- [top earners(밑에)]
+- [population cencus(밑에)]   
+- [african cities(밑에)]   
+- [averagepopulationof each continent(밑에)]   
+- [draw the triangle 1]   
+- [draw the triangle 2]   
+- 여기서부터
+- [revising aggregations-averages](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-average.md) 
 - [revising aggregations-the sum function](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-the%20sum%20function.md)   
 - [revising aggregations-the count function](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/revising%20aggregations-the%20count%20function.md)   
 - [average population](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population.md)   
@@ -24,4 +52,6 @@
 - [african cities](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/african%20cities.md)   
 - [population census](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20census.md) 
 - [\*average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)
+
+### Medium
 - [\**symmetric pairs](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/symmetric%20pairs.md)
