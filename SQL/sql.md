@@ -534,6 +534,7 @@ SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
 ```
 
 - Scalar Function : 입력값을 기준으로 단일 값을 반환하는 함수
+
 | Function | Description |
 | :--: | :-- |
 | UCASE | 영문을 대문자로 변환하는 함수 |
