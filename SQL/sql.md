@@ -245,6 +245,22 @@ SELECT IF(조건, 조건이 True일 때, 조건이 false일 때)
 FROM tablename
 ```
 - 피봇테이블 사용 : [관련문제](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/reformat%20department%20table.md)    
+```sql
+# 기존 테이블을
+id avg 
+1  3.5
+2  7.0
+
+# 아래와 같이 피봇테이블을 만드는 방법은
+id1_avg  id2_avg
+3.5        7.0
+
+# 다음의 쿼리문을 활용하면 된다.
+SELECT CASE WHEN id=1 THEN avg END AS id1_avg
+     , CASE WHEN id=1 THEN avg END AS id2_avg
+FROM tablename
+```
+
 ---
 
 > 3.1 SELECT ~ FROM ~     
