@@ -11,7 +11,7 @@
 - [weather observation station 2](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%202.md) 
 - [weather observation station 3](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%203.md)   
 - [weather observation station 4](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%204.md)      
-- [\*weather observation station 5](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%205.md)   
+- [weather observation station 5](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%205.md)   
 - [weather observation station 6](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%206.md)   
 - [weather observation station 7](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%207.md)  
 - [weather observation station 8](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%208.md)   
@@ -34,11 +34,11 @@
 - [average population](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population.md)   
 - [japan population](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/japan%20population.md)
 - [population density difference](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20density%20difference.md)   
-- [\*the blunder]
-- [\*top earners](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/top%20earners.md)   
+- [the blunder](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/the%20blunder.md)
+- [top earners](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/top%20earners.md)   
 - [population census](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/population%20census.md)  
 - [african cities](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/african%20cities.md)     
-- [\*average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)    
+- [average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)    
 
 ### Medium
 - [\**symmetric pairs](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/symmetric%20pairs.md)
