@@ -64,3 +64,13 @@ ____
 ____
 ### 2.6 맵
 - Mapbox
+___
+
+## 3. 인터렉티브 
+> 태블로 상단 > 대시보드 > 동작   
+- Filter Action   
+- Highlight Action   
+- URL Action   
+- Go to Sheet   
+- Parameter Action   
+- Set Action   
