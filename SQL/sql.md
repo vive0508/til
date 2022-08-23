@@ -201,6 +201,7 @@ ___
 ### 3.1.1 AS / DISTINCT / CONCAT 
 - AS(ALIAS)
 ```sql
+# MySQL에서는 SELECT문에서 정의한 alias를 GROUP BY, HAVING, ORDER BY절에서 사용할 수 있다.   
 # as는 생략 가능하다
 -- 컬럼명 별칭 생성
 SELECT column1 as newcolumnname, ... FROM tablename;
