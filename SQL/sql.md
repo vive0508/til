@@ -523,25 +523,35 @@ LIMIT number;
 ```
 ---
 # 4. MySQL 함수
-- 문자열 함수
+- [문자열 함수](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
 ```sql
 -- 문자열 자르기
 LEFT(컬럼명 또는 문자열, 문자열의 길이)
 RIGHT(컬럼명 또는 문자열, 문자열의 길이)
 SUBSTRING/SUBSTR(컬럼명 또는 문자열, 시작 위치, 길이)
 
+-- 대소문자 변환
+LOWER(컬럼명 또는 문자열)
+UPPER(컬럼명 또는 문자열)
+
 -- 문자열 변경 함수
-REPLACE('문자열', '기존 변경된 문자열', '변경할 문자열')
+REPLACE(컬럼명 또는 문자열, 기존 변경된 문자열, 변경할 문자열)
+
+-- 문자 합치기
+CONCAT(컬럼명 또는 문자열1, 컬럼명 또는 문자열2)
 ``` 
-- 숫자 함수
+- [숫자 함수](https://dev.mysql.com/doc/refman/8.0/en/numeric-functions.html)
 ```sql
 -- 올림
-CEIL(수) -- 올림
-FLOOR(수) -- 내림
-ROUND(수, 자릿수) -- 반올림
-ABS(수) -- 절댓값
-POW(X,Y),POWER(X,Y) -- X의 Y승
-MOD -- X를 Y로 나눈 나머지
+CEIL(컬럼명 또는 값) -- 올림
+FLOOR(컬럼명 또는 값) -- 내림
+ROUND(컬럼명 또는 값, 자릿수) -- n자리 숫자로 반올림
+TRUNCATE(컬럼명 또는 값, 자릿수) -- n자리 숫자 이하 버림
+ABS(컬럼명 또는 값) -- 절댓값
+POW(컬럼명 또는 값, n) / POWER(x,n) -- x의 n승
+POWER(컬럼명 또는 값, 1/n) -- x의 n제곱근
+SQRT(컬럼명 또는 값) -- s의 n제곱근
+MOD(컬럼명 또는 값, n) -- x를 n로 나눈 나머지
 ```
 - 시간 더하기 빼기
 ```sql
