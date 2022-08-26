@@ -41,4 +41,6 @@
 - [average population of each continent](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/average%20population%20of%20each%20continent.md)    
 
 ### Medium
+- [weather observation station 18](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/weather%20observation%20station%2018.md)
 - [\**symmetric pairs](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/symmetric%20pairs.md)
+- [\**new companies](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/new%20companies.md)
