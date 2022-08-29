@@ -19,7 +19,8 @@
 - [Web Scraping](https://github.com/vive0508/TIL/blob/main/ML_DL/Web_Scraping/README.md)
 
 ### BI
-- [Tableau](https://github.com/vive0508/TIL/blob/main/BI/tableau.md)
+- [Tableau](https://github.com/vive0508/TIL/blob/main/BI/tableau.md)   
+- [Redash]()
 
 ### 기초 학습
 - [수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
@@ -33,3 +34,4 @@
 - [Jupyter 단축키](https://github.com/vive0508/TIL/blob/main/ETC/jupyter_shortcut.md)   
 - [마크다운 문법](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)  
 - [경로표기법](https://github.com/vive0508/TIL/blob/main/ETC/.md)
+- [도커]()
