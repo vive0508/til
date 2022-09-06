@@ -581,8 +581,15 @@ SELECT DATE_ADD(NOW(), INTERVAL -1 YEAR)
 -- 시간 빼기
 SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
 ```
+
+- 시간 형태 변경
+```
+- 시간까지 나와 있는 데이터를 일자까지만 나오도록 변경
+DATE()
+
 - DATE_FORMAT(날짜, 형식) : 날짜를 원하는 형식으로 출력  
 [링크](https://www.w3schools.com/sql/func_mysql_date_format.asp)
+```
 
 - Scalar Function : 입력값을 기준으로 단일 값을 반환하는 함수
 
