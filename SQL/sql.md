@@ -634,7 +634,7 @@ FROM table_name
 WHERE column_name = (SELECT column_name From table_name WHERE condtion)
 ORDER BY column_name;
 ```
-- 다중 행 서브쿼리 (Multiple ROW) :  서브쿼리의 결과값이 컬럼은 한개, 로우는 N개일 때
+- 다중 행 서브쿼리 (Multiple ROW) :  서브쿼리의 결과값이 컬럼은 한 개, 로우는 N개일 때
 ```sql
 # IN : 서브쿼리 결과 중에 포함될 때
 SELECT column_names
@@ -659,7 +659,7 @@ SELECT column_names
 FROM table_name
 WHERE column_name = ALL (SELECT column_name FROM table_name WHERE condtion);
 ```
-- 다중 컬럼 서브쿼리 (Multiple Column) : 서브쿼리의 결과값이 컬럼이 N개일 때
+- 다중 컬럼 서브쿼리 (Multiple Column) : 서브쿼리의 결과값이 컬럼, 로우 모두 N개일 때
 ```sql
 SELECT column_names
 FROM tablename
