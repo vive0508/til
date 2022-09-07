@@ -623,12 +623,54 @@ SELECT NOW();
 
 ___
 # 5. SUBQUERY
-- Scalar subquery : Select절에 사용   
+> Inner Query 라고 불리기도 한다. (cf. Outer Query)
+
+## 5.1 WHERE절 서브쿼리
+- 단일 행 서브쿼리 (Single Row) :  서브쿼리의 결과값이 컬럼, 로우 모두 한 개일 때
 ```sql
-SELECT column1, (SELECT column2 FROM table2 WHERE condition)
-FROM table1
-WHERE condtion;
+# 서브쿼리가 비교연산자와 함게 사용되는 경우가 많다.
+SELECT column_names
+FROM table_name
+WHERE column_name = (SELECT column_name From table_name WHERE condtion)
+ORDER BY column_name;
 ```
+- 다중 행 서브쿼리 (Multiple ROW) :  서브쿼리의 결과값이 컬럼은 한개, 로우는 N개일 때
+```sql
+# IN : 서브쿼리 결과 중에 포함될 때
+SELECT column_names
+FROM table_name
+WHERE column_name IN (SELECT column_name FROM table_name WHERE condtion)
+ORDER BY column_name;
+
+# EXISTS : 서브쿼리 결과에 값이 있을 때
+SELECT column_names
+FROM table_name
+WHERE column_name EXISTS (SELECT column_name FROM table_name WHERE condtion)
+ORDER BY column_name;
+
+# ANY : 서브쿼리 결과 중에 최소한 하나라도 만족하면 (비교연산자 사용)
+SELECT column_names
+FROM table_name
+WHERE column_name = ANY (SELECT column_name FROM table_name WHERE condtion)
+ORDER BY column_name;
+
+# ALL : 서브쿼리 결과를 모두 만족하면 (비교연산자 사용)
+SELECT column_names
+FROM table_name
+WHERE column_name = ALL (SELECT column_name FROM table_name WHERE condtion);
+```
+- 다중 컬럼 서브쿼리 (Multiple Column) : 서브쿼리의 결과값이 컬럼이 N개일 때
+```sql
+SELECT column_names
+FROM tablename
+WHERE (column1, column2, ...) IN (SELECT column1_condition, column2_condition,...
+                                  FROM tablename)
+ORDER BY column_names;
+```
+
+ 
+
+## 5.2 FROM절 서브쿼리
 - Inline View : From절에 사용   
 ```sql
 # 가상의 테이블을 하나 더 만든다고 생각하고 사용
@@ -653,50 +695,20 @@ SELECT a.column, b.column
 FROM table1 a, (SELECT  column1, column2 FROM table2) b
 WHERE condition;
 ```
-- Nested Subquery : Where절에 사용
-  - Single ROW : 하나의 열을 검색하는 서브쿼리
-  ```sql
-  # 서브쿼리가 비교연산자와 함게 사용되는 경우, 한 개의 결과값을 가져와야 한다.
-  SELECT column_names
-  FROM table_name
-  WHERE column_name = (SELECT column_name From table_name WHERE condtion)
-  ORDER BY column_name;
-  ```
-  - Multiple ROW : 하나 이상의 열을 검색하는 서브쿼리
-  ```sql
-  # IN : 서브쿼리 결과 중에 포함될 때
-  SELECT column_names
-  FROM table_name
-  WHERE column_name IN (SELECT column_name FROM table_name WHERE condtion)
-  ORDER BY column_name;
 
-  # EXISTS : 서브쿼리 결과에 값이 있을 때
-  SELECT column_names
-  FROM table_name
-  WHERE column_name EXISTS (SELECT column_name FROM table_name WHERE condtion)
-  ORDER BY column_name;
 
-  # ANY : 서브쿼리 결과 중에 최소한 하나라도 만족하면 (비교연산자 사용)
-  SELECT column_names
-  FROM table_name
-  WHERE column_name = ANY (SELECT column_name FROM table_name WHERE condtion)
-  ORDER BY column_name;
 
-  # ALL : 서브쿼리 결과를 모두 만족하면 (비교연산자 사용)
-  SELECT column_names
-  FROM table_name
-  WHERE column_name = ALL (SELECT column_name FROM table_name WHERE condtion);
-  ```
-  
-  - Multiple Column : 하나 이상의 행을 검색하는 서브 쿼리
-  ```sql
-  SELECT column_names
-  FROM tablename a
-  WHERE (a.column1, a.column2, ...) IN (SELECT b.column1, b.column2,...
-                                        FROM tablename b
-                                        WHERE a.column_name=b.column_name)
-  ORDER BY column_names;
-  ```
+
+## 5.3 SELECT절 서브쿼리
+
+
+- Scalar subquery : Select절에 사용   
+```sql
+SELECT column1, (SELECT column2 FROM table2 WHERE condition)
+FROM table1
+WHERE condtion;
+```
+
 
 ---
 
