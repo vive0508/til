@@ -625,7 +625,7 @@ ___
 # 5. SUBQUERY
 > Inner Query 라고 불리기도 한다. (cf. Outer Query)
 
-## 5.1 WHERE절 서브쿼리
+## 5.1 WHERE절 서브쿼리 
 - 단일 행 서브쿼리 (Single Row) :  서브쿼리의 결과값이 컬럼, 로우 모두 한 개일 때
 ```sql
 # 서브쿼리가 비교연산자와 함게 사용되는 경우가 많다.
@@ -668,12 +668,11 @@ WHERE (column1, column2, ...) IN (SELECT column1_condition, column2_condition,..
 ORDER BY column_names;
 ```
 
- 
-
-## 5.2 FROM절 서브쿼리
+## 5.2 FROM절 서브쿼리 (Inline View)
 - Inline View : From절에 사용   
 ```sql
 # 가상의 테이블을 하나 더 만든다고 생각하고 사용
+# 서브쿼리에 별칭(alias) 필수
 SELECT columnnameA, Aggregate_Functions(columnnameB)
 FROM (
       SELECT column1
@@ -695,11 +694,26 @@ SELECT a.column, b.column
 FROM table1 a, (SELECT  column1, column2 FROM table2) b
 WHERE condition;
 ```
+- WITH 구문
+```sql
+WITH new_name AS (
+SELECT column1
+           , column2
+           , Aggregate_Functions(column3)
+      FROM tablename
+      GROUP BY columname
+) new_name2 AS (
+...
+)
+
+SELECT columnname
+FROM new_name
+WHERE condition;
+```
 
 
 
-
-## 5.3 SELECT절 서브쿼리
+## 5.3 SELECT절 서브쿼리 (Scalar Subquery)
 
 
 - Scalar subquery : Select절에 사용   
