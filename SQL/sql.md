@@ -55,10 +55,10 @@ RDBMS는 클라이언트/서버 모델로 구성됩니다.
 ---
 
 ## 2. SQL 명령어
-- 데이터베이스 목록 확인 : SHOW DATABASES;       
-- 데이터베이스 사용 : USE databasename;      
-- 테이블 확인 : SHOW TABLES;   
-- 테이블 정보 확인 : DESC tablename;   
+- 데이터베이스 목록 조회 : SHOW DATABASES;       
+- 데이터베이스 접근 : USE databasename;      
+- 테이블 목록 조회 : SHOW TABLES;   
+- 테이블 세부정보 조회 : DESC tablename;   
 - 주석처리 : '--' or '/* */'   
 
 ---
@@ -97,14 +97,14 @@ ALTER TABLE tablename;
 # 테이블 이름 변경
 RENAME new_tablename;
 
-# 컬럼 생성
-ADD COLUMN columnname datatype;
-
-# 컬럼명 변경
-CHANGE COLUMN old_columnname new_columnname new_datatype;
-
 # 컬럼 데이터타입 변경
 MODIFY COLUMN columnname datatype;
+
+# 컬럼명 변경 (feat. 데이터타입 변경)
+CHANGE COLUMN old_columnname new_columnname new_datatype;
+
+# 컬럼 생성
+ADD COLUMN columnname datatype;
 ```
 - DROP : 테이블 삭제   
 ```sql
