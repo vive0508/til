@@ -123,7 +123,7 @@ ___
 
 ### 2.2 데이터 조작 언어 (DML : Data Manipulation Language)
 > 데이터의 검색 : SELECT(질의)   
-> 데이터의 갱신 : INSERT(등록) / UPDATE(수정) / DELETE(제거)  
+> 데이터의 갱신 : INSERT(추가) / UPDATE(수정) / DELETE(제거)  
 
 - SELECT : Read     
 > **순서 익히기**   
@@ -148,11 +148,11 @@ FROM tablename;
 
 - INSERT : Create   
 ```sql
-# 입력한 컬럼 이름의 순서와 값의 순서가 일치하도록 주의
+# 컬럼 리스트와 밸류 리스트의 순서가 일치하도록 주의
 INSERT INTO tablename (column1, column2, ...)
 VALUES (value1, value2, ...);
 
-# 모든 컬럼의 값을 추가하는 경우 컬럼 이름을 지정하지 않아도 됨
+# 모든 컬럼에 밸류를 입력하는 경우 컬럼 이름을 지정하지 않아도 됨
 INSERT INTO tablename
 VALUES (value1, value2, ...);
 ```
@@ -163,12 +163,12 @@ UPDATE tablename
 SET column1 = value1, colum2=value2, ...
 WHERE condition;
 
-# 예시 
+# example 1
 UPDATE tablename
 SET columnA = comlumnA + 100
 WHERE condition;
 
-# CASE와 함께 사용
+# example 2 (with CASE 구문)
 UPDATE tablename
 SET coulumnname = CASE
                       WHEN condition1 then value_if_condition1_true
@@ -180,7 +180,7 @@ WHERE condition;
 
 - DELETE : Delete    
 ```sql
-# 테이블에 전체 데이터 삭제
+# 테이블에 데이터 전체 삭제
 DELETE FROM tablename;
 
 # 조건에 부합하는 특정 행만 삭제
@@ -196,11 +196,37 @@ WHERE condition;
 ___
 
 ### 2.3 데이터 제어 언어 (DCL : Data Control Language)   
-- GRANT : 권한 부여   
-- REVOKE : 권한 해제   
-- COMMIT
-- ROLLBACK
+- 유저 생성 및 삭제
+```sql
+# 현재 PC에서 접속이 가능한 유저 생성 (ex. 패스워드 1234)
+CREATE USER 'test_1'@'localhost' identified by '1234';
 
+# 외부에서 접속이 가능한 유저 생성 (ex. 패스워드 1234)
+CREATE USER 'test_2'@'%' identified by '1234';
+
+# 현재 PC에서 접속이 가능한 유저 삭제
+DROP USER 'test_1'@'localhost';
+
+# 외부에서 접속이 가능한 유저 삭제
+DROP USER 'test_2'@'%';
+```
+- 유저에게 부여된 권한 조회
+```sql
+SHOW GRANTS FOR 'username'@'localhost';
+SHOW GRANTS FOR 'username'@'%';
+```
+
+- GRANT : 권한 부여
+```sql
+GRANT ALL ON dbname.* to 'username'@'localhost';
+GRANT ALL ON dbname.* to 'username'@'%';
+```
+
+- REVOKE : 권한 해제   
+```sql
+REVOKE ALL ON dbname.* from 'username'@'localhost';
+REVOKE ALL ON dbname.* from 'username'@'%';
+```
 ___
 # 3. SELECT   
 > 3.1 SELECT ~ FROM ~     
