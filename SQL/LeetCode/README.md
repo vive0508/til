@@ -14,3 +14,4 @@
 
 ## Medium 
 - [\**department highest salary](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/department%20highest%20salary.md)
+- [\**challenges]()
