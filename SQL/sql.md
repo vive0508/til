@@ -706,11 +706,11 @@ ORDER BY column_names;
 ```sql
 # 가상의 테이블을 하나 더 만든다고 생각하고 사용
 # 서브쿼리에 별칭(alias) 필수
-SELECT columnnameA, Aggregate_Functions(columnnameB)
+SELECT col_1, Aggregate_Functions(sample)
 FROM (
-      SELECT column1
-           , column2
-           , Aggregate_Functions(column3)
+      SELECT col_1
+           , col_2
+           , Aggregate_Functions(col_3) AS sample
       FROM tablename
       GROUP BY columname
       ) new_name
