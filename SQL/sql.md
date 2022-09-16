@@ -37,9 +37,15 @@ RDBMS는 클라이언트/서버 모델로 구성됩니다.
 ### 1.2 ERD (entity relationship diagram)
 - 구성요소([참고링크](https://www.lucidchart.com/pages/er-diagrams#section_5))
   - entity : 개체, 테이블   
-  - attribute : 컬럼명, 데이터타입(Primary key, foreign key)   
-  - relationship : one to many, many to many   
+  - attribute : 컬럼명, 데이터타입(Primary key, Foreign Key)   
+  - relationship : one to one, one to many, many to many
 
+- 데이터의 관계
+  - 데이터의 관계는 Primary key(pk)와 Foreign key(FK)의 연결을 통해 만들어진다.    
+  - PK는 레코드를 대표하는 값으로, 변하지 않고 중복되지 않은 컬럼이 존재해야 한다.   
+  - PK는 보통 id 컬럼으로 명명되고, 보통 DB에 의해 자동 생성된다.     
+  - FK는 관계 형성을 위한 key로 pk를 참조한다.   
+  - 데이터의 관계는 one to one, one to many, many to many 으로 나타낼 수 있다.
 
 ### 1.3 Data Type
 - 숫자형   
@@ -52,6 +58,7 @@ RDBMS는 클라이언트/서버 모델로 구성됩니다.
   - date()   
   - datetime()   
   - timestamp() = datetime() + timezone   
+  - 문자형을 날짜, 시간형으로 바꾸기 위해서는 `str_to_date()` 함수를 사용한다.
 ---
 
 ## 2. SQL 명령어
