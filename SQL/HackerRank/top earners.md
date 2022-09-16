@@ -26,3 +26,10 @@ FROM employee
 GROUP BY earnings
 HAVING earnings = (SELECT MAX(months*salary) FROM employee)
 ```
+
+- 서브쿼리 활용 3 : CASE 조건문 활용
+```SQL
+SELECT (SELECT MAX(months * salary) FROM employee)
+     , COUNT(CASE WHEN months * salary = (SELECT MAX(months * salary) FROM employee) THEN 1 END)
+FROM employee
+```
