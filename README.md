@@ -27,11 +27,9 @@
 - [수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
 - [통계](https://github.com/vive0508/TIL/blob/main/Basic_Statistics/README.md)
 
-### Git
-- [Git](https://github.com/vive0508/TIL/blob/main/Git/basic_git.md)
-- [Shell 커맨드](https://github.com/vive0508/TIL/blob/main/ETC/shell_commands.md)  
-
 ### ETC
+- [Git](https://github.com/vive0508/TIL/blob/main/Git/basic_git.md)
+- [Shell 커맨드](https://github.com/vive0508/TIL/blob/main/ETC/shell_commands.md) 
 - [Jupyter 단축키](https://github.com/vive0508/TIL/blob/main/ETC/jupyter_shortcut.md)   
 - [마크다운 문법](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)  
 - [경로표기법](https://github.com/vive0508/TIL/blob/main/ETC/.md)
