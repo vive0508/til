@@ -274,7 +274,7 @@ SELECT CONCAT('stringA', ' ', 'stringB', ...); # stringA stringB
 SELECT CONCAT('정답 :', colmname) FROM tablename; # 정답: ooo
 ```
 
-### 3.1.2 조건문 (CASE문, IF문, 피봇테이블)
+### 3.1.2 조건문 (CASE문, IF문, COALESCE 피봇테이블)
 - CASE
 ```sql
 -- ELSE 이후의 값을 입력하지 않으면 NULL이 기본값으로 들어간다.
@@ -283,15 +283,33 @@ SELECT CASE
             WHEN condition2 THEN result2
             ...
             ELSE result3
-       END AS sth, *
+       END
 FROM tablename
-GROUP BY sth
+
+-- 조건에 NULL을 사용할 때
+SELECT CASE
+            WHEN a = 1 THEN A
+            WHEN a = 2 THEN B
+            WHEN a IS NULL THEN '데이터 없음'
+            ELSE '미지정'
+       END
+FROM tablename
+
+            
 ```   
 - IF
 ```sql
 SELECT IF(조건, 조건이 True일 때, 조건이 false일 때)
 FROM tablename
 ```
+- COALESCE
+```
+-- a가 NULL이 아니면 a, NULL이면 0으로 반환
+SELECT a
+     , COALESCE(a, 0)
+FROM tablename
+```
+
 - 피봇테이블 사용 : [관련문제](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/reformat%20department%20table.md)    
 ```sql
 # 기존 테이블을
@@ -390,6 +408,10 @@ WHERE columnname IS NULL;
 SELECT *
 FROM tablename
 WHERE columnname IS NOT NULL;
+
+# NULL 값의 연산
+C나 PHP언어에서는 NULL이 0으로 처리되지만
+SQL에서는 NULL값이 0으로 처리되지 않아 연산을 해도 NULL이 된다.
 ```
 
 ### 3.3.2 연산자
@@ -557,25 +579,44 @@ FROM tablename
 ORDER BY column1, colum2, ... ASC; # Ascending, 오름차순 (default)
 ORDER BY column1, colum2, ... DESC; # Descending, 내림차순
 ORDER BY column1 DESC, column2 ASC;
+
+# NULL값의 정렬 순서
+- NULL값은 특성상 대소비교를 할 수 없어 별도의 방식을 취급한다.
+- 데이터베이스 제품에 따라 기준이 다른데, MySQL의 경우 NULL값을 가장 작은 값으로 취급합니다.
 ```
 
 ## 3.6 LIMIT
 - 검색결과를 정렬된 순으로 주어진 숫자만큼 조회
 ```sql
-# WHERE와 함께 사용
-SELECT column1, column2, ...
+SELECT *
 FROM tablename
-WHERE condition
 LIMIT number;
+
+# LIMIT의 OFFSET은 생략 가능하면 기본값은 0이다.
+-- number_b 행부터 nuber_a 건의 데이터를 표출한다.
+SELECT *
+FROM tablename
+LIMIT number_a
+OFFSET number_b
 ```
 ---
 # 4. MySQL 함수
 - [문자열 함수](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html)
 ```sql
 -- 문자열 자르기
+SUBSTRING/SUBSTR(컬럼명 또는 문자열, 시작 위치, 길이)
 LEFT(컬럼명 또는 문자열, 문자열의 길이)
 RIGHT(컬럼명 또는 문자열, 문자열의 길이)
-SUBSTRING/SUBSTR(컬럼명 또는 문자열, 시작 위치, 길이)
+
+-- 문자 합치기
+CONCAT(컬럼명 또는 문자열1, 컬럼명 또는 문자열2)
+다른 데이터베이스에서는 '+'와 '||'를 사용하기도 한다.
+
+-- 공백 제거
+TRIM('ABC      ') -> 'ABC'
+
+-- 문자열 길이
+CHARACTER_LENGTH(문자열)
 
 -- 대소문자 변환
 LOWER(컬럼명 또는 문자열)
@@ -583,9 +624,8 @@ UPPER(컬럼명 또는 문자열)
 
 -- 문자열 변경 함수
 REPLACE(컬럼명 또는 문자열, 기존 변경된 문자열, 변경할 문자열)
+-- 
 
--- 문자 합치기
-CONCAT(컬럼명 또는 문자열1, 컬럼명 또는 문자열2)
 ``` 
 - [숫자 함수](https://dev.mysql.com/doc/refman/8.0/en/numeric-functions.html)
 ```sql
@@ -600,7 +640,7 @@ POWER(컬럼명 또는 값, 1/n) -- x의 n제곱근
 SQRT(컬럼명 또는 값) -- s의 n제곱근
 MOD(컬럼명 또는 값, n) -- x를 n로 나눈 나머지
 ```
-- 시간 더하기 빼기
+- 날짜 연산
 ```sql
 -- 시간 더하기 : DATE_ADD(기준날짜, INTERVAL)
 SELECT DATE_ADD(NOW(), INTERVAL 1 SECOND)
@@ -613,15 +653,12 @@ SELECT DATE_ADD(NOW(), INTERVAL -1 YEAR)
 
 -- 시간 빼기
 SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
-```
 
-- 시간 형태 변경
-```
 - 시간까지 나와 있는 데이터를 일자까지만 나오도록 변경
 DATE()
 
 - DATE_FORMAT(날짜, 형식) : 날짜를 원하는 형식으로 출력  
-[링크](https://www.w3schools.com/sql/func_mysql_date_format.asp)
+https://www.w3schools.com/sql/func_mysql_date_format.asp
 ```
 
 - Scalar Function : 입력값을 기준으로 단일 값을 반환하는 함수
