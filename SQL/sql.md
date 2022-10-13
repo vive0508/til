@@ -251,14 +251,16 @@ ___
 # MySQL에서는 SELECT문에서 정의한 alias를 GROUP BY, HAVING, ORDER BY절에서 사용할 수 있다.   
 # as는 생략 가능하다
 -- 컬럼명 별칭 생성
-SELECT column1 as newcolumnname, ... FROM tablename;
+SELECT column AS newcolumnname
+FROM tablename;
 
 -- 테이블명 별칭 생성
-SELECT column1, column2, ... FROM tablename as newtablename;
+SELECT newtablename_column
+FROM tablename as newtablename;
 ```
 - DISTINCT
 ```python
--- 검색한 결과의 중복 제거
+-- 검색한 결과의 중복 제외
 SELECT DISTINCT column1, column2, ...
 FROM tablename
 WHERE condition;
@@ -274,7 +276,7 @@ SELECT CONCAT('stringA', ' ', 'stringB', ...); # stringA stringB
 SELECT CONCAT('정답 :', colmname) FROM tablename; # 정답: ooo
 ```
 
-### 3.1.2 조건문 (CASE문, IF문, COALESCE 피봇테이블)
+### 3.1.2 조건문 (CASE문, IF문, COALESCE문, 피봇테이블)
 - CASE
 ```sql
 -- ELSE 이후의 값을 입력하지 않으면 NULL이 기본값으로 들어간다.
@@ -285,17 +287,6 @@ SELECT CASE
             ELSE result3
        END
 FROM tablename
-
--- 조건에 NULL을 사용할 때
-SELECT CASE
-            WHEN a = 1 THEN A
-            WHEN a = 2 THEN B
-            WHEN a IS NULL THEN '데이터 없음'
-            ELSE '미지정'
-       END
-FROM tablename
-
-            
 ```   
 - IF
 ```sql
@@ -323,7 +314,7 @@ id1_avg  id2_avg
 
 # 다음의 쿼리문을 활용하면 된다.
 SELECT CASE WHEN id=1 THEN avg END AS id1_avg
-     , CASE WHEN id=1 THEN avg END AS id2_avg
+     , CASE WHEN id=2 THEN avg END AS id2_avg
 FROM tablename
 ```
 
@@ -542,11 +533,11 @@ FROME tablename
 ### 3.4.2 GROUP BY
 ```sql
 -- 집계함수와 함께 사용할 수 있다.
-SELECT colunm1, colunm2, ...
+SELECT column1, column2, ...
 FROM table
 WHERE condition
-GROUP BY colunm1, colunm2, ... # DISTINCT와 함께 사용 가능
-ORDER BY colunm1, colunm2, ...; # DISTINCT와 함께 사용하는 경우 ORDER BY 불가능
+GROUP BY column1, column2, ... # DISTINCT와 함께 사용 가능
+ORDER BY column1, column2, ...; # DISTINCT와 함께 사용하는 경우 ORDER BY 불가능
 ```
 
 ### 3.4.3 HAVING
@@ -629,7 +620,6 @@ REPLACE(컬럼명 또는 문자열, 기존 변경된 문자열, 변경할 문자
 ``` 
 - [숫자 함수](https://dev.mysql.com/doc/refman/8.0/en/numeric-functions.html)
 ```sql
--- 올림
 CEIL(컬럼명 또는 값) -- 올림
 FLOOR(컬럼명 또는 값) -- 내림
 ROUND(컬럼명 또는 값, 자릿수) -- n자리 숫자로 반올림
@@ -654,10 +644,10 @@ SELECT DATE_ADD(NOW(), INTERVAL -1 YEAR)
 -- 시간 빼기
 SELECT DATE_SUB(NOW(), INTERVAL 1 SECOND)
 
-- 시간까지 나와 있는 데이터를 일자까지만 나오도록 변경
+-- 시간까지 나와 있는 데이터를 일자까지만 나오도록 변경
 DATE()
 
-- DATE_FORMAT(날짜, 형식) : 날짜를 원하는 형식으로 출력  
+-- DATE_FORMAT(날짜, 형식) : 날짜를 원하는 형식으로 출력  
 https://www.w3schools.com/sql/func_mysql_date_format.asp
 ```
 
