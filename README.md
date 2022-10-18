@@ -33,4 +33,3 @@
 - [Jupyter 단축키](https://github.com/vive0508/TIL/blob/main/ETC/jupyter_shortcut.md)   
 - [마크다운 문법](https://github.com/vive0508/TIL/blob/main/ETC/markdown_syntax.md)  
 - [경로표기법](https://github.com/vive0508/TIL/blob/main/ETC/.md)
-- [도커]()
