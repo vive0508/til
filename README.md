@@ -12,12 +12,12 @@
 
 
 ### Python
-- [파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/README.md)   
+- [파이썬 문법](https://github.com/vive0508/TIL/blob/main/Python/Grammar/README.md)   
 - [EDA](https://github.com/vive0508/TIL/blob/main/Python/Web_Scraping/README.md)
 - [Web Scraping](https://github.com/vive0508/TIL/blob/main/Python/README.md)
 
 ### BI
-- [Tableau](https://github.com/vive0508/TIL/blob/main/BI/tableau.md)   
+- [Tableau]()   
 - [Redash]()
 
 ### 기초 학습
