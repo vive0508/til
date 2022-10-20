@@ -367,7 +367,7 @@ plt.figure(figsize=(15, 7)) # plot 영역(그래프 영역)의 크기를 지정�
 word_counted.plot(50) # "plot" the graph, 상위 50개 단어를 보여줍니다.
 ```
 
-## 3. 단어 등장 빈도 시각화 (막대그래프)
+### 2.2 단어 등장 빈도 시각화 (막대그래프)
 
 ```
 # 막대그래프로의 시각화는 NLTK 의 함수만으로 진행하기 어려우므로,
@@ -398,7 +398,7 @@ plt.show()
 
 ---
 
-## 4. 워드 클라우드
+### 2.3 워드 클라우드
 ```python
 # 라이브러리 임포트
 from wordcloud import WordCloud
@@ -428,7 +428,7 @@ plt.tight_layout(pad=0)
 plt.show()
 ```
 
-## 5. 특정 그림 테두리 내에 워드 클라우드 그리기
+#### 2.3.1 특정 그림 테두리 내에 워드 클라우드 그리기
 ```python
 from PIL import Image
 from wordcloud import ImageColorGenerator # Image 로부터 Color 를 생성(Generate)해내는 객체입니다.
@@ -457,7 +457,7 @@ plt.show()
 word_cloud.to_file("word_cloud_completed.png") # Save "to file"
 ```
 
-## 6. 요약
+#### 2.3.2 요약
 - 워드 클라우드의 해상도는 원본이미지를 넘어설 수 없음
 ```python
 # 아래 옵션들을 원하시는대로 지정하셔서 가장 마음에 드는 워드클라우드를 활용하시면 됩니다.
