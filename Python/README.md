@@ -25,16 +25,16 @@ ___
 
 ## 2. EDA (Exploratory Data Analysis)
 
-- [Numpy](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/numpy.ipynb)   
-- [Pandas_series](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_series.ipynb)   
-- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_dataframe.ipynb)    
-- [Matplotlib](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/matplotlib.ipynb)    
-- [Seaborn](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.ipynb)    
-- [Plotly](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/plotly.ipynb)   
-- [Folium, Googlemaps](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/map.md)   
+- [Numpy](https://github.com/vive0508/TIL/blob/main/Python/EDA/numpy.ipynb)   
+- [Pandas_series](https://github.com/vive0508/TIL/blob/main/Python/EDA/pandas_series.ipynb)   
+- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/Python/EDA/pandas_dataframe.ipynb)    
+- [Matplotlib](https://github.com/vive0508/TIL/blob/main/Python/EDA/matplotlib.ipynb)    
+- [Seaborn](https://github.com/vive0508/TIL/blob/main/Python/EDA/seaborn.ipynb)    
+- [Plotly](https://github.com/vive0508/TIL/blob/main/Python/EDA/plotly.ipynb)   
+- [Folium, Googlemaps](https://github.com/vive0508/TIL/blob/main/Python/EDA/map.md)   
 
 ___
 
 ## 3. 웹 스크래핑 (Web Scraping)
-- [BeautifulSoup](https://github.com/vive0508/TIL/blob/main/ML_DL/Web_Scraping/beautiful_soup.md)   
-- [Selenium](https://github.com/vive0508/TIL/blob/main/ML_DL/Web_Scraping/selenium.md)
+- [BeautifulSoup](https://github.com/vive0508/TIL/blob/main/Python/Web_Scraping/beautiful_soup.md)   
+- [Selenium](https://github.com/vive0508/TIL/blob/main/Python/Web_Scraping/selenium.md)
