@@ -1,7 +1,5 @@
-Python
-===
+## Python Grammar
 
-## 1. Python Grammar
 ### 1.1 기초 문법
 * [변수](https://github.com/vive0508/TIL/blob/main/Python/variable.md)
 * [수 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_number.md)
@@ -21,20 +19,4 @@ Python
 * [텍스트 파일 처리](https://github.com/vive0508/TIL/blob/main/Python/ETC_file_handling.md)
 * [제너레이터](https://github.com/vive0508/TIL/blob/main/Python/ETC_generator.md)
 
-___
 
-## 2. EDA (Exploratory Data Analysis)
-
-- [Numpy](https://github.com/vive0508/TIL/blob/main/Python/EDA/numpy.ipynb)   
-- [Pandas_series](https://github.com/vive0508/TIL/blob/main/Python/EDA/pandas_series.ipynb)   
-- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/Python/EDA/pandas_dataframe.ipynb)    
-- [Matplotlib](https://github.com/vive0508/TIL/blob/main/Python/EDA/matplotlib.ipynb)    
-- [Seaborn](https://github.com/vive0508/TIL/blob/main/Python/EDA/seaborn.ipynb)    
-- [Plotly](https://github.com/vive0508/TIL/blob/main/Python/EDA/plotly.ipynb)   
-- [Folium, Googlemaps](https://github.com/vive0508/TIL/blob/main/Python/EDA/map.md)   
-
-___
-
-## 3. 웹 스크래핑 (Web Scraping)
-- [BeautifulSoup](https://github.com/vive0508/TIL/blob/main/Python/Web_Scraping/beautiful_soup.md)   
-- [Selenium](https://github.com/vive0508/TIL/blob/main/Python/Web_Scraping/selenium.md)
