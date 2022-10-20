@@ -1,7 +1,8 @@
-Python Grammar
+Python
 ===
 
-### 기초 문법
+## 1. Python Grammar
+### 1.1 기초 문법
 * [변수](https://github.com/vive0508/TIL/blob/main/Python/variable.md)
 * [수 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_number.md)
 * [문자열 자료형](https://github.com/vive0508/TIL/blob/main/Python/grammar_string.md)
@@ -16,6 +17,19 @@ Python Grammar
 * [클래스](https://github.com/vive0508/TIL/blob/main/Python/grammar_class.md)
 * [모듈](https://github.com/vive0508/TIL/blob/main/Python/grammar_module.md)
 
-### 기타
+### 1.2 기타
 * [텍스트 파일 처리](https://github.com/vive0508/TIL/blob/main/Python/ETC_file_handling.md)
 * [제너레이터](https://github.com/vive0508/TIL/blob/main/Python/ETC_generator.md)
+
+___
+
+## 2. EDA (Exploratory Data Analysis)
+
+- [Numpy](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/numpy.ipynb)   
+- [Pandas_series](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_series.ipynb)   
+- [Pandas_dataframe](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/pandas_dataframe.ipynb)    
+- [Matplotlib](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/matplotlib.ipynb)    
+- [Seaborn](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/seaborn.ipynb)    
+- [Plotly](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/plotly.ipynb)   
+- [Folium, Googlemaps](https://github.com/vive0508/TIL/blob/main/ML_DL/EDA/map.md)   
+
