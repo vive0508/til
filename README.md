@@ -17,8 +17,8 @@
 - [Web Scraping](https://github.com/vive0508/TIL/blob/main/Python/README.md)
 
 ### BI
-- [Tableau]()   
-- [Redash]()
+- [Tableau](https://velog.io/@vive0508/series/Tableau)   
+- [Redash](https://velog.io/@vive0508/series/redash)
 
 ### 기초 학습
 - [수학](https://github.com/vive0508/TIL/blob/main/Basic_Math/basic_math.md)
