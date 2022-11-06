@@ -133,14 +133,6 @@ ___
 > 데이터의 갱신 : INSERT(추가) / UPDATE(수정) / DELETE(제거)  
 
 - SELECT : Read     
-> **순서 익히기**   
-> 1. SELECT
-> 2. FROM   
-> 3. INNER JOIN ~~ ON ~~ / UNION  
-> 4. WHERE   
-> 5. GROUP BY ~~ HAVING ~~   
-> 6. ORDER BY   
-> 7. LIMIT
 ```sql
 # 테이블 전체내용 조회
 SELECT *
@@ -236,14 +228,6 @@ REVOKE ALL ON dbname.* from 'username'@'%';
 ```
 ___
 # 3. SELECT   
-> 3.1 SELECT ~ FROM ~     
-> 3.2 INNER JOIN ~~ ON ~~ / UNION     
-> 3.3 WHERE      
-> 3.4 GROUP BY ~~ HAVING ~~      
-> 3.5 ORDER BY      
-> 3.6 LIMIT   
-
-
 ## 3.1 SELECT ~ FROM ~
 ### 3.1.1 AS / DISTINCT / CONCAT 
 - AS(ALIAS)
@@ -320,12 +304,6 @@ FROM tablename
 
 ---
 
-> 3.1 SELECT ~ FROM ~     
-> 3.2 INNER JOIN ~~ ON ~~ / UNION or UNION ALL    
-> 3.3 WHERE      
-> 3.4 GROUP BY ~~ HAVING ~~      
-> 3.5 ORDER BY      
-> 3.6 LIMIT   
 
 ### 3.2 INNER JOIN ~~ ON ~~
 - INNER JOIN : 교집합   
@@ -335,7 +313,7 @@ FROM tablename
 SELECT tableA.column1, tableA.column2, ...,  tableB.column1, tableB.column2 ...
 FROM tableA
 INNER JOIN | LEFT JOIN | RIGHT JOIN | FULL OUTER JOIN tableB  # FULL OUTER JOIN 제외
-ON tableA.column = tableB.column # 기준 설정
+ON tableA.column = tableB.column # 기준 설정(BETWEEN도 사용 가능)
 WHERE condition;
 ```
 
@@ -372,13 +350,6 @@ UNION | UNION ALL
 SELECT column1, column2, ... FROM tableB
 ORDER BY columname;
 ```
-
-> 3.1 SELECT ~ FROM ~     
-> 3.2 INNER JOIN ~~ ON ~~ / UNION     
-> 3.3 WHERE      
-> 3.4 GROUP BY ~~ HAVING ~~      
-> 3.5 ORDER BY      
-> 3.6 LIMIT   
 
 ## 3.3 WHERE
 - WHERE 조건
@@ -482,13 +453,6 @@ WHERE columnname LIKE '%,%';
 ```
 ___
 
-> 3.1 SELECT ~ FROM ~     
-> 3.2 INNER JOIN ~~ ON ~~    
-> 3.3 WHERE      
-> 3.4 GROUP BY ~~ HAVING ~~      
-> 3.5 ORDER BY      
-> 3.6 LIMIT   
-
 ## 3.4 GROUP BY ~~ HAVING ~~  
 
 ### 3.4.1 Aggregate Function (집계함수)
@@ -555,12 +519,6 @@ ORDER BY colunm1, colunm2, ...;
 ```
 ___
 
-> 3.1 SELECT ~ FROM ~     
-> 3.2 INNER JOIN ~~ ON ~~ / UNION or UNION ALL    
-> 3.3 WHERE      
-> 3.4 GROUP BY ~~ HAVING ~~      
-> 3.5 ORDER BY      
-> 3.6 LIMIT   
 
 ## 3.5 ORDER BY
 ```
