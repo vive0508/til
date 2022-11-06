@@ -45,3 +45,4 @@
 - [\**symmetric pairs](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/symmetric%20pairs.md)
 - [\**new companies](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/new%20companies.md)
 - [\**challenges](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/challenges.md)
+- [the report](https://github.com/vive0508/TIL/blob/main/SQL/HackerRank/the%20report.md)
