@@ -16,3 +16,7 @@
 - [\**department highest salary](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/department%20highest%20salary.md)
 - [\**challenges]()
 - [consecutive numbers](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/consecutive%20numbers.md)
+
+
+## Hard
+- [department top three salaries](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/department%20top%20three%20salaries.md)
