@@ -745,55 +745,20 @@ WHERE condtion;
 ---
 
 # 6. Window Function
-- 기본형태
+- 기본 형태
 ```sql
--- GROUP BY와 달리 축약해서 보여주는 것이 아님
--- 함수(컬럼) OVER (PARTITION BY 컬럼 ORDER BY 컬럼)
-
-# 기본형태
 SELECT columnname1
      , columnname2
      ...
-     , MAX(columnname) OVER (PARTITION BY columnname) AS columnnmae
+     , function(columnname) OVER (PARTITION BY columnname ORDER BY columnname) AS columnname
 FROM tablename
-
-# 누적합 : 윈도우 함수 1
-SELECT columnname1
-     , columnname2
-     ...
-     , SUM(columnname) OVER (ORDER BY columnname) AS columnnmae
-FROM tablename
-
-# 누적합 : 윈도우 함수 2
-SELECT columnname1
-     , columnname2
-     ...
-     , SUM(columnname) OVER (PARTITION BY columnname ORDER BY columnname) AS columnname
-FROM tablename
-
-# 누적합 : 윈도우 함수 이외 1
-SELECT a.column1
-     , a.column2
-     , SUM(column2) AS CusSum
-FROM table1 a
-INNER JOIN table2 b
-      ON a.column1 = b.column1 AND a.column2 >= b.column2
-GROUP BY 1,2,3 -- select절에 있는 인자 순서
-
-# 누적합 : 윈도우 함수 이외 2
-SELECT a.column1
-     , a.column2
-     , (SELECT SUM(b.columnname)
-        FROM table2 b
-        WHERE a.column1 = b.column2 AND a.column2 >= b.column2) AS CusSum
-FROM table1 a
 ```
 - 순위 정하기 : ROW_NUMBER(), RANK(), DENSE_RANK()   
 ```sql
 SELECT columnname
-     , ROW_NUMBER() OVER (ORDER BY val) AS new_name -- value에 따라 순위가 매겨짐
-     , RANK() OVER (ORDER BY val) AS new_name -- value가 같으면 같은 순위, and 중복된 순위는 없음
-     , DENSE_RANK() OVER (ORDER BY val) AS new_name -- value가 같으면 같은 순위, and 중복된 순위 있음
+     , ROW_NUMBER() OVER (ORDER BY value) AS new_name -- value에 따라 순위가 매겨짐
+     , RANK() OVER (ORDER BY value) AS new_name -- value가 같으면 같은 순위, and 중복된 순위는 없음
+     , DENSE_RANK() OVER (ORDER BY value) AS new_name -- value가 같으면 같은 순위, and 중복된 순위 있음
 FROM tablename      
 ```
 - 데이터 위치 바꾸기 : LAG(), LEAD()     
@@ -808,6 +773,7 @@ LEAD(컬럼) OVER (PARTITION BY columnname ORDER BY columnname)
 LEAD(컬럼, 칸수) OVER (PARTITION BY columnname ORDER BY columnname)
 LEAD(컬럼, 칸수, Defalt) OVER (PARTITION BY columnname ORDER BY columnname)
 ```
+
 
 ---
 ## 7. 사용자 정의 함수(User-Defined Function)
