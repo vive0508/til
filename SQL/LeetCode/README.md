@@ -15,4 +15,4 @@
 ## Medium 
 - [\**department highest salary](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/department%20highest%20salary.md)
 - [\**challenges]()
-- [Consecutive Numbers](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/consecutive%20numbers.md)
+- [consecutive numbers](https://github.com/vive0508/TIL/blob/main/SQL/LeetCode/consecutive%20numbers.md)
