@@ -774,19 +774,3 @@ LEAD(컬럼, 칸수) OVER (PARTITION BY columnname ORDER BY columnname)
 LEAD(컬럼, 칸수, Defalt) OVER (PARTITION BY columnname ORDER BY columnname)
 ```
 
-
----
-## 7. 사용자 정의 함수(User-Defined Function)
-```sql
-# 함수생성
-CREATE FUNCTION 'function name' ('parameter name', 'datatype')
-       RETURNS 'datatype' (DETERMINISTIC)
-BEGIN
-       DECLARE 'variable name' 'datatype';
-       SET ;
-       RETURN (Query) / 'variable name';
-END
-
-# 함수 사용
-SELECT 'function name'(parameter)
-```
